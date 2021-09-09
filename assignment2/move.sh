@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Ensure that the correct number of command-line arguments are supplied
+    # Ensure that the correct number of command-line arguments are supplied
 if [[ "$#" != [2-3] ]] 
 then
     echo "[ERROR] Unexpected number of arguments!"
     echo "------- expected usage: move \<source directory\> \<target directory\> <file extension (OPTIONAL)>"
     exit 1
 fi
-
+    
 src=$1
 dst=$2
 ext=${3:-*}
@@ -36,9 +36,7 @@ then
         [Nn]* ) ;;
         * ) ;;
     esac
-
     mkdir $dst
 fi
 
 mv $src/*$ext $dst
-
