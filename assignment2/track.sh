@@ -1,23 +1,24 @@
 #!/bin/bash
 
-LOGFILE="~/.local/share/in4110_logfile.txt"
+LOGFILE=~/.local/share/in4110_logfile.txt
 
 
 # Starts a new task with a label. Prints an error message if a task is already running
 function __start() {
-    # If the logfile doesn't exist yet, create it.
     if [ ! -f "$LOGFILE" ]
-    then
+    then 
         touch $LOGFILE
     fi
 
-    if [ $(tail -1 $LOGFILE | cut -d " " -f1)=="LABEL" ]
-    then
-        echo "A task is already running"
-    else
-        echo $(date '+START %a %b %d %R %Z %Y') >> $LOGFILE
-        echo "LABEL $1" >> $LOGFILE
-    fi
+    case $(tail -1 $LOGFILE | cut -d " " -f1) in
+        "LABEL" ) 
+            echo "A task is already running"
+            ;;
+        * ) 
+            echo "START $(date)" >> $LOGFILE
+            echo "LABEL $1" >> $LOGFILE
+            ;;
+    esac
 }
 
 
@@ -29,11 +30,14 @@ function __stop() {
         return 1
     fi
 
-    if [ $(tail -1 $LOGFILE | cut -d " " -f1)=="LABEL" ]; then
-        echo $(date '+END %a %b %d %R %Z %Y') >> $LOGFILE
-    else
-        echo "No task is currently active."
-    fi
+    case $(tail -1 $LOGFILE | cut -d " " -f1) in
+        "LABEL" )
+            echo "STOP $(date)" >> $LOGFILE
+            ;;
+        * ) 
+            echo "No task is currently active."
+            ;;
+    esac
 }
 
 
@@ -45,13 +49,14 @@ function __status() {
         return 1
     fi
 
-    # Check if the last line in the logfile starts with "LABEL" indicating that there is an active task
-    if [ $(tail -1 $LOGFILE | cut -d " " -f1)=="LABEL" ]; then
-        # If there is an active task, print its note
-        echo Running task: $(tail -n 1 $LOGFILE | cut -d " " -f 2-) 
-    else
-        echo "No task is currently running."
-    fi
+    case $(tail -1 $LOGFILE | cut -d " " -f1) in
+        "LABEL" )
+            echo Running task: $(tail -n 1 $LOGFILE | cut -d " " -f 2-) 
+            ;;
+        * ) 
+            echo "No task is currently running"
+            ;;
+    esac
 }
 
 function __log() {
