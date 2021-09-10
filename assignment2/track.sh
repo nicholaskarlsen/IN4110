@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOGFILE=~/.local/share/in4110_logfile.txt
+LOGFILE=~/.local/share/.timer_logfile
 
 # Note: functions prefixed with __ are assumed to be private. User not expected to call them directly.
 
@@ -36,7 +36,7 @@ function __stop() {
     # Fetch the first word of the current last line in the LOGFILE
     case $(tail -1 $LOGFILE | cut -d " " -f1) in
         "LABEL" )
-            echo "STOP $(date)" >> $LOGFILE
+            echo "END $(date)" >> $LOGFILE
             ;;
         * ) 
             echo "No task is currently active."
@@ -73,7 +73,7 @@ function __log() {
         return 1
     fi
     # Loop through the number of completed tasks
-    N_COMPLETED=$(grep 'STOP' $LOGFILE | wc -l)
+    N_COMPLETED=$(grep 'END' $LOGFILE | wc -l)
     for i in $(seq 1 $N_COMPLETED)
     do
         # "Clever way" of preparing the correct argument to pass to sed
@@ -81,7 +81,7 @@ function __log() {
         arg+=p
         # Grep the i-th line containing the word "START" then remove the "START", leaving only the timestamp 
         START_T="$(grep 'START' $LOGFILE | sed -n $arg | cut -d " " -f 2-)" 
-        STOP_T="$(grep 'STOP' $LOGFILE | sed -n $arg | cut -d " " -f 2-)" 
+        STOP_T="$(grep 'END' $LOGFILE | sed -n $arg | cut -d " " -f 2-)" 
         # Convert the timestamps into seconds
         t1=$(date -d "$START_T" '+%s')
         t2=$(date -d "$STOP_T" '+%s')
