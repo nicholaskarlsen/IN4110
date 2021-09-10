@@ -2,6 +2,8 @@
 
 LOGFILE=~/.local/share/in4110_logfile.txt
 
+# Note: functions prefixed with __ are assumed to be private. User not expected to call them directly.
+
 # Starts a new task with a label. Prints an error message if a task is already running
 function __start() {
     # Create an empty logfile if none exists (else tail command below throws an error)
@@ -31,7 +33,7 @@ function __stop() {
         echo "Logfile $LOGFILE does not exist!"
         return 1
     fi
-
+    # Fetch the first word of the current last line in the LOGFILE
     case $(tail -1 $LOGFILE | cut -d " " -f1) in
         "LABEL" )
             echo "STOP $(date)" >> $LOGFILE
@@ -88,6 +90,7 @@ function __log() {
     done
 }
 
+# Main function of the program. User is only ever expected to call this one directly.
 function track() {
     case $1 in
         "start") 
@@ -104,10 +107,10 @@ function track() {
             ;;
         *) 
             echo "Incorrect usage. Please supply one of the following arguments" 
-            echo " start <LABEL>    Starts a new task with a label. Prints an error message if a task is already running"
-            echo " stop             Stops the current task if one is running"
-            echo " status           Tells you which task is currently running, or if there is no active task."
-            echo " log              Lets you know how  much time you've spent on each completed task"
+            echo "  start \"<Task Label>\"     Starts a new task with a label. Prints an error message if a task is already running"
+            echo "  stop                     Stops the current task if one is running"
+            echo "  status                   Tells you which task is currently running, or if there is no active task."
+            echo "  log                      Lets you know how  much time you've spent on each completed task"
             ;;
     esac
 }

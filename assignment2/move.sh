@@ -1,29 +1,30 @@
 #!/bin/bash
 
-    # Ensure that the correct number of command-line arguments are supplied
+# Ensure that the correct number of command-line arguments are supplied. 
 if [[ "$#" != [2-3] ]] 
 then
     echo "[ERROR] Unexpected number of arguments!"
-    echo "------- expected usage: move \<source directory\> \<target directory\> <file extension (OPTIONAL)>"
+    echo " - expected usage: move \<source directory\> \<target directory\> <file extension (OPTIONAL)>"
     exit 1
 fi
-    
+
 src=$1
 dst=$2
+# ext defaults to * if 3rd arg is not supplied (i.e all files and folders are moved by default)
 ext=${3:-*}
 
-# Check that both of the supplied directories exist.
+# Ensure that both of the supplied directories exist. 
 if [ ! -d $src ]
 then
     echo [ERROR] $src does not exist in your filesystem!
     exit 1
 fi
 
-# Check that the destination folder exists
+# Check if the destination folder exists
 if [ ! -d $dst ]
 then
     echo "Directory $dst does not exist in your filesystem."
-    read -p "--------- Do you wish to create this directory? (Y/N): " ans
+    read -p " - Do you wish to create this directory? (Y/N): " ans
     case $ans in
         [Yy]* ) echo You choose yes ;;
         [Nn]* ) exit 1 ;;
