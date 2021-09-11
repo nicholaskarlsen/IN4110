@@ -31,9 +31,10 @@ class Array:
                 raise ValueError("Values are not all of the same type")
 
         self.shape = shape
+        self.dim = len(shape)
         self.values = values
         self.num_elements = len(values)
-        self.array = self.__initialize_array(values)
+        self._array = self.__initialize_array(values)
 
         # Optional: If not all values are of same type, all are converted to floats.
 
@@ -41,7 +42,7 @@ class Array:
 
     def __initialize_array(self, values):
         """
-        Stores the input values in a static C type array
+        Stores the input values in a static, contigous C type array.
 
         Args:
             values: tuple of input values provided in the constructor
@@ -67,17 +68,27 @@ class Array:
         """Returns a nicely printable string representation of the array.
 
         Returns:
-            str: A string representation of the array.
+            str_repr: A string representation of the array.
 
         """
         str_repr = "" # String representation of the array
+        str_repr += "["
+        for i in range(self.shape[0] - 1):
+            str_repr += "{}, ".format(self._array[i])
+        str_repr += "{}]".format(self._array[self.shape[0] - 1])
+        str_repr += "\n"
 
-        for dim_size in self.shape:
-            str_repr += "["
-            for i in range(dim_size-1):
-                str_repr += "{}, ".format(self.array[i])
-            str_repr += "{}]".format(self.array[dim_size-1])
-            str_repr += "\n"
+        # If the array is N>1 dimensional
+        if self.dim > 1:
+            str_repr = "[" + str_repr
+            for d in range(1, self.dim):
+                str_repr += " ["
+                for i in range(self.shape[d]-1):
+                    # data is stored contigously in memory, so access them C style with offsets.
+                    # NOTE: will have to sum over all the previous offsets for dim>2 !!!
+                    str_repr += "{}, ".format(self._array[self.shape[d - 1] + i])
+                str_repr += "{}]".format(self._array[self.shape[d - 1] + self.shape[d]-1])
+                str_repr += "]\n"
 
         return str_repr[:-1] # Don't include the last newline
 
@@ -94,11 +105,29 @@ class Array:
             Array: the sum as a new array.
 
         """
-        # check that the method supports the given arguments (check for data type and shape of array)
-        if self.shape != other.shape:
-            raise ValueError("Can't add arrays of different shapes")
+        if isinstance(other, Array):
+            if self.shape != other.shape:
+                raise NotImplemented
+            if self.T != other.T:
+                return NotImplemented
+            # Create a new Array object with the contents and shape of this array
+            sum_array = Array(self.shape, *self._array)
+            for i in range(self.size):
+                sum_array._array[i] += other[i]
 
-        pass
+            return sum_array
+
+        else:
+            if self.T != type(other):
+                return NotImplemented
+            # Create a new Array object with the contents and shape of this array
+            sum_array = Array(self.shape, *self._array)
+            for i in range(self.size):
+                sum_array._array[i] += other
+
+            return sum_array
+
+
 
     def __radd__(self, other):
         """Element-wise adds Array with another Array or number.
@@ -113,7 +142,7 @@ class Array:
             Array: the sum as a new array.
 
         """
-        pass
+        return self.__add__(other)
 
     def __sub__(self, other):
         """Element-wise subtracts an Array or number from this Array.
@@ -128,7 +157,27 @@ class Array:
             Array: the difference as a new array.
 
         """
-        pass
+        if isinstance(other, Array):
+            if self.shape != other.shape:
+                raise NotImplemented
+            if self.T != other.T:
+                return NotImplemented
+            # Create a new Array object with the contents and shape of this array
+            sub_array = Array(self.shape, *self._array)
+            for i in range(self.size):
+                sub_array._array[i] -= other[i]
+
+            return sub_array
+
+        else:
+            if self.T != type(other):
+                return NotImplemented
+            # Create a new Array object with the contents and shape of this array
+            sub_array = Array(self.shape, *self._array)
+            for i in range(self.size):
+                sub_array._array[i] -= other
+
+            return sub_array
 
     def __rsub__(self, other):
         """Element-wise subtracts this Array from a number or Array.
@@ -143,7 +192,30 @@ class Array:
             Array: the difference as a new array.
 
         """
-        pass
+        if isinstance(other, Array):
+            return other.__sub__(self)
+            """
+            if self.shape != other.shape:
+                raise NotImplemented
+            if self.T != other.T:
+                return NotImplemented
+            # Create a new Array object with the contents and shape of this array
+            sub_array = Array(self.shape, *other._array)
+            for i in range(self.size):
+                sub_array._array[i] -= self._array[i]
+
+            return sub_array
+            """
+        else:
+            if self.T != type(other):
+                return NotImplemented
+            # Create a new Array object with the contents and shape of this array
+            sub_array = Array(self.shape, *self._array)
+            for i in range(self.size):
+                sub_array._array[i] = -sub_array._array[i] + other
+
+            return sub_array
+
 
     def __mul__(self, other):
         """Element-wise multiplies this Array with a number or array.
@@ -158,7 +230,27 @@ class Array:
             Array: a new array with every element multiplied with `other`.
 
         """
-        pass
+        if isinstance(other, Array):
+            if self.shape != other.shape:
+                raise NotImplemented
+            if self.T != other.T:
+                return NotImplemented
+            # Create a new Array object with the contents and shape of this array
+            prod_arr = Array(self.shape, *self._array)
+            for i in range(self.size):
+                prod_arr._array[i] *= other[i]
+
+            return prod_arr
+
+        else:
+            if self.T != type(other):
+                return NotImplemented
+            # Create a new Array object with the contents and shape of this array
+            prod_arr = Array(self.shape, *self._array)
+            for i in range(self.size):
+                prod_arr._array[i] *= other
+
+            return prod_arr
 
     def __rmul__(self, other):
         """Element-wise multiplies this Array with a number or array.
@@ -189,7 +281,19 @@ class Array:
             bool: True if the two arrays are equal (identical). False otherwise.
 
         """
-        pass
+        if not isinstance(other, Array):
+            return False
+
+        if self.shape != other.shape:
+            return False
+
+        # Ensure that the contents of the arrays are identical
+        for i in range(self.size):
+            if self._array[i] != other[i]:
+                return False
+
+        # If none of the above tests return False, the arrays are (probably) equivalent.
+        return True
 
     def is_equal(self, other):
         """Compares an Array element-wise with another Array or number.
@@ -209,7 +313,13 @@ class Array:
             ValueError: if the shape of self and other are not equal.
 
         """
-        pass
+        if isinstance(other, Array):
+            pass
+
+        if isinstance(other, self.T):
+            pass
+
+        return TypeError
 
     def min_element(self):
         """Returns the smallest value of the array.
@@ -221,8 +331,8 @@ class Array:
 
         """
         if self.T is bool:
-            raise NotImplementedError("bool not supported")
-    
+            return NotImplemented
+
         minval = self.array[0]
         for i in range(1, self.size):
             minval = self.array[i] if self.array[i] < minval else minval
@@ -230,12 +340,26 @@ class Array:
         return minval
 
     def __getitem__(self, idx):
-        return self.array[idx]
+        # 1-Dimensional indexing 
+        if type(idx) == int and len(self.shape) == 1:
+            # NOTE: Boundary check is already present in ctype, so a check if idx < size would be redundant.
+            return self._array[idx]
+        # N-dimensional case
+
 
 
 if __name__=="__main__":
-    shape = (4,)
+    shape = (2,2)
     my_array = Array(shape, 2, 3, 1, 0)
+
+    print(my_array[0])
+    print(my_array[1,1])
+    for i in range(10):
+        print(my_array._array[i])
+    """
     assert my_array[2] == 1
     print(my_array)
     print(my_array.min_element())
+    print(type(my_array))
+    print(my_array+my_array)
+    """
