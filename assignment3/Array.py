@@ -20,7 +20,7 @@ class Array:
         # product of entries in shape should correspond to the number of elements in values
         self.size = 1
         for s in shape:
-            self.size*=s
+            self.size *= s
         if self.size != len(values):
             raise ValueError("The number of values does not fit with the shape")
 
@@ -30,15 +30,13 @@ class Array:
             if self.T != type(val):
                 raise ValueError("Values are not all of the same type")
 
-        self.shape = shape
-        self.dim = len(shape)
-        self.values = values
-        self.num_elements = len(values)
-        self._array = self.__initialize_array(values)
-
+        self.shape = shape                              # Shape of the data
+        self.dim = len(shape)                           # Dimensionality of the data
+        self.num_elements = len(values)                 # The total number of entries in the array
+        self._array = self.__initialize_array(values)   # Static, contigously stored C-style array containing the data
         # Optional: If not all values are of same type, all are converted to floats.
+        return
 
-        pass
 
     def __initialize_array(self, values):
         """
@@ -77,7 +75,6 @@ class Array:
             str_repr += "{}, ".format(self._array[i])
         str_repr += "{}]".format(self._array[self.shape[0] - 1])
         str_repr += "\n"
-
         # If the array is N>1 dimensional
         if self.dim > 1:
             str_repr = "[" + str_repr
@@ -194,25 +191,14 @@ class Array:
         """
         if isinstance(other, Array):
             return other.__sub__(self)
-            """
-            if self.shape != other.shape:
-                raise NotImplemented
-            if self.T != other.T:
-                return NotImplemented
-            # Create a new Array object with the contents and shape of this array
-            sub_array = Array(self.shape, *other._array)
-            for i in range(self.size):
-                sub_array._array[i] -= self._array[i]
-
-            return sub_array
-            """
+        # No obvious way to re-use __sub__ in a similar when subtracting a single number/bool, so have to write it out manually.
         else:
             if self.T != type(other):
                 return NotImplemented
             # Create a new Array object with the contents and shape of this array
             sub_array = Array(self.shape, *self._array)
             for i in range(self.size):
-                sub_array._array[i] = -sub_array._array[i] + other
+                sub_array._array[i] = - sub_array._array[i] + other
 
             return sub_array
 
@@ -333,9 +319,9 @@ class Array:
         if self.T is bool:
             return NotImplemented
 
-        minval = self.array[0]
+        minval = self._array[0]
         for i in range(1, self.size):
-            minval = self.array[i] if self.array[i] < minval else minval
+            minval = self._array[i] if self._array[i] < minval else minval
 
         return minval
 
@@ -349,13 +335,14 @@ class Array:
 
 
 if __name__=="__main__":
-    shape = (2,2)
-    my_array = Array(shape, 2, 3, 1, 0)
+    shape = (3,2)
+    my_array = Array(shape, 1, 2, 3, 4, 5, 6)
+    print(my_array)
 
-    print(my_array[0])
-    print(my_array[1,1])
-    for i in range(10):
-        print(my_array._array[i])
+    shape = (2,2,2)
+    my_array = Array(shape, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+    print(my_array)
+
     """
     assert my_array[2] == 1
     print(my_array)
