@@ -1,14 +1,10 @@
 from Array import Array
 import numpy as np
 
-"""
-1-Dimensional tests
-"""
-
 
 def test_str_repr():
     """
-    Check that your print function returns the nice string
+    Check that your print function returns the nice string for both 1D and 2D arrays
     """
     vals = (1, 2, 3, 4, 5, 6)
     # Test various shapes, both 1D and 2D
@@ -356,3 +352,19 @@ def test_min_element_2d():
     assert arr_4.min_element() == -2
     assert arr_5.min_element() == -99
     assert arr_6.min_element() == -1231
+
+def test_get_item():
+    shape1 = (12,)
+    vals = (1,2,3,4,5,6,7,8,9,10,11,12)
+
+    arr = Array(shape1, *vals)
+    groundtruth = np.array(vals).reshape(shape1)
+    for i in range(12):
+        assert arr[i] == groundtruth[i]
+
+    shape2 = (6,2)
+    arr = Array(shape2, *vals)
+    groundtruth = np.array(vals).reshape(shape2)
+    for i in range(6):
+        for j in range(2):
+            assert arr[i][j] == groundtruth[i][j]
