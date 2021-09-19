@@ -15,3 +15,11 @@ Arithmatic operations work elementwise like they do in numpy
 >>> print(A + B)
 [6 4 10 6]
 ```
+2-Dimensional arrays are printed to the terminal in a nicely formatted way
+```python
+>>> C = Array((2,3), 1, 2, 3, 4, 5, 6)
+>>> print(C)
+[[1 2 3]
+ [4 5 6]]
+```
+And much more!
