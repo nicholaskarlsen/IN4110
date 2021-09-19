@@ -1,5 +1,6 @@
 import ctypes
 
+
 class Array:
     def __init__(self, shape, *values):
         """
@@ -30,17 +31,18 @@ class Array:
             if self.T != type(val):
                 raise ValueError("Values are not all of the same type")
 
-        self.shape = shape                              # Shape of the data
-        self.dim = len(shape)                           # Dimensionality of the data
-        self.num_elements = len(values)                 # The total number of entries in the array
-        self._array = self.__initialize_array(values)   # Static, contigously stored C-style array containing the data
+        self.shape = shape  # Shape of the data
+        self.dim = len(shape)  # Dimensionality of the data
+        self.num_elements = len(values)  # The total number of entries in the array
+        self._array = self.__initialize_array(
+            values
+        )  # Static, contiguously stored C-style array containing the data
         # Optional: If not all values are of same type, all are converted to floats.
         return
 
-
     def __initialize_array(self, values):
         """
-        Stores the input values in a static, contigous C type array.
+        Stores the input values in a static, contiguous C type array.
 
         Args:
             values: tuple of input values provided in the constructor
@@ -58,36 +60,53 @@ class Array:
             return (ctypes.c_bool * self.size)(*values)
 
         else:
-            raise TypeError("Unsupported type in the input values. Supported types: int, float, bool")
+            raise TypeError(
+                "Unsupported type in the input values. Supported types: int, float, bool"
+            )
 
         return
 
     def __str__(self):
-        """Returns a nicely printable string representation of the array.
+        """Returns a nicely printable string representation of the array, similar to Numpy.
+        NOTE: Only implemented to work for 1 and 2D arrays.
 
         Returns:
             str_repr: A string representation of the array.
-
         """
-        str_repr = "" # String representation of the array
-        str_repr += "["
-        for i in range(self.shape[0] - 1):
-            str_repr += "{}, ".format(self._array[i])
-        str_repr += "{}]".format(self._array[self.shape[0] - 1])
-        str_repr += "\n"
-        # If the array is N>1 dimensional
-        if self.dim > 1:
-            str_repr = "[" + str_repr
-            for d in range(1, self.dim):
-                str_repr += " ["
-                for i in range(self.shape[d]-1):
-                    # data is stored contigously in memory, so access them C style with offsets.
-                    # NOTE: will have to sum over all the previous offsets for dim>2 !!!
-                    str_repr += "{}, ".format(self._array[self.shape[d - 1] + i])
-                str_repr += "{}]".format(self._array[self.shape[d - 1] + self.shape[d]-1])
-                str_repr += "]\n"
+        str_repr = ""
+        if self.dim == 1:
+            str_repr += self.__str_row(0, self.size)
 
-        return str_repr[:-1] # Don't include the last newline
+        elif self.dim == 2:
+            str_repr += "["
+            for i in range(self.shape[0]):
+                str_repr += self.__str_row(i * self.shape[1], (i + 1) * self.shape[1])
+                str_repr += "\n "
+
+            # Also remove the trailing newline & space inserted in line above
+            str_repr = str_repr[:-2] + "]"  
+
+        elif self.dim > 2:
+            return NotImplemented
+
+        return str_repr
+
+    def __str_row(self, start, stop):
+        """Returns a nicely formatted string representation of a sequence in the array. Used to produce the
+        rows in the __str__ method.
+
+        Returns:
+            str_repr: A string representation of a sequence of entries in the array
+        """
+        str_repr = "["
+        for i in range(start, stop):
+            str_repr += "{} ".format(self._array[i])
+
+        # Also remove the trailing newline & space inserted in line above
+        str_repr = str_repr[:-1] + "]"
+
+        return str_repr
+
 
     def __add__(self, other):
         """Element-wise adds Array with another Array or number.
@@ -104,27 +123,32 @@ class Array:
         """
         if isinstance(other, Array):
             if self.shape != other.shape:
-                raise NotImplemented
+                return NotImplemented
+
             if self.T != other.T:
                 return NotImplemented
+
             # Create a new Array object with the contents and shape of this array
             sum_array = Array(self.shape, *self._array)
+
+            # Recall: then underlying storage (i.e _array) is contiguous
             for i in range(self.size):
-                sum_array._array[i] += other[i]
+                sum_array._array[i] += other._array[i]
 
             return sum_array
 
         else:
             if self.T != type(other):
                 return NotImplemented
+
             # Create a new Array object with the contents and shape of this array
             sum_array = Array(self.shape, *self._array)
+
+            # Recall: then underlying storage (i.e _array) is contiguous
             for i in range(self.size):
                 sum_array._array[i] += other
 
             return sum_array
-
-
 
     def __radd__(self, other):
         """Element-wise adds Array with another Array or number.
@@ -157,12 +181,15 @@ class Array:
         if isinstance(other, Array):
             if self.shape != other.shape:
                 raise NotImplemented
+
             if self.T != other.T:
                 return NotImplemented
+
             # Create a new Array object with the contents and shape of this array
             sub_array = Array(self.shape, *self._array)
             for i in range(self.size):
-                sub_array._array[i] -= other[i]
+                # Recall: the underlying storage (i.e _array) is contiguous
+                sub_array._array[i] -= other._array[i]
 
             return sub_array
 
@@ -171,6 +198,8 @@ class Array:
                 return NotImplemented
             # Create a new Array object with the contents and shape of this array
             sub_array = Array(self.shape, *self._array)
+
+            # Recall: the underlying storage (i.e _array) is contiguous
             for i in range(self.size):
                 sub_array._array[i] -= other
 
@@ -191,17 +220,19 @@ class Array:
         """
         if isinstance(other, Array):
             return other.__sub__(self)
-        # No obvious way to re-use __sub__ in a similar when subtracting a single number/bool, so have to write it out manually.
+        # No obvious way to re-use __sub__ in a similar when subtracting a single number/bool, so write it out manually.
         else:
             if self.T != type(other):
                 return NotImplemented
+
             # Create a new Array object with the contents and shape of this array
             sub_array = Array(self.shape, *self._array)
+
+            # Recall: the underlying storage (i.e _array) is contiguous
             for i in range(self.size):
                 sub_array._array[i] = - sub_array._array[i] + other
 
             return sub_array
-
 
     def __mul__(self, other):
         """Element-wise multiplies this Array with a number or array.
@@ -219,20 +250,27 @@ class Array:
         if isinstance(other, Array):
             if self.shape != other.shape:
                 raise NotImplemented
+
             if self.T != other.T:
                 return NotImplemented
+
             # Create a new Array object with the contents and shape of this array
             prod_arr = Array(self.shape, *self._array)
+
+            # Recall: the underlying storage (i.e _array) is contiguous
             for i in range(self.size):
-                prod_arr._array[i] *= other[i]
+                prod_arr._array[i] *= other._array[i]
 
             return prod_arr
 
         else:
             if self.T != type(other):
                 return NotImplemented
+
             # Create a new Array object with the contents and shape of this array
             prod_arr = Array(self.shape, *self._array)
+
+            # Recall: the underlying storage (i.e _array) is contiguous
             for i in range(self.size):
                 prod_arr._array[i] *= other
 
@@ -275,7 +313,7 @@ class Array:
 
         # Ensure that the contents of the arrays are identical
         for i in range(self.size):
-            if self._array[i] != other[i]:
+            if self._array[i] != other._array[i]:
                 return False
 
         # If none of the above tests return False, the arrays are (probably) equivalent.
@@ -299,13 +337,29 @@ class Array:
             ValueError: if the shape of self and other are not equal.
 
         """
+        # Initialize the output Array filled with all True entries in a compact way.
+        equal_array = Array(self.shape, * [bool(1) for x in range(self.size)])
+
         if isinstance(other, Array):
-            pass
+            if self.shape != other.shape:
+                raise ValueError("Shape mismatch")
 
-        if isinstance(other, self.T):
-            pass
+            if self.T != other.T:
+                raise TypeError("Incompatible type")
+             
+            # Recall: the underlying storage (i.e _array) is contiguous.
+            for i in range(self.size):
+                equal_array._array[i] = (self._array[i] == other._array[i])
 
-        return TypeError
+        elif isinstance(other, self.T):
+            # Recall: the underlying storage (i.e _array) is contiguous.
+            for i in range(self.size):
+                equal_array._array[i] = (self._array[i] == other)
+
+        else:
+            raise TypeError("Incompatible type")
+            
+        return equal_array
 
     def min_element(self):
         """Returns the smallest value of the array.
@@ -314,11 +368,11 @@ class Array:
 
         Returns:
             float: The value of the smallest element in the array.
-
         """
         if self.T is bool:
             return NotImplemented
 
+        # Note: Since the underlying storage is contiguous, this works for any dimensionality
         minval = self._array[0]
         for i in range(1, self.size):
             minval = self._array[i] if self._array[i] < minval else minval
@@ -326,27 +380,18 @@ class Array:
         return minval
 
     def __getitem__(self, idx):
-        # 1-Dimensional indexing 
-        if type(idx) == int and len(self.shape) == 1:
-            # NOTE: Boundary check is already present in ctype, so a check if idx < size would be redundant.
-            return self._array[idx]
-        # N-dimensional case
-
-
-
-if __name__=="__main__":
-    shape = (3,2)
-    my_array = Array(shape, 1, 2, 3, 4, 5, 6)
-    print(my_array)
-
-    shape = (2,2,2)
-    my_array = Array(shape, 1, 2, 3, 4, 5, 6, 7, 8, 9)
-    print(my_array)
-
-    """
-    assert my_array[2] == 1
-    print(my_array)
-    print(my_array.min_element())
-    print(type(my_array))
-    print(my_array+my_array)
-    """
+        # NOTE: Boundary check is already present in ctype, so a check if idx < size would be redundant.
+        # 1-Dimensional indexing
+        if type(idx) == int:
+            # if it is a 1-Dim array, simply return the entry corresponding to idx
+            if len(self.shape) == 1:
+                return self._array[idx]
+            # If it is a 2-Dim array, return the row corresponding to idx by creating a new array containing that row.
+            else:
+                return Array(
+                    self.shape[1:],
+                    *self._array[idx * self.shape[1] : (idx + 1) * self.shape[1]]
+                )
+        # Only accept integer indexing. i.e no slicing, because that would get rather involved for dim > 1
+        else:
+            return NotImplemented
