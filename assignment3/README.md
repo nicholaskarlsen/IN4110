@@ -23,3 +23,10 @@ Arithmatic operations work elementwise like they do in numpy
  [4 5 6]]
 ```
 And much more!
+
+## Unit tests
+Unit tests for the Array class is contained in the file `test_Array.py` and is reccomended to run using pytest like
+```bash
+$ pytest test_Array.py
+```
+The test covers all of the class methods in both the 1 and 2D cases, often using Numpy as the ground truth. Note in particular that the proper functionality of `__getitem__`{:.python} is implicit due to its usage in many of the tests.
