@@ -4,15 +4,14 @@ A python class which attempts to replicate some of the behaviour of numpy-type a
 
 ## Example usage
 You may create an instance of the class like
-´´´python
+```python
 >>> A = Array((4,), 1, 2, 3, 4)
-´´´
+```
 Arithmatic operations work elementwise like they do in numpy
-´´´python
+```python
 >>> print(A + 1)
 [2 3 4 5]
 >>> B = Array((4,), 5, 2, 7, 2)
 >>> print(A + B)
 [6 4 10 6]
-´´´
-
+```
