@@ -29,7 +29,7 @@ Unit tests for the Array class is contained in the file `test_Array.py` and is r
 ```bash
 $ pytest test_Array.py
 ```
-The tests covers all of the class methods in both the 1 and 2D cases, often using Numpy as the ground truth.
+The tests covers all of the class methods in both the 1 and 2D cases, often using Numpy as the ground truth. The tests have been ran, and passed successfully on Python 3.8.10.
 
 ## Documentation
 
