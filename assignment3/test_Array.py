@@ -47,9 +47,9 @@ def test_1d_addition():
 
 
 def test_2d_addition():
-    """ 
+    """
     One or more tests verifying that adding to a 2d-array element-wise returns
-    what it’s supposed to 
+    what it’s supposed to
     """
     shape = (2, 3)
     vals = (4, 8, 15, 16, 23, 42)
@@ -109,6 +109,7 @@ def test_1d_subtraction():
         assert arr_3_r[i] == (10 - vals[i]) - vals[i]
 
     return
+
 
 def test_2d_subtraction():
     """
@@ -176,10 +177,11 @@ def test_1d_multiplication():
 
     return
 
+
 def test_2d_multiplication():
-    """ 
+    """
     One or more tests verifying that multiplying  a 2d-array element-wise returns
-    what it’s supposed to 
+    what it’s supposed to
     """
     shape = (2, 3)
     vals = (4, 8, 15, 16, 23, 42)
@@ -219,35 +221,36 @@ def test_comparison_operator_1d():
     One or more tests verifying that comparing arrays (by ==) returns what
     it is supposed to - which should be a boolean. Performs tests for 1D arrays
     """
-    # The main array 
-    arr_1 = Array((4,), 1, 2, 3, 4) 
+    # The main array
+    arr_1 = Array((4,), 1, 2, 3, 4)
 
     # Identical to the main array
-    arr_2 = Array((4,), 1, 2, 3, 4)  
+    arr_2 = Array((4,), 1, 2, 3, 4)
 
     # different compared to the main array
-    arr_3 = Array((4,), 1, 2, 1337, 4)  
-    arr_4 = Array((5,), 1, 2, 3, 4, 5)  
+    arr_3 = Array((4,), 1, 2, 1337, 4)
+    arr_4 = Array((5,), 1, 2, 3, 4, 5)
 
     assert arr_1 == arr_2
     assert arr_1 != arr_3
     assert arr_1 != arr_4
     return
 
+
 def test_comparison_operator_2d():
     """
     One or more tests verifying that comparing arrays (by ==) returns what
     it is supposed to - which should be a boolean. Performs tests for 2D arrays
     """
-    # The main array 
-    arr_1 = Array((2,2), 1, 2, 3, 4) 
+    # The main array
+    arr_1 = Array((2, 2), 1, 2, 3, 4)
 
     # Identical to the main array
-    arr_2 = Array((2,2), 1, 2, 3, 4)  
+    arr_2 = Array((2, 2), 1, 2, 3, 4)
 
     # different compared to the main array
-    arr_3 = Array((2,2), 1, 2, 1337, 4)  
-    arr_4 = Array((5,1), 1, 2, 3, 4, 5)  
+    arr_3 = Array((2, 2), 1, 2, 1337, 4)
+    arr_4 = Array((5, 1), 1, 2, 3, 4, 5)
 
     assert arr_1 == arr_2
     assert arr_1 != arr_3
@@ -282,6 +285,7 @@ def test_is_equal_1d():
 
     return
 
+
 def test_is_equal_2d():
     """
     One or more tests verifying that comparing a 2d-array element-wise to
@@ -289,7 +293,7 @@ def test_is_equal_2d():
     should be a boolean array. Treats the output of an equivalent Numpy function
     as the ground truth.
     """
-    shape = (2,3)
+    shape = (2, 3)
     vals1 = (4, 8, 15, 16, 23, 42)
     arr1 = Array(shape, *vals1)
 
@@ -304,7 +308,9 @@ def test_is_equal_2d():
     vals2 = (0, 8, 2, 16, 23, 0)
     arr2 = Array(shape, *vals2)
     equal_arr_arr = arr1.is_equal(arr2)
-    ground_truth = np.equal(np.array(vals1).reshape(shape), np.array(vals2).reshape(shape))
+    ground_truth = np.equal(
+        np.array(vals1).reshape(shape), np.array(vals2).reshape(shape)
+    )
 
     for i in range(2):
         for j in range(3):
@@ -334,17 +340,18 @@ def test_min_element_1d():
 
     return
 
+
 def test_min_element_2d():
     """
     One or more tests verifying that the the element returned by min element
     is the ”smallest” one in the array for a selection of 2D arrays
     """
-    arr_1 = Array((2,2), 4, 2, 1, 3)  # Only positive values
-    arr_2 = Array((5,1), 1, 5, 0, 6, 100)  # Only positive values and zero
-    arr_3 = Array((2,2), 1, -2, 5, 2)  # Positive and negative values
-    arr_4 = Array((2,2), 1, -2, 0, 5)  # Positive and negative values and zero
-    arr_5 = Array((2,2), -2, -99, 0, -2)  # Negative values and zero
-    arr_6 = Array((2,2), -4, -1231, -2, -6)  # Only negative values
+    arr_1 = Array((2, 2), 4, 2, 1, 3)  # Only positive values
+    arr_2 = Array((5, 1), 1, 5, 0, 6, 100)  # Only positive values and zero
+    arr_3 = Array((2, 2), 1, -2, 5, 2)  # Positive and negative values
+    arr_4 = Array((2, 2), 1, -2, 0, 5)  # Positive and negative values and zero
+    arr_5 = Array((2, 2), -2, -99, 0, -2)  # Negative values and zero
+    arr_6 = Array((2, 2), -4, -1231, -2, -6)  # Only negative values
 
     assert arr_1.min_element() == 1
     assert arr_2.min_element() == 0
@@ -353,16 +360,17 @@ def test_min_element_2d():
     assert arr_5.min_element() == -99
     assert arr_6.min_element() == -1231
 
+
 def test_get_item():
     shape1 = (12,)
-    vals = (1,2,3,4,5,6,7,8,9,10,11,12)
+    vals = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
 
     arr = Array(shape1, *vals)
     groundtruth = np.array(vals).reshape(shape1)
     for i in range(12):
         assert arr[i] == groundtruth[i]
 
-    shape2 = (6,2)
+    shape2 = (6, 2)
     arr = Array(shape2, *vals)
     groundtruth = np.array(vals).reshape(shape2)
     for i in range(6):

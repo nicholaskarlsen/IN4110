@@ -26,18 +26,21 @@ class Array:
             raise ValueError("The number of values does not fit with the shape")
 
         # Type of the 0-th entry should be equal to type of all other entries
+        different_types = type(values[0])
         self.T = type(values[0])
         for val in values:
             if self.T != type(val):
                 raise ValueError("Values are not all of the same type")
+        # Optional: If not all values are of same type, all are converted to floats.
+        if different_types:
+            for i in range(self.size):
+                values[i] = float(values[i])
+            self.T = float
 
         self.shape = shape  # Shape of the data
         self.dim = len(shape)  # Dimensionality of the data
-        self.num_elements = len(values)  # The total number of entries in the array
-        self._array = self.__initialize_array(
-            values
-        )  # Static, contiguously stored C-style array containing the data
-        # Optional: If not all values are of same type, all are converted to floats.
+        # Static, contiguously in memory C-style array containing the data
+        self._array = self.__initialize_array(values)
         return
 
     def __initialize_array(self, values):
@@ -84,7 +87,7 @@ class Array:
                 str_repr += "\n "
 
             # Also remove the trailing newline & space inserted in line above
-            str_repr = str_repr[:-2] + "]"  
+            str_repr = str_repr[:-2] + "]"
 
         elif self.dim > 2:
             return NotImplemented
@@ -106,7 +109,6 @@ class Array:
         str_repr = str_repr[:-1] + "]"
 
         return str_repr
-
 
     def __add__(self, other):
         """Element-wise adds Array with another Array or number.
@@ -230,7 +232,7 @@ class Array:
 
             # Recall: the underlying storage (i.e _array) is contiguous
             for i in range(self.size):
-                sub_array._array[i] = - sub_array._array[i] + other
+                sub_array._array[i] = -sub_array._array[i] + other
 
             return sub_array
 
@@ -338,7 +340,7 @@ class Array:
 
         """
         # Initialize the output Array filled with all True entries in a compact way.
-        equal_array = Array(self.shape, * [bool(1) for x in range(self.size)])
+        equal_array = Array(self.shape, *[bool(1) for x in range(self.size)])
 
         if isinstance(other, Array):
             if self.shape != other.shape:
@@ -346,19 +348,19 @@ class Array:
 
             if self.T != other.T:
                 raise TypeError("Incompatible type")
-             
+
             # Recall: the underlying storage (i.e _array) is contiguous.
             for i in range(self.size):
-                equal_array._array[i] = (self._array[i] == other._array[i])
+                equal_array._array[i] = self._array[i] == other._array[i]
 
         elif isinstance(other, self.T):
             # Recall: the underlying storage (i.e _array) is contiguous.
             for i in range(self.size):
-                equal_array._array[i] = (self._array[i] == other)
+                equal_array._array[i] = self._array[i] == other
 
         else:
             raise TypeError("Incompatible type")
-            
+
         return equal_array
 
     def min_element(self):

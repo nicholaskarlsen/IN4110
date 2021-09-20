@@ -30,3 +30,23 @@ Unit tests for the Array class is contained in the file `test_Array.py` and is r
 $ pytest test_Array.py
 ```
 The tests covers all of the class methods in both the 1 and 2D cases, often using Numpy as the ground truth.
+
+## Documentation
+
+### Public Attributes 
+|   |   | 
+|---|---|
+| `size`        | Total number of elements stored in the Array |   
+| `T`           | The type of data stored in the array. Valid types are Int, Float and Bool | 
+| `shape`       | A tuple containing the shape of the array | 
+| `dim`         | The dimensionality of the array, equal to the length of the shape tuple|
+
+### Public Methods
+|   |   | 
+|---|---|
+| `+ (Operator)`                | Performs element-wise addition of a single number or another array with the same shape. Returns a new array with the same shape populated with the result of the operation |   
+| `- (Operator)`                | Performs element-wise subtraction of a single number or another array with the same shape. Returns a new array with the same shape populated with the result of the operation |
+| `* (Operator)`                | Performs element-wise multiplication of a single number or another array with the same shape. Returns a new array with the same shape populated with the result of the operation |
+| `== (Operator)`               | Check if two arrays are identical. That is; if they have the same shape and the same entries. Returns a boolean. | 
+| `is_equal(other)`             | Performs element-wise comparison of a single number or another array with the same shape. Returns a boolean array with entries corresponding to the outcome of the comparison. | 
+| `min_element()`               | Finds and returns the smallest element in an array containing Float or Int. |
