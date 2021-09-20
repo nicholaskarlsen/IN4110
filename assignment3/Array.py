@@ -31,12 +31,11 @@ class Array:
         for val in values:
             if self.T != type(val):
                 raise ValueError("Values are not all of the same type")
- 
 
         self.shape = shape  # Shape of the data
         self.dim = len(shape)  # Dimensionality of the data
         # Static, contiguously in memory C-style array containing the data
-        self._array = self.__initialize_array(values)       
+        self._array = self.__initialize_array(values)
 
         # Optional: If not all values are of same type, all are converted to floats.
         return
@@ -77,8 +76,8 @@ class Array:
 
         Returns:
             str_repr: A string representation of the array.
-        
-        Raises: 
+
+        Raises:
             NotImplementedError: If attempting to print array of dimensionality > 2
         """
         str_repr = ""
@@ -95,12 +94,14 @@ class Array:
             str_repr = str_repr[:-2] + "]"
 
         elif self.dim > 2:
-            raise NotImplementedError("__str__ has not been implemended for arrays of dimensionality > 2")
+            raise NotImplementedError(
+                "__str__ has not been implemended for arrays of dimensionality > 2"
+            )
 
         return str_repr
 
     def __str_row(self, start, stop):
-        """Returns a nicely formatted string representation of a sequence of entries in the array. 
+        """Returns a nicely formatted string representation of a sequence of entries in the array.
         Used to produce the rows in the __str__ method.
 
         Returns:
@@ -385,7 +386,7 @@ class Array:
         """Returns the smallest value of the array.
 
         Only needs to work for type int and float (not boolean).
-        
+
         NOTE: This method works for N-dim arrays
 
         Returns:
@@ -402,7 +403,7 @@ class Array:
         return minval
 
     def __getitem__(self, idx):
-        """Returns elements stored in the Array. If the Array is 1-D, it will array the element itself, but 
+        """Returns elements stored in the Array. If the Array is 1-D, it will array the element itself, but
         for 2-D, it will return a new Array containing the desired row.
 
         e.g for a 2D Array, fetching the i-th index yields A[i] -> Array((i), A[i][0], A[i][1], ...)
@@ -416,20 +417,24 @@ class Array:
 
         Raises:
             IndexError: If attempting to access an element outside the range of the array
-            NotImplementedError: If attempted to use for an array of dimensionality 
+            NotImplementedError: If attempted to use for an array of dimensionality
         """
         # 1-Dimensional indexing
         if type(idx) == int:
             # if it is a 1-Dim array, simply return the entry corresponding to idx
             if len(self.shape) == 1:
                 if not (0 <= idx < self.size):
-                    raise IndexError("Attempting to access an element outside the range of the array") 
+                    raise IndexError(
+                        "Attempting to access an element outside the range of the array"
+                    )
 
                 return self._array[idx]
             # If it is a 2-Dim array, return the row corresponding to idx by creating a new array containing that row.
             elif len(self.shape) == 2:
                 if not (0 <= idx < self.shape[0]):
-                    raise IndexError("Attempting to access an element outside the range of the array")
+                    raise IndexError(
+                        "Attempting to access an element outside the range of the array"
+                    )
                 return Array(
                     self.shape[1:],
                     *self._array[idx * self.shape[1] : (idx + 1) * self.shape[1]]
