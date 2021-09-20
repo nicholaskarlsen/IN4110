@@ -31,20 +31,19 @@ class Array:
         for val in values:
             if self.T != type(val):
                 raise ValueError("Values are not all of the same type")
-        # Optional: If not all values are of same type, all are converted to floats.
-        if different_types:
-            for i in range(self.size):
-                values[i] = float(values[i])
-            self.T = float
+ 
 
         self.shape = shape  # Shape of the data
         self.dim = len(shape)  # Dimensionality of the data
         # Static, contiguously in memory C-style array containing the data
-        self._array = self.__initialize_array(values)
+        self._array = self.__initialize_array(values)       
+
+        # Optional: If not all values are of same type, all are converted to floats.
         return
 
     def __initialize_array(self, values):
         """
+        Private method which initializes the internal storage used in the class.
         Stores the input values in a static, contiguous C type array.
 
         Args:
@@ -52,6 +51,9 @@ class Array:
 
         Returns:
             static C type array of the appropriate type containing the input values
+
+        Raises:
+            TypeError: If attempting to initialize an array containing elements of an unsupported type
         """
         if self.T is int:
             return (ctypes.c_int * self.size)(*values)
@@ -75,6 +77,9 @@ class Array:
 
         Returns:
             str_repr: A string representation of the array.
+        
+        Raises: 
+            NotImplementedError: If attempting to print array of dimensionality > 2
         """
         str_repr = ""
         if self.dim == 1:
@@ -90,13 +95,13 @@ class Array:
             str_repr = str_repr[:-2] + "]"
 
         elif self.dim > 2:
-            return NotImplemented
+            raise NotImplementedError("__str__ has not been implemended for arrays of dimensionality > 2")
 
         return str_repr
 
     def __str_row(self, start, stop):
-        """Returns a nicely formatted string representation of a sequence in the array. Used to produce the
-        rows in the __str__ method.
+        """Returns a nicely formatted string representation of a sequence of entries in the array. 
+        Used to produce the rows in the __str__ method.
 
         Returns:
             str_repr: A string representation of a sequence of entries in the array
@@ -115,6 +120,8 @@ class Array:
 
         If the method does not support the operation with the supplied arguments
         (specific data type or shape), it should return NotImplemented.
+
+        NOTE: This method works for N-dim arrays
 
         Args:
             other (Array, float, int): The array or number to add element-wise to this array.
@@ -172,6 +179,8 @@ class Array:
 
         If the method does not support the operation with the supplied arguments
         (specific data type or shape), it should return NotImplemented.
+
+        NOTE: This method works for N-dim arrays
 
         Args:
             other (Array, float, int): The array or number to subtract element-wise from this array.
@@ -242,6 +251,8 @@ class Array:
         If the method does not support the operation with the supplied arguments
         (specific data type or shape), it should return NotImplemented.
 
+        NOTE: This method works for N-dim arrays
+
         Args:
             other (Array, float, int): The array or number to multiply element-wise to this array.
 
@@ -300,6 +311,8 @@ class Array:
         If the two array shapes do not match, it should return False.
         If `other` is an unexpected type, return False.
 
+        NOTE: This method works for N-dim arrays
+
         Args:
             other (Array): The array to compare with this array.
 
@@ -313,12 +326,15 @@ class Array:
         if self.shape != other.shape:
             return False
 
+        if self.T != other.T:
+            return False
+
         # Ensure that the contents of the arrays are identical
         for i in range(self.size):
             if self._array[i] != other._array[i]:
                 return False
 
-        # If none of the above tests return False, the arrays are (probably) equivalent.
+        # If none of the above tests return False, the arrays are equivalent.
         return True
 
     def is_equal(self, other):
@@ -326,6 +342,8 @@ class Array:
 
         If `other` is an array and the two array shapes do not match, this method should raise ValueError.
         If `other` is not an array or a number, it should return TypeError.
+
+        NOTE: This method works for N-dim arrays
 
         Args:
             other (Array, float, int): The array or number to compare with this array.
@@ -367,6 +385,8 @@ class Array:
         """Returns the smallest value of the array.
 
         Only needs to work for type int and float (not boolean).
+        
+        NOTE: This method works for N-dim arrays
 
         Returns:
             float: The value of the smallest element in the array.
@@ -382,18 +402,40 @@ class Array:
         return minval
 
     def __getitem__(self, idx):
-        # NOTE: Boundary check is already present in ctype, so a check if idx < size would be redundant.
+        """Returns elements stored in the Array. If the Array is 1-D, it will array the element itself, but 
+        for 2-D, it will return a new Array containing the desired row.
+
+        e.g for a 2D Array, fetching the i-th index yields A[i] -> Array((i), A[i][0], A[i][1], ...)
+        The method has not been expanded to support the general N-dimensional.
+
+        Args:
+            idx: Index of the element you wish to fetch
+
+        Returns:
+            An element of type T or an Array of type T stored in the corresponding index
+
+        Raises:
+            IndexError: If attempting to access an element outside the range of the array
+            NotImplementedError: If attempted to use for an array of dimensionality 
+        """
         # 1-Dimensional indexing
         if type(idx) == int:
             # if it is a 1-Dim array, simply return the entry corresponding to idx
             if len(self.shape) == 1:
+                if not (0 <= idx < self.size):
+                    raise IndexError("Attempting to access an element outside the range of the array") 
+
                 return self._array[idx]
             # If it is a 2-Dim array, return the row corresponding to idx by creating a new array containing that row.
-            else:
+            elif len(self.shape) == 2:
+                if not (0 <= idx < self.shape[0]):
+                    raise IndexError("Attempting to access an element outside the range of the array")
                 return Array(
                     self.shape[1:],
                     *self._array[idx * self.shape[1] : (idx + 1) * self.shape[1]]
                 )
+            else:
+                raise NotImplementedError("__getitem__ not implemented for dim>2")
         # Only accept integer indexing. i.e no slicing, because that would get rather involved for dim > 1
         else:
             return NotImplemented
