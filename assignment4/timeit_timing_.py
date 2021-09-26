@@ -129,13 +129,20 @@ if __name__ == "__main__":
             "%30s %10.4f s\n"
             % (
                 "loop(array)",
-                timeit.timeit("loop(array)", globals=locals(), number=num_runs) / num_runs,
+                timeit.timeit("loop(array)", globals=locals(), number=num_runs)
+                / num_runs,
             )
         )
 
         # Add my comment here rather than writing it manually incase i overwrite the file later
-        outfile.write("%s" % "-"*80)
+        outfile.write("%s" % "-" * 80)
         outfile.write("\nComment: ")
-        outfile.write("The timings from timeit and my manual implementation look to be equivalent\n")
-        outfile.write("where the slight difference can more than likely be attributed to the variance\n")
-        outfile.write("of the measurements rather than a poor implementation on my part.")
+        outfile.write(
+            "The timings from timeit and my manual implementation look to be equivalent\n"
+        )
+        outfile.write(
+            "where the slight difference can more than likely be attributed to the variance\n"
+        )
+        outfile.write(
+            "of the measurements rather than a poor implementation on my part."
+        )

@@ -1,3 +1,5 @@
+Size of image: 600x400
 Timing: numpy_color2gray.py
-Average runtime running numpy_color2gray.py after 3 runs: 2.988e-03 s
+Average runtime running numpy_color2gray.py after 100 runs: 0.000839 s
+Average runtime running of numpy_color2gray is 3842.686 times faster than python_color2gray
 Timing performed using: timeit

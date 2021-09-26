@@ -1,3 +1,4 @@
+Size of image: 600x400
 Timing: python_color2gray.py
-Average runtime running python_color2gray.py after 3 runs: 9.758e+00 s
+Average runtime running python_color2gray.py after 3 runs: 3.223796 s
 Timing performed using: timeit

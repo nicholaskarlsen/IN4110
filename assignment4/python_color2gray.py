@@ -19,13 +19,11 @@ def color2grey(image, weights=[0.21, 0.72, 0.07]):
     N, M, _ = np.shape(image)
     # Initialize an empty array to store the black-white image. Entries may be non-zero!
     G = np.empty(shape=(N, M), dtype="uint8")
-
     for i in range(N):
         for j in range(M):
             G[i][j] = 0
             for k in range(3):
                 G[i][j] += image[i][j][k] * weights[k]
-
     return G
 
 
@@ -40,9 +38,13 @@ if __name__ == "__main__":
     )
 
     with open("reports/%s_report_color2gray.txt" % __file__.split("_")[0], "w") as file:
+        file.write("Size of image: %ix%i\n" % (image.shape[1], image.shape[0]))
         file.write("Timing: %s\n" % __file__)
         file.write(
-            "Average runtime running %s after %i runs: %.3e s\n"
+            "Average runtime running %s after %i runs: %.6f s\n"
             % (__file__, num_runs, avg_runtime)
         )
         file.write("Timing performed using: timeit\n")
+
+    # Save a copy of the image as a quick "unit test"
+    cv2.imwrite("img/rain_grayscale_python.jpeg", color2grey(image))

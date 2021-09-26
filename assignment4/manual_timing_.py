@@ -131,6 +131,6 @@ if __name__ == "__main__":
             outfile.write("%30s %10.4f s\n" % (key, np.mean(benchmarks[key])))
 
         # Add my comment here rather than writing it manually incase i overwrite the file later
-        outfile.write("%s" % "-"*80)
+        outfile.write("%s" % "-" * 80)
         outfile.write("\nComment: ")
         outfile.write("We observe that snake_loop is the slowest function")

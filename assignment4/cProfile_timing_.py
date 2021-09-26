@@ -1,6 +1,7 @@
 import numpy as np
-import cProfile 
+import cProfile
 from contextlib import redirect_stdout
+
 
 def random_array(size, dim=3):
     """
@@ -106,27 +107,28 @@ if __name__ == "__main__":
         # Re-direct stdout to a file to capture the output of print_stats()
         with redirect_stdout(outfile):
             outfile.write("cProfile profiling of functions in %s\n" % __file__)
-            outfile.write("%s" % "-"*80)
+            outfile.write("%s" % "-" * 80)
             outfile.write("\nProfiling line: array = random_array(2e6)\n\n")
 
             pr = cProfile.Profile()
             res = pr.run("array = random_array(2e6)")
-            res.print_stats(sort='time')
+            res.print_stats(sort="time")
 
-            outfile.write("%s" % "-"*80)
+            outfile.write("%s" % "-" * 80)
             outfile.write("\nProfiling line: snake_loop(array)\n\n")
             pr = cProfile.Profile()
             res = pr.run("snake_loop(array)")
-            res.print_stats(sort='time')
+            res.print_stats(sort="time")
 
-            outfile.write("%s" % "-"*80)
+            outfile.write("%s" % "-" * 80)
             outfile.write("\nProfiling line: loop(array)\n\n")
             pr = cProfile.Profile()
             res = pr.run("loop(array)")
-            res.print_stats(sort='time')
+            res.print_stats(sort="time")
 
             # Add my comment here rather than writing it manually incase i overwrite the file later
-            outfile.write("%s" % "-"*80)
+            outfile.write("%s" % "-" * 80)
             outfile.write("\nComment: ")
-            outfile.write("Timing corresponds to both timeit and my manual implementation.\n")
-
+            outfile.write(
+                "Timing corresponds to both timeit and my manual implementation.\n"
+            )

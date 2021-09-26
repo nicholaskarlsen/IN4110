@@ -1,3 +1,17 @@
+Size of image: 600x400
 Timing: numba_color2gray.py
-Average runtime running numba_color2gray.py after 100 runs: 5.378e-01 s
+Average runtime running numba_color2gray.py after 100 runs: 0.002076 s
+Average runtime running of numba_color2gray is 1552.826 times faster than python_color2gray
+Average runtime running of numba_color2gray is 2.474 times slower than numpy_color2gray
 Timing performed using: timeit
+--------------------------------------------------------------------------------
+Comment: In this case, the implementation using Numba and Numby quite similar performance with
+Numpy winning out by a factor 2. However, the numba code is literally a copy-paste of the
+python implementation and the @njit decorator is responsible for the entirety of the performance
+increase. 
+
+In contrast, the numpy implementation required me to re-formulate the computation in a way which 
+adheres to the numpy way of doing things. 
+
+However, in this case numpy also offers the most elegant solution to the problem, requiring only 
+a single line of code.
