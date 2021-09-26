@@ -1,0 +1,8 @@
+Benchmark of functions in test_slow_rectangle.py
+Number of runs: 10
+               array  0.002 s
+      filtered_array  0.416 s
+filtered_array_snack  0.041 s
+
+Timing of the slowest function using timeit:
+          snake_loop  0.412

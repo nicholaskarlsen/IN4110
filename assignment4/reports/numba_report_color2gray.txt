@@ -1,0 +1,3 @@
+Timing: numba_color2gray.py
+Average runtime running numba_color2gray.py after 100 runs: 5.378e-01 s
+Timing performed using: timeit
