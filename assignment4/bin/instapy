@@ -4,16 +4,31 @@ import instapy
 
 parser = argparse.ArgumentParser(description="""Applies cool filters to images""")
 parser.add_argument(
-    "-f", "--file", help="The filename of file to apply filter to", required=True
+    "-f",
+    "--file",
+    help="The filename of file to apply filter to",
+    required=True,
+    nargs=true,
 )
 
-parser.add_argument("-sc", "--scale", help="Scale factor to resize image")
-parser.add_argument("-o", "--out", help="The output filename")
+parser.add_argument("-o", "--out", help="The output filename", nargs=1)
+parser.add_argument(
+    "-sc", "--scale", help="Scale factor to resize image", type=float, nargs=1
+)
 
 # user must choose to apply either sepia OR grayscale filter
 group = parser.add_mutually_exclusive_group(required=True)
-group.add_argument("-se", "--se", help="Select sepia filter", action="store_true")
 group.add_argument("-g", "--gray", help="Select gray filter", action="store_true")
+group.add_argument("-se", "--se", help="Select sepia filter", action="store_true")
+
+parser.add_argument(
+    "-l",
+    "--level",
+    help="Controls the level of the sepia filter",
+    nargs="?",
+    const=1.0,
+    type=float,
+)
 
 parser.add_argument(
     "-i",
@@ -25,17 +40,19 @@ parser.add_argument(
 args = vars(parser.parse_args())
 print(args)
 
-
 if args["se"]:
     instapy.sepia_image(
         input_filename=args["file"],
         output_filename=args["out"],
         scale=args["scale"],
-        backend=args["implement"])
+        backend=args["implement"],
+        level=args["level"],
+    )
 
 elif args["gray"]:
     instapy.grayscale_image(
         input_filename=args["file"],
         output_filename=args["out"],
         scale=args["scale"],
-        backend=args["implement"])
+        backend=args["implement"],
+    )

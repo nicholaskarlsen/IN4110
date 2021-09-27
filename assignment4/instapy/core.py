@@ -12,16 +12,8 @@ from cython_color2gray import cython_color2gray
 from cython_color2sepia import cython_color2sepia
 
 
-def apply_filter(filter_func, input_filename, scale=None):
-    img = cv2.imread(input_filename)
-    if scale != None:
-        img = cv2.resize(img, None, fx=scale, fy=scale)
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    filtered_img = filter_func(img)
-    return filtered_img
-
-
 def grayscale_image(input_filename, output_filename=None, scale=None, backend=None):
+    # If no backend is chosen, default to numpy
     if backend is None:
         backend = "numpy"
 
@@ -31,19 +23,26 @@ def grayscale_image(input_filename, output_filename=None, scale=None, backend=No
         "numba": numba_color2gray,
         "cython": cython_color2gray,
     }
-    gs_img = apply_filter(
-        filter_func=color2gray_backends[backend],
-        input_filename=input_filename,
-        scale=scale,
-    )
+    color2gray = color2gray_backends[backend]
+
+    img = cv2.imread(input_filename)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+    if scale != None:
+        img = cv2.resize(img, None, fx=scale, fy=scale)
+
+    grayscale_img = color2gray(img)
 
     if output_filename is not None:
-        cv2.imwrite(output_filename, gs_img)
+        cv2.imwrite(output_filename, grayscale_img)
 
-    return gs_img
+    return grayscale_img
 
 
-def sepia_image(input_filename, output_filename=None, scale=None, backend=None):
+def sepia_image(
+    input_filename, output_filename=None, scale=None, backend=None, level=1.0
+):
+    # If no backend is chosen, default to numpy
     if backend is None:
         backend = "numpy"
 
@@ -51,17 +50,21 @@ def sepia_image(input_filename, output_filename=None, scale=None, backend=None):
         "python": python_color2sepia,
         "numpy": numpy_color2sepia,
         "numba": numba_color2sepia,
-        "cython": cython_color2sepia
+        "cython": cython_color2sepia,
     }
-    s_img = apply_filter(
-        filter_func=color2sepia_backends[backend],
-        input_filename=input_filename,
-        scale=scale,
-    )
+    color2sepia = color2sepia_backends[backend]
+
+    img = cv2.imread(input_filename)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+    if scale != None:
+        img = cv2.resize(img, None, fx=scale, fy=scale)
+
+    sepia_img = color2sepia(img, level=level)
 
     if output_filename is not None:
         # cv2 expects BGR representation, so convert from RGB -> BGR
-        s_img_BGR = cv2.cvtColor(s_img, cv2.COLOR_RGB2BGR)
-        cv2.imwrite(output_filename, s_img_BGR)
+        sepia_img_BGR = cv2.cvtColor(sepia_img, cv2.COLOR_RGB2BGR)
+        cv2.imwrite(output_filename, sepia_img_BGR)
 
-    return s_img
+    return sepia_img

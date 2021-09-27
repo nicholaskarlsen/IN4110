@@ -11,5 +11,5 @@ setup(name="instapy",
       scripts=["bin/instapy"],
       ext_modules=cythonize([cython_gray_module, cython_sepia_module]),
       include_dirs=[numpy.get_include()],
-      install_requires=["numpy"] 
+      install_requires=["numpy", "opencv-python", "cython", "numba"] 
       )

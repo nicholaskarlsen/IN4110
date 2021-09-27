@@ -1,4 +1,4 @@
 Size of image: 600x400
 Timing: grayscale_benchmarks.py
-Average runtime running grayscale_benchmarks.py after 3 runs: 1.688558 s
+Average runtime running grayscale_benchmarks.py after 3 runs: 1.803891 s
 Timing performed using: timeit
