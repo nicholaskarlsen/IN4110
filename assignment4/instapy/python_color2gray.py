@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def color2gray(image):
+def python_color2gray(image):
     """Performs a contraction of an RGB image with a set of weights to produce a greyscale image.
 
     In this implementation, all computations are performed in pure python, and Numpy arrays are only used to

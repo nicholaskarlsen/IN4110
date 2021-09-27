@@ -3,7 +3,7 @@ from numba import njit
 
 
 @njit
-def color2gray(image):
+def numba_color2gray(image):
     """Performs a contraction of an RGB image with a set of weights to produce a greyscale image.
     In this implementation, all computations are performed in pure python, and Numpy arrays are only used to
     store the data. The code is then JIT compiled with numba.

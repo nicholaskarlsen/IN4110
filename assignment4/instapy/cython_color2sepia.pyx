@@ -4,7 +4,7 @@ cimport cython
 
 @cython.boundscheck(False) # turn off bounds-checking for entire function
 @cython.wraparound(False)  # turn off negative index wrapping for entire function
-cpdef np.ndarray[np.uint8_t, ndim=3] color2sepia(np.ndarray[np.uint8_t, ndim=3] image):
+cpdef np.ndarray[np.uint8_t, ndim=3] cython_color2sepia(np.ndarray[np.uint8_t, ndim=3] image):
     cdef int i, j, k, l, N, M
     cdef float pixel
     cdef np.ndarray[np.uint8_t, ndim=3] G 

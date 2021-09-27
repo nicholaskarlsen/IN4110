@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def color2gray(image):
+def numpy_color2gray(image):
     """Performs a contraction of an RGB image with a set of weights to produce a greyscale image.
     In mathematical notation, this contraction is written as
     grayscale_image_{i,j} = image_{i,j,k} weights_{k}

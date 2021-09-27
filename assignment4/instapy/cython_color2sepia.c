@@ -4,12 +4,12 @@
 {
     "distutils": {
         "depends": [],
-        "name": "cython_color2sepia",
+        "name": "instapy.cython_color2sepia",
         "sources": [
-            "src/cython_color2sepia.pyx"
+            "instapy/cython_color2sepia.pyx"
         ]
     },
-    "module_name": "cython_color2sepia"
+    "module_name": "instapy.cython_color2sepia"
 }
 END: Cython Metadata */
 
@@ -625,8 +625,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__cython_color2sepia
-#define __PYX_HAVE_API__cython_color2sepia
+#define __PYX_HAVE__instapy__cython_color2sepia
+#define __PYX_HAVE_API__instapy__cython_color2sepia
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -865,7 +865,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "src/cython_color2sepia.pyx",
+  "instapy/cython_color2sepia.pyx",
   "__init__.pxd",
   "type.pxd",
 };
@@ -1690,15 +1690,15 @@ static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 
 /* Module declarations from 'cython' */
 
-/* Module declarations from 'cython_color2sepia' */
-static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *, int __pyx_skip_dispatch); /*proto*/
+/* Module declarations from 'instapy.cython_color2sepia' */
+static PyArrayObject *__pyx_f_7instapy_18cython_color2sepia_cython_color2sepia(PyArrayObject *, int __pyx_skip_dispatch); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_uint8_t = { "uint8_t", NULL, sizeof(__pyx_t_5numpy_uint8_t), { 0 }, 0, IS_UNSIGNED(__pyx_t_5numpy_uint8_t) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_5numpy_uint8_t), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t = { "float64_t", NULL, sizeof(__pyx_t_5numpy_float64_t), { 0 }, 0, 'R', 0, 0 };
-#define __Pyx_MODULE_NAME "cython_color2sepia"
-extern int __pyx_module_is_main_cython_color2sepia;
-int __pyx_module_is_main_cython_color2sepia = 0;
+#define __Pyx_MODULE_NAME "instapy.cython_color2sepia"
+extern int __pyx_module_is_main_instapy__cython_color2sepia;
+int __pyx_module_is_main_instapy__cython_color2sepia = 0;
 
-/* Implementation of 'cython_color2sepia' */
+/* Implementation of 'instapy.cython_color2sepia' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ImportError;
 static const char __pyx_k_np[] = "np";
@@ -1729,7 +1729,7 @@ static PyObject *__pyx_kp_s_numpy_core_umath_failed_to_impor;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_uint8;
-static PyObject *__pyx_pf_18cython_color2sepia_color2sepia(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_image); /* proto */
+static PyObject *__pyx_pf_7instapy_18cython_color2sepia_cython_color2sepia(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_image); /* proto */
 static PyObject *__pyx_float_0_131;
 static PyObject *__pyx_float_0_168;
 static PyObject *__pyx_float_0_189;
@@ -1744,16 +1744,16 @@ static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 /* Late includes */
 
-/* "cython_color2sepia.pyx":7
+/* "instapy/cython_color2sepia.pyx":7
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
- * cpdef np.ndarray[np.uint8_t, ndim=3] color2sepia(np.ndarray[np.uint8_t, ndim=3] image):             # <<<<<<<<<<<<<<
+ * cpdef np.ndarray[np.uint8_t, ndim=3] cython_color2sepia(np.ndarray[np.uint8_t, ndim=3] image):             # <<<<<<<<<<<<<<
  *     cdef int i, j, k, l, N, M
  *     cdef float pixel
  */
 
-static PyObject *__pyx_pw_18cython_color2sepia_1color2sepia(PyObject *__pyx_self, PyObject *__pyx_v_image); /*proto*/
-static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__pyx_v_image, CYTHON_UNUSED int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_7instapy_18cython_color2sepia_1cython_color2sepia(PyObject *__pyx_self, PyObject *__pyx_v_image); /*proto*/
+static PyArrayObject *__pyx_f_7instapy_18cython_color2sepia_cython_color2sepia(PyArrayObject *__pyx_v_image, CYTHON_UNUSED int __pyx_skip_dispatch) {
   int __pyx_v_i;
   int __pyx_v_j;
   int __pyx_v_k;
@@ -1793,7 +1793,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("color2sepia", 0);
+  __Pyx_RefNannySetupContext("cython_color2sepia", 0);
   __pyx_pybuffer_W.pybuffer.buf = NULL;
   __pyx_pybuffer_W.refcount = 0;
   __pyx_pybuffernd_W.data = NULL;
@@ -1808,7 +1808,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
   }
   __pyx_pybuffernd_image.diminfo[0].strides = __pyx_pybuffernd_image.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_image.diminfo[0].shape = __pyx_pybuffernd_image.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_image.diminfo[1].strides = __pyx_pybuffernd_image.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_image.diminfo[1].shape = __pyx_pybuffernd_image.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_image.diminfo[2].strides = __pyx_pybuffernd_image.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_image.diminfo[2].shape = __pyx_pybuffernd_image.rcbuffer->pybuffer.shape[2];
 
-  /* "cython_color2sepia.pyx":12
+  /* "instapy/cython_color2sepia.pyx":12
  *     cdef np.ndarray[np.uint8_t, ndim=3] G
  *     cdef np.ndarray[np.float64_t, ndim=2] W
  *     W = np.array([             # <<<<<<<<<<<<<<
@@ -1821,7 +1821,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "cython_color2sepia.pyx":13
+  /* "instapy/cython_color2sepia.pyx":13
  *     cdef np.ndarray[np.float64_t, ndim=2] W
  *     W = np.array([
  *         [0.393, 0.769, 0.189],             # <<<<<<<<<<<<<<
@@ -1840,7 +1840,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
   __Pyx_GIVEREF(__pyx_float_0_189);
   PyList_SET_ITEM(__pyx_t_2, 2, __pyx_float_0_189);
 
-  /* "cython_color2sepia.pyx":14
+  /* "instapy/cython_color2sepia.pyx":14
  *     W = np.array([
  *         [0.393, 0.769, 0.189],
  *         [0.349, 0.686, 0.168],             # <<<<<<<<<<<<<<
@@ -1859,7 +1859,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
   __Pyx_GIVEREF(__pyx_float_0_168);
   PyList_SET_ITEM(__pyx_t_4, 2, __pyx_float_0_168);
 
-  /* "cython_color2sepia.pyx":15
+  /* "instapy/cython_color2sepia.pyx":15
  *         [0.393, 0.769, 0.189],
  *         [0.349, 0.686, 0.168],
  *         [0.272, 0.534, 0.131]             # <<<<<<<<<<<<<<
@@ -1878,7 +1878,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
   __Pyx_GIVEREF(__pyx_float_0_131);
   PyList_SET_ITEM(__pyx_t_5, 2, __pyx_float_0_131);
 
-  /* "cython_color2sepia.pyx":12
+  /* "instapy/cython_color2sepia.pyx":12
  *     cdef np.ndarray[np.uint8_t, ndim=3] G
  *     cdef np.ndarray[np.float64_t, ndim=2] W
  *     W = np.array([             # <<<<<<<<<<<<<<
@@ -1935,7 +1935,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
   __pyx_v_W = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "cython_color2sepia.pyx":18
+  /* "instapy/cython_color2sepia.pyx":18
  *     ])
  * 
  *     N = image.shape[0]             # <<<<<<<<<<<<<<
@@ -1944,7 +1944,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
  */
   __pyx_v_N = (__pyx_v_image->dimensions[0]);
 
-  /* "cython_color2sepia.pyx":19
+  /* "instapy/cython_color2sepia.pyx":19
  * 
  *     N = image.shape[0]
  *     M = image.shape[1]             # <<<<<<<<<<<<<<
@@ -1953,7 +1953,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
  */
   __pyx_v_M = (__pyx_v_image->dimensions[1]);
 
-  /* "cython_color2sepia.pyx":20
+  /* "instapy/cython_color2sepia.pyx":20
  *     N = image.shape[0]
  *     M = image.shape[1]
  *     S = np.ndarray((N,M,3), dtype=np.uint8)             # <<<<<<<<<<<<<<
@@ -1996,7 +1996,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
   __pyx_v_S = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "cython_color2sepia.pyx":22
+  /* "instapy/cython_color2sepia.pyx":22
  *     S = np.ndarray((N,M,3), dtype=np.uint8)
  * 
  *     for i in range(N):             # <<<<<<<<<<<<<<
@@ -2008,7 +2008,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
   for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
     __pyx_v_i = __pyx_t_13;
 
-    /* "cython_color2sepia.pyx":23
+    /* "instapy/cython_color2sepia.pyx":23
  * 
  *     for i in range(N):
  *         for j in range(M):             # <<<<<<<<<<<<<<
@@ -2020,7 +2020,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
     for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
       __pyx_v_j = __pyx_t_16;
 
-      /* "cython_color2sepia.pyx":24
+      /* "instapy/cython_color2sepia.pyx":24
  *     for i in range(N):
  *         for j in range(M):
  *             for k in range(3):             # <<<<<<<<<<<<<<
@@ -2030,7 +2030,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
       for (__pyx_t_17 = 0; __pyx_t_17 < 3; __pyx_t_17+=1) {
         __pyx_v_k = __pyx_t_17;
 
-        /* "cython_color2sepia.pyx":25
+        /* "instapy/cython_color2sepia.pyx":25
  *         for j in range(M):
  *             for k in range(3):
  *                 pixel = 0.0             # <<<<<<<<<<<<<<
@@ -2039,7 +2039,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
  */
         __pyx_v_pixel = 0.0;
 
-        /* "cython_color2sepia.pyx":26
+        /* "instapy/cython_color2sepia.pyx":26
  *             for k in range(3):
  *                 pixel = 0.0
  *                 for l in range(3):             # <<<<<<<<<<<<<<
@@ -2049,7 +2049,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
         for (__pyx_t_18 = 0; __pyx_t_18 < 3; __pyx_t_18+=1) {
           __pyx_v_l = __pyx_t_18;
 
-          /* "cython_color2sepia.pyx":27
+          /* "instapy/cython_color2sepia.pyx":27
  *                 pixel = 0.0
  *                 for l in range(3):
  *                     pixel += image[i][j][l] * W[k][l]             # <<<<<<<<<<<<<<
@@ -2084,7 +2084,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
           __pyx_v_pixel = __pyx_t_19;
         }
 
-        /* "cython_color2sepia.pyx":29
+        /* "instapy/cython_color2sepia.pyx":29
  *                     pixel += image[i][j][l] * W[k][l]
  *                 # Avoid overflows by truncating at 255
  *                 S[i][j][k] = min(pixel, 255)             # <<<<<<<<<<<<<<
@@ -2111,7 +2111,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
     }
   }
 
-  /* "cython_color2sepia.pyx":30
+  /* "instapy/cython_color2sepia.pyx":30
  *                 # Avoid overflows by truncating at 255
  *                 S[i][j][k] = min(pixel, 255)
  *     return S             # <<<<<<<<<<<<<<
@@ -2122,10 +2122,10 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
   __pyx_r = ((PyArrayObject *)__pyx_v_S);
   goto __pyx_L0;
 
-  /* "cython_color2sepia.pyx":7
+  /* "instapy/cython_color2sepia.pyx":7
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
- * cpdef np.ndarray[np.uint8_t, ndim=3] color2sepia(np.ndarray[np.uint8_t, ndim=3] image):             # <<<<<<<<<<<<<<
+ * cpdef np.ndarray[np.uint8_t, ndim=3] cython_color2sepia(np.ndarray[np.uint8_t, ndim=3] image):             # <<<<<<<<<<<<<<
  *     cdef int i, j, k, l, N, M
  *     cdef float pixel
  */
@@ -2145,7 +2145,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_W.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_image.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("cython_color2sepia.color2sepia", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("instapy.cython_color2sepia.cython_color2sepia", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   goto __pyx_L2;
   __pyx_L0:;
@@ -2160,16 +2160,16 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_18cython_color2sepia_1color2sepia(PyObject *__pyx_self, PyObject *__pyx_v_image); /*proto*/
-static PyObject *__pyx_pw_18cython_color2sepia_1color2sepia(PyObject *__pyx_self, PyObject *__pyx_v_image) {
+static PyObject *__pyx_pw_7instapy_18cython_color2sepia_1cython_color2sepia(PyObject *__pyx_self, PyObject *__pyx_v_image); /*proto*/
+static PyObject *__pyx_pw_7instapy_18cython_color2sepia_1cython_color2sepia(PyObject *__pyx_self, PyObject *__pyx_v_image) {
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("color2sepia (wrapper)", 0);
+  __Pyx_RefNannySetupContext("cython_color2sepia (wrapper)", 0);
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_image), __pyx_ptype_5numpy_ndarray, 1, "image", 0))) __PYX_ERR(0, 7, __pyx_L1_error)
-  __pyx_r = __pyx_pf_18cython_color2sepia_color2sepia(__pyx_self, ((PyArrayObject *)__pyx_v_image));
+  __pyx_r = __pyx_pf_7instapy_18cython_color2sepia_cython_color2sepia(__pyx_self, ((PyArrayObject *)__pyx_v_image));
 
   /* function exit code */
   goto __pyx_L0;
@@ -2180,7 +2180,7 @@ static PyObject *__pyx_pw_18cython_color2sepia_1color2sepia(PyObject *__pyx_self
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_18cython_color2sepia_color2sepia(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_image) {
+static PyObject *__pyx_pf_7instapy_18cython_color2sepia_cython_color2sepia(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_image) {
   __Pyx_LocalBuf_ND __pyx_pybuffernd_image;
   __Pyx_Buffer __pyx_pybuffer_image;
   PyObject *__pyx_r = NULL;
@@ -2189,7 +2189,7 @@ static PyObject *__pyx_pf_18cython_color2sepia_color2sepia(CYTHON_UNUSED PyObjec
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("color2sepia", 0);
+  __Pyx_RefNannySetupContext("cython_color2sepia", 0);
   __pyx_pybuffer_image.pybuffer.buf = NULL;
   __pyx_pybuffer_image.refcount = 0;
   __pyx_pybuffernd_image.data = NULL;
@@ -2200,7 +2200,7 @@ static PyObject *__pyx_pf_18cython_color2sepia_color2sepia(CYTHON_UNUSED PyObjec
   }
   __pyx_pybuffernd_image.diminfo[0].strides = __pyx_pybuffernd_image.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_image.diminfo[0].shape = __pyx_pybuffernd_image.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_image.diminfo[1].strides = __pyx_pybuffernd_image.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_image.diminfo[1].shape = __pyx_pybuffernd_image.rcbuffer->pybuffer.shape[1]; __pyx_pybuffernd_image.diminfo[2].strides = __pyx_pybuffernd_image.rcbuffer->pybuffer.strides[2]; __pyx_pybuffernd_image.diminfo[2].shape = __pyx_pybuffernd_image.rcbuffer->pybuffer.shape[2];
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_18cython_color2sepia_color2sepia(__pyx_v_image, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7instapy_18cython_color2sepia_cython_color2sepia(__pyx_v_image, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2215,7 +2215,7 @@ static PyObject *__pyx_pf_18cython_color2sepia_color2sepia(CYTHON_UNUSED PyObjec
     __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_image.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("cython_color2sepia.color2sepia", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("instapy.cython_color2sepia.cython_color2sepia", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -3070,7 +3070,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
 }
 
 static PyMethodDef __pyx_methods[] = {
-  {"color2sepia", (PyCFunction)__pyx_pw_18cython_color2sepia_1color2sepia, METH_O, 0},
+  {"cython_color2sepia", (PyCFunction)__pyx_pw_7instapy_18cython_color2sepia_1cython_color2sepia, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -3457,14 +3457,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_cython_color2sepia) {
+  if (__pyx_module_is_main_instapy__cython_color2sepia) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "cython_color2sepia")) {
-      if (unlikely(PyDict_SetItemString(modules, "cython_color2sepia", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "instapy.cython_color2sepia")) {
+      if (unlikely(PyDict_SetItemString(modules, "instapy.cython_color2sepia", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -3485,7 +3485,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "cython_color2sepia.pyx":1
+  /* "instapy/cython_color2sepia.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * cimport numpy as np
  * cimport cython
@@ -3495,10 +3495,10 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "cython_color2sepia.pyx":7
+  /* "instapy/cython_color2sepia.pyx":7
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
- * cpdef np.ndarray[np.uint8_t, ndim=3] color2sepia(np.ndarray[np.uint8_t, ndim=3] image):             # <<<<<<<<<<<<<<
+ * cpdef np.ndarray[np.uint8_t, ndim=3] cython_color2sepia(np.ndarray[np.uint8_t, ndim=3] image):             # <<<<<<<<<<<<<<
  *     cdef int i, j, k, l, N, M
  *     cdef float pixel
  */
@@ -3522,11 +3522,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init cython_color2sepia", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init instapy.cython_color2sepia", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init cython_color2sepia");
+    PyErr_SetString(PyExc_ImportError, "init instapy.cython_color2sepia");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

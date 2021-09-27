@@ -1,5 +1,5 @@
 main:
-	python setup.py build_ext --build-lib src/
+	python setup.py build_ext --build-lib instapy/
 
 run:
 	# Task 4.0
