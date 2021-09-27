@@ -5,5 +5,5 @@ from .numpy_color2gray import numpy_color2gray
 from .numpy_color2sepia import numpy_color2sepia
 from .numba_color2gray import numba_color2gray
 from .numba_color2sepia import numba_color2sepia
-#from .cython_color2gray import cython_color2gray
-#from .cython_color2sepia import cython_color2sepia
+from cython_color2gray import cython_color2gray
+from cython_color2sepia import cython_color2sepia

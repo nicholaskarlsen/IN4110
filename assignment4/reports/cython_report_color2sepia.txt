@@ -1,9 +1,9 @@
 Size of image: 600x400
 Timing: sepia_benchmarks.py
-Average runtime running sepia_benchmarks.py after 3 runs: 5.407055 s
-Average runtime running of cython_color2sepia is 1.191 times faster than python_color2sepia
-Average runtime running of cython_color2sepia is 232.952 times slower than numpy_color2sepia
-Average runtime running of cython_color2sepia is 4853.730 times slower than numba_color2sepia
+Average runtime running sepia_benchmarks.py after 3 runs: 5.695084 s
+Average runtime running of cython_color2sepia is 1.183 times faster than python_color2sepia
+Average runtime running of cython_color2sepia is 257.172 times slower than numpy_color2sepia
+Average runtime running of cython_color2sepia is 5263.479 times slower than numba_color2sepia
 Timing performed using: timeit
 --------------------------------------------------------------------------------
 Comment:

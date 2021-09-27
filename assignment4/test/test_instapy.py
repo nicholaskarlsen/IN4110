@@ -1,13 +1,5 @@
 import numpy as np
-import instapy
-import python_color2gray
-import python_color2sepia
-import numpy_color2gray
-import numpy_color2sepia
-import numba_color2gray
-import numba_color2sepia
-import cython_color2gray
-import cython_color2sepia
+from instapy import *
 
 
 def test_grayscale(nrows=200, ncols=200):
@@ -23,10 +15,10 @@ def test_grayscale(nrows=200, ncols=200):
         ncols: Numeber of columns in the randomly generated test image
     """
     rand_img = np.random.randint(0, 255, size=[nrows, ncols, 3], dtype=np.uint8)
-    gs_python = python_color2gray.color2gray(rand_img)
-    gs_numpy = numpy_color2gray.color2gray(rand_img)
-    gs_numba = numba_color2gray.color2gray(rand_img)
-    gs_cython = cython_color2gray.color2gray(rand_img)
+    gs_python = python_color2gray(rand_img)
+    gs_numpy = numpy_color2gray(rand_img)
+    gs_numba = numba_color2gray(rand_img)
+    gs_cython = cython_color2gray(rand_img)
     # Ensure that all of the images have the same dimensionality
     assert (
         np.shape(gs_python)
@@ -55,10 +47,10 @@ def test_sepia(nrows=200, ncols=200):
         ncols: Numeber of columns in the randomly generated test image
     """
     rand_img = np.random.randint(0, 255, size=[nrows, ncols, 3], dtype=np.uint8)
-    s_python = python_color2sepia.color2sepia(rand_img)
-    s_numpy = numpy_color2sepia.color2sepia(rand_img)
-    s_numba = numba_color2sepia.color2sepia(rand_img)
-    s_cython = cython_color2sepia.color2sepia(rand_img)
+    s_python = python_color2sepia(rand_img)
+    s_numpy = numpy_color2sepia(rand_img)
+    s_numba = numba_color2sepia(rand_img)
+    s_cython = cython_color2sepia(rand_img)
     # Ensure that all of the images have the same dimensionality
     assert (
         np.shape(s_python)

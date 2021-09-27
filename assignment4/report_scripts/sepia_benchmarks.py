@@ -7,7 +7,15 @@ import numpy as np
 import re
 import timeit
 import sys
-sys.path.insert(0,'../src/')
+
+from instapy import (
+    python_color2sepia,
+    numpy_color2sepia,
+    numba_color2sepia,
+    cython_color2sepia,
+)
+
+sys.path.insert(0, "../src/")
 
 IMG_DIR = "../img/"
 REPORT_DIR = "../reports/"
@@ -39,13 +47,14 @@ def get_runtime_from_report(fn):
 
 
 def python_benchmark(num_runs=3):
-    import python_color2sepia
-
     image = cv2.imread(IMG_DIR + "rain.jpg")
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     avg_runtime = (
         timeit.timeit(
-            "python_color2sepia.color2sepia(image)", globals=locals(), number=num_runs
+            "python_color2sepia(image)",
+            setup="from instapy import python_color2sepia",
+            globals=locals(),
+            number=num_runs,
         )
         / num_runs
     )
@@ -62,19 +71,20 @@ def python_benchmark(num_runs=3):
     # Also remembering to convert from RGB representation to BGR which is standard in cv2
     cv2.imwrite(
         IMG_DIR + "rain_sepia_python.jpeg",
-        cv2.cvtColor(python_color2sepia.color2sepia(image), cv2.COLOR_RGB2BGR),
+        cv2.cvtColor(python_color2sepia(image), cv2.COLOR_RGB2BGR),
     )
     return
 
 
 def numpy_benchmark(num_runs=3):
-    import numpy_color2sepia
-
     image = cv2.imread(IMG_DIR + "rain.jpg")
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     avg_runtime = (
         timeit.timeit(
-            "numpy_color2sepia.color2sepia(image)", globals=locals(), number=num_runs
+            "numpy_color2sepia(image)",
+            setup="from instapy import numpy_color2sepia",
+            globals=locals(),
+            number=num_runs,
         )
         / num_runs
     )
@@ -105,24 +115,25 @@ def numpy_benchmark(num_runs=3):
     # Also remembering to convert from RGB representation to BGR which is standard in cv2
     cv2.imwrite(
         IMG_DIR + "rain_sepia_numpy.jpeg",
-        cv2.cvtColor(numpy_color2sepia.color2sepia(image), cv2.COLOR_RGB2BGR),
+        cv2.cvtColor(numpy_color2sepia(image), cv2.COLOR_RGB2BGR),
     )
 
     return
 
 
 def numba_benchmark(num_runs=3):
-    import numba_color2sepia
-
     image = cv2.imread(IMG_DIR + "rain.jpg")
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     # Run it once to ensure that its compiled before benchmarking
-    _ = numba_color2sepia.color2sepia(image)
+    _ = numba_color2sepia(image)
 
     avg_runtime = (
         timeit.timeit(
-            "numba_color2sepia.color2sepia(image)", globals=locals(), number=num_runs
+            "numba_color2sepia(image)",
+            setup="from instapy import numba_color2sepia",
+            globals=locals(),
+            number=num_runs,
         )
         / num_runs
     )
@@ -147,7 +158,9 @@ def numba_benchmark(num_runs=3):
         file.write("than python_color2sepia\n")
 
         # Fetch runtime of numpy implementation by parsing the report
-        numpy_runtime = get_runtime_from_report(REPORT_DIR + "numpy_report_color2sepia.txt")
+        numpy_runtime = get_runtime_from_report(
+            REPORT_DIR + "numpy_report_color2sepia.txt"
+        )
         file.write("Average runtime running of numba_color2sepia is ")
         if numpy_runtime > avg_runtime:
             file.write("%.3f times faster " % (numpy_runtime / avg_runtime))
@@ -167,20 +180,21 @@ Comment:
     # Also remembering to convert from RGB representation to BGR which is standard in cv2
     cv2.imwrite(
         IMG_DIR + "rain_sepia_numba.jpeg",
-        cv2.cvtColor(numba_color2sepia.color2sepia(image), cv2.COLOR_RGB2BGR),
+        cv2.cvtColor(numba_color2sepia(image), cv2.COLOR_RGB2BGR),
     )
     return
 
 
 def cython_benchmark(num_runs=3):
-    import cython_color2sepia
-
     image = cv2.imread(IMG_DIR + "rain.jpg")
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     avg_runtime = (
         timeit.timeit(
-            "cython_color2sepia.color2sepia(image)", globals=locals(), number=num_runs
+            "cython_color2sepia(image)",
+            setup="from instapy import cython_color2sepia",
+            globals=locals(),
+            number=num_runs,
         )
         / num_runs
     )
@@ -205,7 +219,9 @@ def cython_benchmark(num_runs=3):
         file.write("than python_color2sepia\n")
 
         # Fetch runtime of numpy implementation by parsing the report
-        numpy_runtime = get_runtime_from_report(REPORT_DIR + "numpy_report_color2sepia.txt")
+        numpy_runtime = get_runtime_from_report(
+            REPORT_DIR + "numpy_report_color2sepia.txt"
+        )
         file.write("Average runtime running of cython_color2sepia is ")
         if numpy_runtime > avg_runtime:
             file.write("%.3f times faster " % (numpy_runtime / avg_runtime))
@@ -214,7 +230,9 @@ def cython_benchmark(num_runs=3):
         file.write("than numpy_color2sepia\n")
 
         # Fetch runtime of numba implementation by parsing the report
-        numba_runtime = get_runtime_from_report(REPORT_DIR + "numba_report_color2sepia.txt")
+        numba_runtime = get_runtime_from_report(
+            REPORT_DIR + "numba_report_color2sepia.txt"
+        )
         file.write("Average runtime running of cython_color2sepia is ")
         if numba_runtime > avg_runtime:
             file.write("%.3f times faster " % (numba_runtime / avg_runtime))
@@ -235,7 +253,7 @@ Comment:
     # Also remembering to convert from RGB representation to BGR which is standard in cv2
     cv2.imwrite(
         IMG_DIR + "rain_sepia_cython.jpeg",
-        cv2.cvtColor(cython_color2sepia.color2sepia(image), cv2.COLOR_RGB2BGR),
+        cv2.cvtColor(cython_color2sepia(image), cv2.COLOR_RGB2BGR),
     )
 
 

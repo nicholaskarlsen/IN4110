@@ -6,11 +6,16 @@ import cv2
 import numpy as np
 import re
 import timeit
-import sys
-sys.path.insert(0,'../src/')
+from instapy import (
+    python_color2gray,
+    numpy_color2gray,
+    numba_color2gray,
+    cython_color2gray,
+)
 
 IMG_DIR = "../img/"
 REPORT_DIR = "../reports/"
+
 
 def get_runtime_from_report(fn):
     """
@@ -38,13 +43,14 @@ def get_runtime_from_report(fn):
 
 
 def python_benchmark(num_runs=3):
-    import python_color2gray
-
     image = cv2.imread(IMG_DIR + "rain.jpg")
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     avg_runtime = (
         timeit.timeit(
-            "python_color2gray.color2gray(image)", globals=locals(), number=num_runs
+            "python_color2gray(image)",
+            setup="from instapy import python_color2gray",
+            globals=locals(),
+            number=num_runs,
         )
         / num_runs
     )
@@ -58,18 +64,19 @@ def python_benchmark(num_runs=3):
         )
         file.write("Timing performed using: timeit\n")
     # Save a copy of the image as a quick "unit test"
-    cv2.imwrite(IMG_DIR + "rain_grayscale_python.jpeg", python_color2gray.color2gray(image))
+    cv2.imwrite(IMG_DIR + "rain_grayscale_python.jpeg", python_color2gray(image))
     return
 
 
 def numpy_benchmark(num_runs=3):
-    import numpy_color2gray
-
     image = cv2.imread(IMG_DIR + "rain.jpg")
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     avg_runtime = (
         timeit.timeit(
-            "numpy_color2gray.color2gray(image)", globals=locals(), number=num_runs
+            "numpy_color2gray(image)",
+            setup="from instapy import numpy_color2gray",
+            globals=locals(),
+            number=num_runs,
         )
         / num_runs
     )
@@ -83,7 +90,9 @@ def numpy_benchmark(num_runs=3):
         )
 
         # Fetch runtime of pure python implementation by parsing the report
-        python_runtime = get_runtime_from_report(REPORT_DIR + "python_report_color2gray.txt")
+        python_runtime = get_runtime_from_report(
+            REPORT_DIR + "python_report_color2gray.txt"
+        )
 
         file.write("Average runtime running of numpy_color2gray is ")
         if python_runtime > avg_runtime:
@@ -95,23 +104,24 @@ def numpy_benchmark(num_runs=3):
         file.write("Timing performed using: timeit\n")
 
     # Save a copy of the image as a quick "unit test"
-    cv2.imwrite(IMG_DIR + "rain_grayscale_numpy.jpeg", numpy_color2gray.color2gray(image))
+    cv2.imwrite(IMG_DIR + "rain_grayscale_numpy.jpeg", numpy_color2gray(image))
 
     return
 
 
 def numba_benchmark(num_runs=3):
-    import numba_color2gray
-
     image = cv2.imread(IMG_DIR + "rain.jpg")
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     # Run it once to ensure that its compiled before benchmarking
-    _ = numba_color2gray.color2gray(image)
+    _ = numba_color2gray(image)
 
     avg_runtime = (
         timeit.timeit(
-            "numba_color2gray.color2gray(image)", globals=locals(), number=num_runs
+            "numba_color2gray(image)",
+            setup="from instapy import numba_color2gray",
+            globals=locals(),
+            number=num_runs,
         )
         / num_runs
     )
@@ -125,7 +135,9 @@ def numba_benchmark(num_runs=3):
         )
 
         # Fetch runtime of pure python implementation by parsing the report
-        python_runtime = get_runtime_from_report(REPORT_DIR + "python_report_color2gray.txt")
+        python_runtime = get_runtime_from_report(
+            REPORT_DIR + "python_report_color2gray.txt"
+        )
         file.write("Average runtime running of numba_color2gray is ")
         if python_runtime > avg_runtime:
             file.write("%.3f times faster " % (python_runtime / avg_runtime))
@@ -134,7 +146,9 @@ def numba_benchmark(num_runs=3):
         file.write("than python_color2gray\n")
 
         # Fetch runtime of numpy implementation by parsing the report
-        numpy_runtime = get_runtime_from_report(REPORT_DIR + "numpy_report_color2gray.txt")
+        numpy_runtime = get_runtime_from_report(
+            REPORT_DIR + "numpy_report_color2gray.txt"
+        )
         file.write("Average runtime running of numba_color2gray is ")
         if numpy_runtime > avg_runtime:
             file.write("%.3f times faster " % (numpy_runtime / avg_runtime))
@@ -162,19 +176,20 @@ is called.
 """
         )
     # Save a copy of the image as a quick "unit test"
-    cv2.imwrite(IMG_DIR + "rain_grayscale_numba.jpeg", numba_color2gray.color2gray(image))
+    cv2.imwrite(IMG_DIR + "rain_grayscale_numba.jpeg", numba_color2gray(image))
     return
 
 
 def cython_benchmark(num_runs=3):
-    import cython_color2gray
-
     image = cv2.imread(IMG_DIR + "rain.jpg")
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     avg_runtime = (
         timeit.timeit(
-            "cython_color2gray.color2gray(image)", globals=locals(), number=num_runs
+            "cython_color2gray(image)",
+            setup="from instapy import cython_color2gray",
+            globals=locals(),
+            number=num_runs,
         )
         / num_runs
     )
@@ -188,7 +203,9 @@ def cython_benchmark(num_runs=3):
         )
 
         # Fetch runtime of pure python implementation by parsing the report
-        python_runtime = get_runtime_from_report(REPORT_DIR + "python_report_color2gray.txt")
+        python_runtime = get_runtime_from_report(
+            REPORT_DIR + "python_report_color2gray.txt"
+        )
         file.write("Average runtime running of cython_color2gray is ")
         if python_runtime > avg_runtime:
             file.write("%.3f times faster " % (python_runtime / avg_runtime))
@@ -197,7 +214,9 @@ def cython_benchmark(num_runs=3):
         file.write("than python_color2gray\n")
 
         # Fetch runtime of numpy implementation by parsing the report
-        numpy_runtime = get_runtime_from_report(REPORT_DIR + "numpy_report_color2gray.txt")
+        numpy_runtime = get_runtime_from_report(
+            REPORT_DIR + "numpy_report_color2gray.txt"
+        )
         file.write("Average runtime running of cython_color2gray is ")
         if numpy_runtime > avg_runtime:
             file.write("%.3f times faster " % (numpy_runtime / avg_runtime))
@@ -206,7 +225,9 @@ def cython_benchmark(num_runs=3):
         file.write("than numpy_color2gray\n")
 
         # Fetch runtime of numba implementation by parsing the report
-        numba_runtime = get_runtime_from_report(REPORT_DIR + "numba_report_color2gray.txt")
+        numba_runtime = get_runtime_from_report(
+            REPORT_DIR + "numba_report_color2gray.txt"
+        )
         file.write("Average runtime running of cython_color2gray is ")
         if numba_runtime > avg_runtime:
             file.write("%.3f times faster " % (numba_runtime / avg_runtime))
@@ -224,9 +245,8 @@ than the Numpy and most notably, the Numba implementation. I suspect the two may
 and that the cython code has not been optimized as much.
         """
         )
-
     # Save a copy of the image as a quick "unit test"
-    cv2.imwrite(IMG_DIR + "rain_grayscale_cython.jpeg", cython_color2gray.color2gray(image))
+    cv2.imwrite(IMG_DIR + "rain_grayscale_cython.jpeg", cython_color2gray(image))
 
 
 if __name__ == "__main__":

@@ -1,5 +1,41 @@
 #!/usr/bin/env python
-
 import argparse
+import instapy
 
-print("hello")
+parser = argparse.ArgumentParser(description="""Applies cool filters to images""")
+parser.add_argument(
+    "-f", "--file", help="The filename of file to apply filter to", required=True
+)
+
+parser.add_argument("-sc", "--scale", help="Scale factor to resize image")
+parser.add_argument("-o", "--out", help="The output filename")
+
+# user must choose to apply either sepia OR grayscale filter
+group = parser.add_mutually_exclusive_group(required=True)
+group.add_argument("-se", "--se", help="Select sepia filter", action="store_true")
+group.add_argument("-g", "--gray", help="Select gray filter", action="store_true")
+
+parser.add_argument(
+    "-i",
+    "--implement",
+    help="Choose the implementation to use: python, numba, numpy or cython",
+)
+
+# Convert args to a dictionary
+args = vars(parser.parse_args())
+print(args)
+
+
+if args["se"]:
+    instapy.sepia_image(
+        input_filename=args["file"],
+        output_filename=args["out"],
+        scale=args["scale"],
+        backend=args["implement"])
+
+elif args["gray"]:
+    instapy.grayscale_image(
+        input_filename=args["file"],
+        output_filename=args["out"],
+        scale=args["scale"],
+        backend=args["implement"])
