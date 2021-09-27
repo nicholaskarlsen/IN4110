@@ -1,0 +1,4 @@
+Size of image: 600x400
+Timing: sepia_benchmarks.py
+Average runtime running sepia_benchmarks.py after 3 runs: 5.535247 s
+Timing performed using: timeit

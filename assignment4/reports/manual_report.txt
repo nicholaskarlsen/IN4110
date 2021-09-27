@@ -1,8 +1,8 @@
 Manual becnhmark of functions in manual_timing_.py
 Number of runs: 5
 
-     array = random_array(2e6)     0.0342 s
-             snake_loop(array)     8.2457 s
-                   loop(array)     0.8143 s
+     array = random_array(2e6)     0.0360 s
+             snake_loop(array)     8.1180 s
+                   loop(array)     0.7850 s
 --------------------------------------------------------------------------------
 Comment: We observe that snake_loop is the slowest function
