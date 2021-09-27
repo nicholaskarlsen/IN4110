@@ -1,8 +1,8 @@
 Size of image: 600x400
 Timing: grayscale_benchmarks.py
-Average runtime running grayscale_benchmarks.py after 3 runs: 0.000446 s
-Average runtime running of numba_color2gray is 3873.647 times faster than python_color2gray
-Average runtime running of numba_color2gray is 8.200 times faster than numpy_color2gray
+Average runtime running grayscale_benchmarks.py after 3 runs: 0.000437 s
+Average runtime running of numba_color2gray is 3889.407 times faster than python_color2gray
+Average runtime running of numba_color2gray is 7.179 times faster than numpy_color2gray
 Timing performed using: timeit
 --------------------------------------------------------------------------------
 Comment: In this case, the implementation using Numba and Numby quite similar performance with
@@ -11,7 +11,9 @@ python implementation and the @njit decorator is responsible for the entirety of
 increase. 
 
 In contrast, the numpy implementation required me to re-formulate the computation in a way which 
-adheres to the numpy way of doing things. 
+adheres to the numpy way of doing things. This re-formulation does however also turn out to be
+much, much shorter and perhaps more elegant.
 
-However, in this case numpy also offers the most elegant solution to the problem, requiring only 
-a single line of code.
+Also note that these benchmarks do not take into account the one-time overhead incurred by the Numba
+implementation due to its just-in-time compilation which happens the first time the function 
+is called.

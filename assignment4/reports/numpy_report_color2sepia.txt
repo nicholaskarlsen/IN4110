@@ -1,5 +1,5 @@
 Size of image: 600x400
 Timing: sepia_benchmarks.py
-Average runtime running sepia_benchmarks.py after 3 runs: 0.028054 s
-Average runtime running of numpy_color2sepia is 218.552 times faster than python_color2sepia
+Average runtime running sepia_benchmarks.py after 3 runs: 0.023211 s
+Average runtime running of numpy_color2sepia is 277.515 times faster than python_color2sepia
 Timing performed using: timeit

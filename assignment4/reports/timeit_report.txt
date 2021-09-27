@@ -1,9 +1,9 @@
 timeit becnhmarks of functions in timeit_timing_.py
 Number of runs: 5
 
-     array = random_array(2e6)     0.0320 s
-             snake_loop(array)     8.3706 s
-                   loop(array)     0.8221 s
+     array = random_array(2e6)     0.0328 s
+             snake_loop(array)     8.3379 s
+                   loop(array)     0.8183 s
 --------------------------------------------------------------------------------
 Comment: The timings from timeit and my manual implementation look to be equivalent
 where the slight difference can more than likely be attributed to the variance
