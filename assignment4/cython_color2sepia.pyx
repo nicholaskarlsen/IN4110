@@ -24,5 +24,6 @@ cpdef np.ndarray[np.uint8_t, ndim=3] color2sepia(np.ndarray[np.uint8_t, ndim=3] 
                 pixel = 0
                 for l in range(3):
                     pixel += image[i][j][l] * W[k][l]
+                # Avoid overflows by truncating at 255
                 S[i][j][k] = min(pixel, 255)
     return S

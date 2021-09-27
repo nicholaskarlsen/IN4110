@@ -149,10 +149,12 @@ python implementation and the @njit decorator is responsible for the entirety of
 increase. 
 
 In contrast, the numpy implementation required me to re-formulate the computation in a way which 
-adheres to the numpy way of doing things. 
+adheres to the numpy way of doing things. This re-formulation does however also turn out to be
+much, much shorter and perhaps more elegant.
 
-However, in this case numpy also offers the most elegant solution to the problem, requiring only 
-a single line of code.
+Also note that these benchmarks do not take into account the one-time overhead incurred by the Numba
+implementation due to its just-in-time compilation which happens the first time the function 
+is called.
 """
         )
     # Save a copy of the image as a quick "unit test"

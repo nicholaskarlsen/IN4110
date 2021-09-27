@@ -2044,7 +2044,7 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
  *                 pixel = 0
  *                 for l in range(3):             # <<<<<<<<<<<<<<
  *                     pixel += image[i][j][l] * W[k][l]
- *                 S[i][j][k] = min(pixel, 255)
+ *                 # Avoid overflows by truncating at 255
  */
         for (__pyx_t_18 = 0; __pyx_t_18 < 3; __pyx_t_18+=1) {
           __pyx_v_l = __pyx_t_18;
@@ -2053,8 +2053,8 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
  *                 pixel = 0
  *                 for l in range(3):
  *                     pixel += image[i][j][l] * W[k][l]             # <<<<<<<<<<<<<<
+ *                 # Avoid overflows by truncating at 255
  *                 S[i][j][k] = min(pixel, 255)
- *     return S
  */
           __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_pixel); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 26, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
@@ -2084,9 +2084,9 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
           __pyx_v_pixel = __pyx_t_19;
         }
 
-        /* "cython_color2sepia.pyx":27
- *                 for l in range(3):
+        /* "cython_color2sepia.pyx":28
  *                     pixel += image[i][j][l] * W[k][l]
+ *                 # Avoid overflows by truncating at 255
  *                 S[i][j][k] = min(pixel, 255)             # <<<<<<<<<<<<<<
  *     return S
  */
@@ -2097,27 +2097,27 @@ static PyArrayObject *__pyx_f_18cython_color2sepia_color2sepia(PyArrayObject *__
         } else {
           __pyx_t_21 = __pyx_t_18;
         }
-        __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_t_21); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 27, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_t_21); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_S, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 27, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_S, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 27, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 28, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_v_k, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 0, 0) < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(__pyx_t_5, __pyx_v_k, __pyx_t_1, int, 1, __Pyx_PyInt_From_int, 0, 0, 0) < 0)) __PYX_ERR(0, 28, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
     }
   }
 
-  /* "cython_color2sepia.pyx":28
- *                     pixel += image[i][j][l] * W[k][l]
+  /* "cython_color2sepia.pyx":29
+ *                 # Avoid overflows by truncating at 255
  *                 S[i][j][k] = min(pixel, 255)
  *     return S             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  if (!(likely(__Pyx_TypeTest(__pyx_v_S, __pyx_ptype_5numpy_ndarray)))) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (!(likely(__Pyx_TypeTest(__pyx_v_S, __pyx_ptype_5numpy_ndarray)))) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_INCREF(__pyx_v_S);
   __pyx_r = ((PyArrayObject *)__pyx_v_S);
   goto __pyx_L0;

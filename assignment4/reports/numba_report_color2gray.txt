@@ -1,8 +1,8 @@
 Size of image: 600x400
 Timing: grayscale_benchmarks.py
-Average runtime running grayscale_benchmarks.py after 3 runs: 0.000653 s
-Average runtime running of numba_color2gray is 5277.489 times faster than python_color2gray
-Average runtime running of numba_color2gray is 11.302 times faster than numpy_color2gray
+Average runtime running grayscale_benchmarks.py after 3 runs: 0.000446 s
+Average runtime running of numba_color2gray is 3873.647 times faster than python_color2gray
+Average runtime running of numba_color2gray is 8.200 times faster than numpy_color2gray
 Timing performed using: timeit
 --------------------------------------------------------------------------------
 Comment: In this case, the implementation using Numba and Numby quite similar performance with

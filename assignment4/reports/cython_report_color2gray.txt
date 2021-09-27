@@ -1,9 +1,9 @@
 Size of image: 600x400
 Timing: grayscale_benchmarks.py
-Average runtime running grayscale_benchmarks.py after 3 runs: 1.573146 s
-Average runtime running of cython_color2gray is 2.190 times faster than python_color2gray
-Average runtime running of cython_color2gray is 213.250 times slower than numpy_color2gray
-Average runtime running of cython_color2gray is 2409.106 times slower than numba_color2gray
+Average runtime running grayscale_benchmarks.py after 3 runs: 1.487051 s
+Average runtime running of cython_color2gray is 1.163 times faster than python_color2gray
+Average runtime running of cython_color2gray is 406.298 times slower than numpy_color2gray
+Average runtime running of cython_color2gray is 3334.196 times slower than numba_color2gray
 Timing performed using: timeit
 --------------------------------------------------------------------------------
 Comment: The Cython code is faster than the pure python implementation, but considerably slower

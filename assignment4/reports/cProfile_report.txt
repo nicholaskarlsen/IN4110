@@ -2,31 +2,31 @@ cProfile profiling of functions in cProfile_timing_.py
 --------------------------------------------------------------------------------
 Profiling line: array = random_array(2e6)
 
-         5 function calls in 0.042 seconds
+         5 function calls in 0.039 seconds
 
    Ordered by: internal time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        1    0.041    0.041    0.041    0.041 {method 'rand' of 'numpy.random.mtrand.RandomState' objects}
-        1    0.000    0.000    0.042    0.042 {built-in method builtins.exec}
-        1    0.000    0.000    0.041    0.041 cProfile_timing_.py:6(random_array)
-        1    0.000    0.000    0.041    0.041 <string>:1(<module>)
+        1    0.039    0.039    0.039    0.039 {method 'rand' of 'numpy.random.mtrand.RandomState' objects}
+        1    0.000    0.000    0.039    0.039 {built-in method builtins.exec}
+        1    0.000    0.000    0.039    0.039 cProfile_timing_.py:6(random_array)
+        1    0.000    0.000    0.039    0.039 <string>:1(<module>)
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
 
 
 --------------------------------------------------------------------------------
 Profiling line: snake_loop(array)
 
-         102554 function calls in 8.187 seconds
+         102808 function calls in 8.428 seconds
 
    Ordered by: internal time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        1    8.143    8.143    8.179    8.179 cProfile_timing_.py:32(snake_loop)
-        1    0.031    0.031    0.031    0.031 {built-in method numpy.array}
-        1    0.008    0.008    8.187    8.187 <string>:1(<module>)
-   102548    0.006    0.000    0.006    0.000 {method 'append' of 'list' objects}
-        1    0.000    0.000    8.187    8.187 {built-in method builtins.exec}
+        1    8.383    8.383    8.420    8.420 cProfile_timing_.py:32(snake_loop)
+        1    0.030    0.030    0.030    0.030 {built-in method numpy.array}
+        1    0.008    0.008    8.428    8.428 <string>:1(<module>)
+   102802    0.006    0.000    0.006    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    8.428    8.428 {built-in method builtins.exec}
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
         1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
 
@@ -34,16 +34,16 @@ Profiling line: snake_loop(array)
 --------------------------------------------------------------------------------
 Profiling line: loop(array)
 
-         12593 function calls in 0.793 seconds
+         12550 function calls in 0.840 seconds
 
    Ordered by: internal time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        1    0.787    0.787    0.792    0.792 cProfile_timing_.py:13(loop)
-        1    0.004    0.004    0.004    0.004 {built-in method numpy.array}
-        1    0.001    0.001    0.793    0.793 <string>:1(<module>)
-    12587    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
-        1    0.000    0.000    0.793    0.793 {built-in method builtins.exec}
+        1    0.833    0.833    0.839    0.839 cProfile_timing_.py:13(loop)
+        1    0.005    0.005    0.005    0.005 {built-in method numpy.array}
+        1    0.001    0.001    0.840    0.840 <string>:1(<module>)
+    12544    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.840    0.840 {built-in method builtins.exec}
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
         1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
 

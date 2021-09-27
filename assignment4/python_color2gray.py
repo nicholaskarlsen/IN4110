@@ -19,7 +19,9 @@ def color2gray(image):
     G = np.empty(shape=(N, M), dtype="uint8")
     for i in range(N):
         for j in range(M):
-            G[i][j] = 0
+            # increment in a temporary float to avoid accumulating error due to 3x double -> uint8 casts
+            pixel = 0.0 
             for k in range(3):
-                G[i][j] += image[i][j][k] * weights[k]
+                pixel += image[i][j][k] * weights[k]
+            G[i][j] = pixel
     return G

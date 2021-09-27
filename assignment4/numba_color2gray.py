@@ -5,13 +5,10 @@ from numba import njit
 @njit
 def color2gray(image):
     """Performs a contraction of an RGB image with a set of weights to produce a greyscale image.
-
     In this implementation, all computations are performed in pure python, and Numpy arrays are only used to
     store the data. The code is then JIT compiled with numba.
-
     Arguments:
         image: Representation of an RGB image with shape (N,M,3) and integer entries in the interval [0,255]
-
     Returns:
         G: Representation of a greyscale image with shape (N,M) and integer entries in the interval [0,255]
     """
@@ -21,7 +18,9 @@ def color2gray(image):
     G = np.empty(shape=(N, M), dtype="uint8")
     for i in range(N):
         for j in range(M):
-            G[i][j] = 0
+            # increment in a temporary float to avoid accumulating error due to 3x double -> uint8 casts
+            pixel = 0.0
             for k in range(3):
-                G[i][j] += image[i][j][k] * weights[k]
+                pixel += image[i][j][k] * weights[k]
+            G[i][j] = pixel
     return G
