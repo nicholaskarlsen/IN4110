@@ -8,12 +8,12 @@ parser.add_argument(
     "--file",
     help="The filename of file to apply filter to",
     required=True,
-    nargs=true,
+    type=str
 )
 
-parser.add_argument("-o", "--out", help="The output filename", nargs=1)
+parser.add_argument("-o", "--out", help="The output filename", type=str)
 parser.add_argument(
-    "-sc", "--scale", help="Scale factor to resize image", type=float, nargs=1
+    "-sc", "--scale", help="Scale factor to resize image", type=float
 )
 
 # user must choose to apply either sepia OR grayscale filter

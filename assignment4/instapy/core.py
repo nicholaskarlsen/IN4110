@@ -13,6 +13,14 @@ from cython_color2sepia import cython_color2sepia
 
 
 def grayscale_image(input_filename, output_filename=None, scale=None, backend=None):
+    """
+    Arguments:
+        input_filename: Filename of the image you wish to apply a filter to
+        output_filename: Filename of the output file if you wish to store the transformed image.
+            If set to None, the image will not be written to file.
+        scale: optional scalefactor to apply to the image prior to applying the image.
+        backend: Choose which of the backends to utilize. If None is set, default to Numpy.
+    """
     # If no backend is chosen, default to numpy
     if backend is None:
         backend = "numpy"
@@ -29,7 +37,10 @@ def grayscale_image(input_filename, output_filename=None, scale=None, backend=No
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     if scale != None:
-        img = cv2.resize(img, None, fx=scale, fy=scale)
+        new_width = int(img.shape[1] * scale)
+        new_height = int(img.shape[0] * scale)
+        new_dim = (new_width, new_height)
+        img = cv2.resize(img, new_dim, interpolation = cv2.INTER_AREA)
 
     grayscale_img = color2gray(img)
 
@@ -39,9 +50,16 @@ def grayscale_image(input_filename, output_filename=None, scale=None, backend=No
     return grayscale_img
 
 
-def sepia_image(
-    input_filename, output_filename=None, scale=None, backend=None, level=1.0
-):
+def sepia_image(input_filename, output_filename=None, scale=None, backend=None, level=1.0):
+    """
+    Arguments:
+        input_filename: Filename of the image you wish to apply a filter to
+        output_filename: Filename of the output file if you wish to store the transformed image.
+            If set to None, the image will not be written to file.
+        scale: optional scalefactor to apply to the image prior to applying the image.
+        backend: Choose which of the backends to utilize. If None is set, default to Numpy.
+        level: Intensity of the sepia filter from 0.0 (no filter) to 1.0 (full intensity).
+    """
     # If no backend is chosen, default to numpy
     if backend is None:
         backend = "numpy"
@@ -58,7 +76,10 @@ def sepia_image(
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     if scale != None:
-        img = cv2.resize(img, None, fx=scale, fy=scale)
+        new_width = int(img.shape[1] * scale)
+        new_height = int(img.shape[0] * scale)
+        new_dim = (new_width, new_height)
+        img = cv2.resize(img, new_dim, interpolation = cv2.INTER_AREA)
 
     sepia_img = color2sepia(img, level=level)
 
