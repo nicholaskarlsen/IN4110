@@ -6,7 +6,7 @@ Average runtime running of numba_color2gray is 8.920 times faster than numpy_col
 Timing performed using: timeit
 --------------------------------------------------------------------------------
 Comment: In this case, the implementation using Numba and Numby quite similar performance with
-Numba winning out by a factor 4. Furthermore, the numba code is literally a copy-paste of the
+Numba winning out by a factor 8. Furthermore, the numba code is literally a copy-paste of the
 python implementation and the @njit decorator is responsible for the entirety of the performance
 increase. 
 

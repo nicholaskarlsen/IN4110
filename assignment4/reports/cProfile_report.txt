@@ -1,0 +1,52 @@
+cProfile profiling of functions in cProfile_timing_.py
+--------------------------------------------------------------------------------
+Profiling line: array = random_array(2e6)
+
+         5 function calls in 0.039 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.039    0.039    0.039    0.039 {method 'rand' of 'numpy.random.mtrand.RandomState' objects}
+        1    0.000    0.000    0.039    0.039 {built-in method builtins.exec}
+        1    0.000    0.000    0.039    0.039 cProfile_timing_.py:7(random_array)
+        1    0.000    0.000    0.039    0.039 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+--------------------------------------------------------------------------------
+Profiling line: snake_loop(array)
+
+         102255 function calls in 8.375 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    8.331    8.331    8.367    8.367 cProfile_timing_.py:33(snake_loop)
+        1    0.030    0.030    0.030    0.030 {built-in method numpy.array}
+        1    0.008    0.008    8.375    8.375 <string>:1(<module>)
+   102249    0.006    0.000    0.006    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    8.375    8.375 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+--------------------------------------------------------------------------------
+Profiling line: loop(array)
+
+         12941 function calls in 0.780 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.774    0.774    0.779    0.779 cProfile_timing_.py:14(loop)
+        1    0.005    0.005    0.005    0.005 {built-in method numpy.array}
+        1    0.001    0.001    0.780    0.780 <string>:1(<module>)
+    12935    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.780    0.780 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+
+
+--------------------------------------------------------------------------------
+Comment: Timing corresponds to both timeit and my manual implementation.

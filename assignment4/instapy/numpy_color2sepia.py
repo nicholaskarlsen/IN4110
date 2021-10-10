@@ -9,7 +9,7 @@ def numpy_color2sepia(image, level=1.0):
     Arguments:
         image: 3D Array with dimensions (N, M, 3)
         level: level of the sepia filter, must be in the interval [0,1]
-    
+
     Returns:
         S: 3D Array with the same dimensions as the input image that has been transformed with the filter
     """

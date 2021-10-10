@@ -8,24 +8,23 @@ parser.add_argument(
     "--file",
     help="The filename of file to apply filter to",
     required=True,
-    type=str
+    type=str,
 )
 
 parser.add_argument("-o", "--out", help="The output filename", type=str)
-parser.add_argument(
-    "-sc", "--scale", help="Scale factor to resize image", type=float
-)
+
 
 # user must choose to apply either sepia OR grayscale filter
 group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument("-g", "--gray", help="Select gray filter", action="store_true")
-group.add_argument("-se", "--se", help="Select sepia filter", action="store_true")
+group.add_argument("-se", "--sepia", help="Select sepia filter", action="store_true")
 
 parser.add_argument(
     "-l",
     "--level",
     help="Controls the level of the sepia filter",
     nargs="?",
+    default=1.0,
     const=1.0,
     type=float,
 )
@@ -34,13 +33,25 @@ parser.add_argument(
     "-i",
     "--implement",
     help="Choose the implementation to use: python, numba, numpy or cython",
+    type=str,
+)
+
+parser.add_argument("-sc", "--scale", help="Scale factor to resize image", type=float)
+
+parser.add_argument(
+    "-r",
+    "--runtime",
+    help="Benchmark the current operation by reporting the runtime of the program averaged over 3 runs.",
+    action="store_true",
 )
 
 # Convert args to a dictionary
 args = vars(parser.parse_args())
-print(args)
 
-if args["se"]:
+# Pass the arguments into either the sepia or grayscale functions
+# Note: -se or gray
+
+if args["sepia"]:
     instapy.sepia_image(
         input_filename=args["file"],
         output_filename=args["out"],
@@ -48,6 +59,13 @@ if args["se"]:
         backend=args["implement"],
         level=args["level"],
     )
+    if args["runtime"]:
+        instapy.benchmark_sepia_img(
+            input_filename=args["file"],
+            scale=args["scale"],
+            backend=args["implement"],
+            level=args["level"],
+        )
 
 elif args["gray"]:
     instapy.grayscale_image(
@@ -56,3 +74,9 @@ elif args["gray"]:
         scale=args["scale"],
         backend=args["implement"],
     )
+    if args["runtime"]:
+        instapy.benchmark_grayscale_img(
+            input_filename=args["file"],
+            scale=args["scale"],
+            backend=args["implement"],
+        )

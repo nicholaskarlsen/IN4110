@@ -9,7 +9,7 @@ def python_color2sepia(image, level=1.0):
     Arguments:
         image: 3D Array with dimensions (N, M, 3)
         level: level of the sepia filter, must be in the interval [0,1]
-    
+
     Returns:
         S: 3D Array with the same dimensions as the input image that has been transformed with the filter
     """
@@ -39,7 +39,7 @@ def python_color2sepia(image, level=1.0):
     for i in range(N):
         for j in range(M):
             for k in range(3):
-                pixel = 0
+                pixel = 0.0
                 for l in range(3):
                     pixel += image[i][j][l] * W[k][l]
                 # Avoid overflows by truncating at 255

@@ -1,4 +1,9 @@
-from .core import grayscale_image, sepia_image
+from .core import (
+    grayscale_image,
+    sepia_image,
+    benchmark_sepia_img,
+    benchmark_grayscale_img,
+)
 from .python_color2gray import python_color2gray
 from .python_color2sepia import python_color2sepia
 from .numpy_color2gray import numpy_color2gray
