@@ -5,7 +5,8 @@ The python package may be installed using pip by running the following command i
 ```bash
 pip install .
 ```
-once the package has been installed in your system can for example apply a 50% sepia filter to an image by running
+This will also install all the dependencies required to run the different functions in this package.
+Once the package has been installed in your system can for example apply a 50% sepia filter to an image by running
 ```bash
 instapy -se --level 0.5 -f <input image> -o <output image>
 ```
