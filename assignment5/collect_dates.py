@@ -9,18 +9,18 @@ def get_months_str():
     """
     months = [
         "January",
-        "February",
+        "Februrary",
         "March",
         "April",
         "May",
         "June",
         "July",
+        "August",
         "September",
         "October",
         "November",
         "December",
     ]
-
     return months
 
 
@@ -41,7 +41,6 @@ def get_months_abbr_str():
         "Jul",
         "Aug",
         "Sep",
-        "Sept",
         "Oct",
         "Nov",
         "Dec",
@@ -82,7 +81,7 @@ def get_month_hash():
 
 
 def convert_DMY(dates_DMY):
-    """ Converts the entries in a list containing dates in the DMY format to our desired format, an ISO-like
+    """Converts the entries in a list containing dates in the DMY format to our desired format, an ISO-like
     format delimited by / rather than -.
 
     Returns:
@@ -94,11 +93,9 @@ def convert_DMY(dates_DMY):
     # fetch hash that maps month names to numbers
     month_hash = get_month_hash()
     # compile pattern with 3 return groups corresponding to Day, Month and Year.
-    pattern = re.compile("([1-9]|[1-2]?[1-9]|3?[12]) (%s) ([0-9]{4})" % months)
+    pattern = re.compile("([0-9]{1,2}) (%s) ([0-9]{4})" % months)
     for date in dates_DMY:
-        print(date)
         match = pattern.match(date)
-        print(match)
         D = match.group(1)
         M = match.group(2)
         Y = match.group(3)
@@ -107,7 +104,7 @@ def convert_DMY(dates_DMY):
 
 
 def convert_MDY(dates_MDY):
-    """ Converts the entries in a list containing dates in the MDY format to our desired format, an ISO-like
+    """Converts the entries in a list containing dates in the MDY format to our desired format, an ISO-like
     format delimited by / rather than -.
 
     Returns:
@@ -119,7 +116,7 @@ def convert_MDY(dates_MDY):
     # fetch hash that maps month names to numbers
     month_hash = get_month_hash()
     # compile pattern with 3 return groups corresponding to Day, Month and Year.
-    pattern = re.compile("(%s) ([1-9]|[1-2]?[1-9]|3?[12]), ([0-9]{4})" % months)
+    pattern = re.compile("(%s) ([0-9]{1,2}), ([0-9]{4})" % months)
     for date in dates_MDY:
         match = pattern.match(date)
         M = match.group(1)
@@ -130,7 +127,7 @@ def convert_MDY(dates_MDY):
 
 
 def convert_YMD(dates_YMD):
-    """ Converts the entries in a list containing dates in the YMD format to our desired format, an ISO-like
+    """Converts the entries in a list containing dates in the YMD format to our desired format, an ISO-like
     format delimited by / rather than -.
 
     Returns:
@@ -142,9 +139,8 @@ def convert_YMD(dates_YMD):
     # fetch hash that maps month names to numbers
     month_hash = get_month_hash()
     # compile pattern with 3 return groups corresponding to Day, Month and Year.
-    pattern = re.compile("([0-9]{4}) (%s) ([1-9]|[1-2]?[1-9]|3?[12])" % months)
+    pattern = re.compile("([0-9]{4}) (%s) ([0-9]{1,2})" % months)
     for date in dates_YMD:
-        print("---->", date)
         match = pattern.match(date)
         Y = match.group(1)
         M = match.group(2)
@@ -154,7 +150,7 @@ def convert_YMD(dates_YMD):
 
 
 def convert_ISO(dates_ISO):
-    """ Converts the entries in a list containing dates in the ISO format to our desired format, an ISO-like
+    """Converts the entries in a list containing dates in the ISO format to our desired format, an ISO-like
     format delimited by / rather than -.
 
     Returns:
@@ -199,25 +195,25 @@ def find_dates(html_string, output=None):
 
     # Expected format i.e 13 Oct(ober) 2020
     dates_DMY = re.findall(
-        pattern=".(?:[1-9]|[1-2]?[1-9]|3?[12]) (?:%s) [0-9]{4}" % months,
+        pattern="((?:[1-9]|[1-2]?[1-9]|3?[12]) (?:%s) [0-9]{4})" % months,
         string=html_string,
     )
 
     # Expected format i.e Oct(ober) 13, 2020
     dates_MDY = re.findall(
-        pattern="(?:%s) (?:[1-9]|[1-2]?[1-9]|3?[01]), [0-9]{4}" % months,
+        pattern="((?:%s) (?:[1-9]|[1-2]?[1-9]|3?[01]), [0-9]{4})" % months,
         string=html_string,
     )
 
     # Expected format i.e 2020 Oct(ober) 13
     dates_YMD = re.findall(
-        pattern="[0-9]{4} (?:%s) (?:[1-9]|[1-2]?[1-9]|3?[01])" % months,
+        pattern="([0-9]{4} (?:%s) (?:[1-9]|[1-2]?[1-9]|3?[01]))(?:[^0-9])" % months,
         string=html_string,
     )
 
     # Expected format i.e YYYY-MM-DD
     dates_ISO = re.findall(
-        pattern="[0-9]{4}-(?:0?[1-9]|1?[0-2])-(?:0?[0-9]|[1-2]?[0-9]|3?[01])",
+        pattern="([0-9]{4}-(?:0?[1-9]|1?[0-2])-(?:0?[0-9]|[1-2]?[0-9]|3?[01]))(?:[^0-9])",
         string=html_string,
     )
 

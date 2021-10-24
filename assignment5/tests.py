@@ -19,17 +19,45 @@ def test_find_urls():
     ]
     return
 
-def test_find_dates():
 
-    test_dates = """
-    13 October 2020
-    Oct 14, 2021
-    not 14, 2021
-    2021 Dec 24
-    2020-10-13
+def test_find_dates():
+    """
+    Tests the find_dates function against two simple test cases, with both single and double digit days.
+    Where the former is an important test case to ensure proper conversion of i.e the day "4" to "04".
+    across all the functions.
     """
 
-    print(find_dates(test_dates))
+    test_dates = """
+    13 Oct 2020
+    13 October 2020
+    Oct 13, 2020
+    October 13, 2020
+    2020 Oct 13
+    2020 October 13
+    2020-10-13
+    """
+    test_results = find_dates(test_dates)
+    target = "2020/10/13"
+
+    for (i, test) in enumerate(test_results):
+        assert test == target
+
+    # Test a case with a single-digit day as well
+    test_dates = """
+    2 Nov 2020
+    2 November 2020
+    Nov 2, 2020
+    November 2, 2020
+    2020 Nov 2
+    2020 November 2
+    2020-11-02
+    """
+    test_results = find_dates(test_dates)
+    target = "2020/11/02"
+
+    for (i, test) in enumerate(test_results):
+        assert test == target
+
 
 
 if __name__ == "__main__":
