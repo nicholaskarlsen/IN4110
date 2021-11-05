@@ -1,0 +1,326 @@
+URL: https://en.wikipedia.org/w/index.php/get?title=Main_Page&action=info
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Information for "Get" - Wikipedia</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!0,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"e54b6741-ddd0-4b2f-84fc-a60a989fd4b0","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Get","wgTitle":"Get","wgCurRevisionId":1040205831,"wgRevisionId":0,"wgArticleId":717638,"wgIsArticle":!1,"wgIsRedirect":!1,"wgAction":"info","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Get","wgRelevantArticleId":717638,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgFlaggedRevsParams":{"tags":{"status":{"levels":-1}}},"wgMediaViewerOnClick":!0,
+"wgMediaViewerEnabledByDefault":!0,"wgPopupsFlags":10,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFDisplayWikibaseDescriptions":{"search":!0,"nearby":!0,"watchlist":!0,"tagline":!1},"wgWMESchemaEditAttemptStepOversample":!1,"wgULSCurrentAutonym":"English","wgNoticeProject":"wikipedia","wgPageViewInfo":{"graph":{"version":2,"data":[{"name":"pageviews","values":[{"timestamp":"20210924","views":19},{"timestamp":"20210925","views":17},{"timestamp":"20210926","views":22},{"timestamp":"20210927","views":28},{"timestamp":"20210928","views":18},{"timestamp":"20210929","views":13},{"timestamp":"20210930","views":27},{"timestamp":"20211001","views":14},{"timestamp":"20211002","views":20},{"timestamp":"20211003","views":27},{"timestamp":"20211004","views":25},{"timestamp":"20211005","views":16},{"timestamp":"20211006","views":25},{"timestamp":"20211007","views":28},{"timestamp":"20211008","views":31},{"timestamp":"20211009",
+"views":18},{"timestamp":"20211010","views":21},{"timestamp":"20211011","views":29},{"timestamp":"20211012","views":26},{"timestamp":"20211013","views":11},{"timestamp":"20211014","views":27},{"timestamp":"20211015","views":19},{"timestamp":"20211016","views":16},{"timestamp":"20211017","views":21},{"timestamp":"20211018","views":18},{"timestamp":"20211019","views":19},{"timestamp":"20211020","views":19},{"timestamp":"20211021","views":25},{"timestamp":"20211022","views":17},{"timestamp":"20211023","views":17}],"transform":[{"type":"formula","field":"date","expr":"datetime(parseInt(substring(datum.timestamp,0,4)),parseInt(substring(datum.timestamp,4,6))-1,parseInt(substring(datum.timestamp,6,8)))"}]},{"name":"alldata","source":"pageviews","transform":[{"type":"formula","field":"Page views","expr":"datum.views"},{"type":"fold","fields":["Page views"]}]},{"name":"stats","source":"alldata","transform":[{"type":"aggregate","groupby":["date"],"summarize":[{"field":"value","ops":["sum"]}]}]}
+],"scales":[{"name":"x","type":"time","range":"width","domain":{"data":"alldata","field":"date"}},{"name":"y","type":"linear","range":"height","nice":!0,"domain":{"data":"stats","field":"sum_value"}},{"name":"c","type":"ordinal","range":["#5DA5DA"],"domain":{"data":"alldata","field":"key"}}],"axes":[{"type":"x","scale":"x","ticks":5},{"type":"y","scale":"y"}],"marks":[{"type":"group","from":{"data":"alldata","transform":[{"type":"stack","groupby":["date"],"sortby":["key"],"field":"value"},{"type":"facet","groupby":["key"]}]},"marks":[{"type":"area","properties":{"enter":{"interpolate":{"value":"monotone"},"x":{"scale":"x","field":"date"},"y":{"scale":"y","field":"layout_start"},"y2":{"scale":"y","field":"layout_end"},"fill":{"scale":"c","field":"key"},"fillOpacity":{"value":1}}}}]}]},"start":"24 September 2021","end":"23 October 2021"},"wgEditSubmitButtonLabelPublish":!0,"wgULSPosition":"interlanguage","wgULSisCompactLinksEnabled":!0,"wgGENewcomerTasksGuidanceEnabled":!0,
+"wgGEAskQuestionEnabled":!1,"wgGELinkRecommendationsFrontendEnabled":!1,"wgCentralAuthMobileDomain":!1};RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","mediawiki.interface.helpers.styles":"ready","mediawiki.helplink":"ready","skins.vector.styles.legacy":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","ext.wikimediaBadges":"ready"};RLPAGEMODULES=["ext.pageviewinfo","site","mediawiki.page.ready","skins.vector.legacy.js","ext.gadget.ReferenceTooltips","ext.gadget.charinsert","ext.gadget.extra-toolbar-buttons","ext.gadget.refToolbar","ext.gadget.switcher","ext.popups","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.uls.compactlinks","ext.uls.interface","ext.cx.eventlogging.campaigns","ext.centralNotice.geoIP",
+"ext.centralNotice.startUp","ext.centralauth.centralautologin","ext.growthExperiments.SuggestedEditSession"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cmediawiki.helplink%7Cmediawiki.interface.helpers.styles%7Cskins.vector.styles.legacy&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.38.0-wmf.5"/>
+<meta name="referrer" content="origin"/>
+<meta name="referrer" content="origin-when-crossorigin"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<meta name="robots" content="noindex,nofollow"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta property="og:title" content="Information for &quot;Get&quot; - Wikipedia"/>
+<meta property="og:type" content="website"/>
+<link rel="alternate" media="only screen and (max-width: 720px)" href="//en.m.wikipedia.org/wiki/Get"/>
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Get&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="canonical" href="https://en.wikipedia.org/w/index.php?title=Get&amp;action=info"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Get rootpage-Get skin-vector action-info skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"><!-- CentralNotice --></div>
+	<div class="mw-indicators">
+	<div id="mw-indicator-mw-helplink" class="mw-indicator"><a href="/wiki/Help:Page_information" target="_blank" class="mw-helplink">Help</a></div>
+	</div>
+	<h1 id="firstHeading" class="firstHeading" >Information for "Get"</h1>
+	<div id="bodyContent" class="vector-body">
+		
+		<div id="contentSub"></div>
+		<div id="contentSub2"></div>
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="#searchInput">Jump to search</a>
+		<div id="mw-content-text" class="mw-body-content"><div class="mw-parser-output">
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading">
+<div class="toctitle"><h2 id="mw-toc-heading"><span class="mw-headline" id="Contents">Contents</span></h2></div>
+<div class="hlist hlist-separated">
+<ul><li><a href="#Basic_information">Basic information</a></li>
+<li><a href="#Page_protection">Page protection</a></li>
+<li><a href="#Edit_history">Edit history</a></li>
+<li><a href="#Page_properties">Page properties</a></li>
+<li><a href="#External_tools">External tools</a></li></ul>
+</div>
+</div>
+</div><style>.mw-hiddenCategoriesExplanation { display: none; }</style>
+<style>.mw-templatesUsedExplanation { display: none; }</style>
+<h2 id="mw-pageinfo-header-basic"><span class="mw-headline" id="Basic_information">Basic information</span></h2>
+<table class="wikitable mw-page-info">
+<tr id="mw-pageinfo-display-title"><td style="vertical-align: top;">Display title</td><td>Get</td></tr>
+<tr id="mw-pageinfo-default-sort"><td style="vertical-align: top;">Default sort key</td><td>Get</td></tr>
+<tr id="mw-pageinfo-length"><td style="vertical-align: top;">Page length (in bytes)</td><td>1,016</td></tr>
+<tr id="mw-pageinfo-article-id"><td style="vertical-align: top;">Page ID</td><td>717638</td></tr>
+<tr><td style="vertical-align: top;">Page content language</td><td>en - English</td></tr>
+<tr id="mw-pageinfo-content-model"><td style="vertical-align: top;">Page content model</td><td>wikitext</td></tr>
+<tr id="mw-pageinfo-robot-policy"><td style="vertical-align: top;">Indexing by robots</td><td>Allowed</td></tr>
+<tr id="mw-pageinfo-watchers"><td style="vertical-align: top;">Number of page watchers</td><td>Fewer than 30 watchers</td></tr>
+<tr><td style="vertical-align: top;"><a href="/w/index.php?title=Special:WhatLinksHere/Get&amp;hidelinks=1&amp;hidetrans=1" title="Special:WhatLinksHere/Get">Number of redirects to this page</a></td><td>2</td></tr>
+<tr id="mw-pageinfo-contentpage"><td style="vertical-align: top;">Counted as a content page</td><td>Yes</td></tr>
+<tr id="mw-pvi-month-count"><td style="vertical-align: top;">Page views in the past 30 days</td><td><div class="mw-pvi-month">633</div></td></tr>
+<tr><td style="vertical-align: top;">Wikidata item ID</td><td><a class="extiw wb-entity-link external" href="https://www.wikidata.org/wiki/Special:EntityPage/Q406629">Q406629</a></td></tr>
+<tr><td style="vertical-align: top;">Local description</td><td>Topics referred to by the same term</td></tr>
+<tr><td style="vertical-align: top;">Central description</td><td>Wikimedia disambiguation page</td></tr>
+</table>
+<h2 id="mw-pageinfo-header-restrictions"><span class="mw-headline" id="Page_protection">Page protection</span></h2>
+<table class="wikitable mw-page-info">
+<tr id="mw-restriction-edit"><td style="vertical-align: top;">Edit</td><td>Allow all users (no expiry set)</td></tr>
+<tr id="mw-restriction-move"><td style="vertical-align: top;">Move</td><td>Allow all users (no expiry set)</td></tr>
+</table>
+<a href="/w/index.php?title=Special:Log&amp;type=protect&amp;page=Get" title="Special:Log">View the protection log for this page.</a>
+<h2 id="mw-pageinfo-header-edits"><span class="mw-headline" id="Edit_history">Edit history</span></h2>
+<table class="wikitable mw-page-info">
+<tr id="mw-pageinfo-firstuser"><td style="vertical-align: top;">Page creator</td><td><a href="/wiki/Special:Contributions/67.124.89.96" class="mw-userlink mw-anonuserlink" title="Special:Contributions/67.124.89.96"><bdi>67.124.89.96</bdi></a> <span class="mw-usertoollinks">(<a href="/wiki/User_talk:67.124.89.96" class="mw-usertoollinks-talk" title="User talk:67.124.89.96">talk</a>)</span></td></tr>
+<tr id="mw-pageinfo-firsttime"><td style="vertical-align: top;">Date of page creation</td><td><a href="/w/index.php?title=Get&amp;oldid=4040883" title="Get">20:49, 11 June 2004</a></td></tr>
+<tr id="mw-pageinfo-lastuser"><td style="vertical-align: top;">Latest editor</td><td><a href="/wiki/User:A_bit_iffy" class="mw-userlink" title="User:A bit iffy"><bdi>A bit iffy</bdi></a> <span class="mw-usertoollinks">(<a href="/wiki/User_talk:A_bit_iffy" class="mw-usertoollinks-talk" title="User talk:A bit iffy">talk</a> | <a href="/wiki/Special:Contributions/A_bit_iffy" class="mw-usertoollinks-contribs" title="Special:Contributions/A bit iffy">contribs</a>)</span></td></tr>
+<tr id="mw-pageinfo-lasttime"><td style="vertical-align: top;">Date of latest edit</td><td><a href="/w/index.php?title=Get&amp;oldid=1040205831" title="Get">06:28, 23 August 2021</a></td></tr>
+<tr id="mw-pageinfo-edits"><td style="vertical-align: top;">Total number of edits</td><td>137</td></tr>
+<tr id="mw-pageinfo-recent-edits"><td style="vertical-align: top;">Recent number of edits (within past 30 days)</td><td>0</td></tr>
+<tr id="mw-pageinfo-recent-authors"><td style="vertical-align: top;">Recent number of distinct authors</td><td>0</td></tr>
+</table>
+<h2 id="mw-pageinfo-header-properties"><span class="mw-headline" id="Page_properties">Page properties</span></h2>
+<table class="wikitable mw-page-info">
+<tr id="mw-pageinfo-magic-words"><td style="vertical-align: top;">Magic word (1)</td><td><ul><li>__DISAMBIG__</li></ul></td></tr>
+<tr id="mw-pageinfo-hidden-categories"><td style="vertical-align: top;">Hidden categories (4)</td><td><div class="mw-hiddenCategoriesExplanation"><p>This page is a member of 4 hidden categories<span class="posteditwindowhelplinks"> (<a href="/wiki/Help:Category#Hiding_categories" title="Help:Category">help</a>)</span>&#160;:
+</p></div><ul>
+<li><a href="/wiki/Category:All_article_disambiguation_pages" title="Category:All article disambiguation pages">Category:All article disambiguation pages</a></li>
+<li><a href="/wiki/Category:All_disambiguation_pages" title="Category:All disambiguation pages">Category:All disambiguation pages</a></li>
+<li><a href="/wiki/Category:Disambiguation_pages_with_short_descriptions" title="Category:Disambiguation pages with short descriptions">Category:Disambiguation pages with short descriptions</a></li>
+<li><a href="/wiki/Category:Short_description_is_different_from_Wikidata" title="Category:Short description is different from Wikidata">Category:Short description is different from Wikidata</a></li>
+</ul></td></tr>
+<tr id="mw-pageinfo-templates"><td style="vertical-align: top;">Transcluded templates (36)</td><td><div class="mw-templatesUsedExplanation"><p><span id="templatesused">Pages transcluded onto the current version of this page<span class="posteditwindowhelplinks"> (<a href="/wiki/Help:Transclusion" title="Help:Transclusion">help</a>)</span>:</span>
+</p></div><ul>
+<li><a href="/wiki/Template:Category_handler" title="Template:Category handler">Template:Category handler</a> (<a href="/w/index.php?title=Template:Category_handler&amp;action=edit" title="Template:Category handler">view source</a>) (protected)</li><li><a href="/wiki/Template:Disambiguation" title="Template:Disambiguation">Template:Disambiguation</a> (<a href="/w/index.php?title=Template:Disambiguation&amp;action=edit" title="Template:Disambiguation">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Disambiguation/cat" title="Template:Disambiguation/cat">Template:Disambiguation/cat</a> (<a href="/w/index.php?title=Template:Disambiguation/cat&amp;action=edit" title="Template:Disambiguation/cat">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Disambiguation_page_short_description" title="Template:Disambiguation page short description">Template:Disambiguation page short description</a> (<a href="/w/index.php?title=Template:Disambiguation_page_short_description&amp;action=edit" title="Template:Disambiguation page short description">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Dmbox" title="Template:Dmbox">Template:Dmbox</a> (<a href="/w/index.php?title=Template:Dmbox&amp;action=edit" title="Template:Dmbox">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Dmbox/styles.css" title="Template:Dmbox/styles.css">Template:Dmbox/styles.css</a> (<a href="/w/index.php?title=Template:Dmbox/styles.css&amp;action=edit" title="Template:Dmbox/styles.css">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:In_title" title="Template:In title">Template:In title</a> (<a href="/w/index.php?title=Template:In_title&amp;action=edit" title="Template:In title">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Intitle" class="mw-redirect" title="Template:Intitle">Template:Intitle</a> (<a href="/w/index.php?title=Template:Intitle&amp;action=edit" class="mw-redirect" title="Template:Intitle">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Look_from" title="Template:Look from">Template:Look from</a> (<a href="/w/index.php?title=Template:Look_from&amp;action=edit" title="Template:Look from">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Lookfrom" class="mw-redirect" title="Template:Lookfrom">Template:Lookfrom</a> (<a href="/w/index.php?title=Template:Lookfrom&amp;action=edit" class="mw-redirect" title="Template:Lookfrom">view source</a>) (extended confirmed protected)</li><li><a href="/wiki/Template:Main_other" title="Template:Main other">Template:Main other</a> (<a href="/w/index.php?title=Template:Main_other&amp;action=edit" title="Template:Main other">view source</a>) (protected)</li><li><a href="/wiki/Template:Namespace_detect" title="Template:Namespace detect">Template:Namespace detect</a> (<a href="/w/index.php?title=Template:Namespace_detect&amp;action=edit" title="Template:Namespace detect">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:PAGENAMEBASE" title="Template:PAGENAMEBASE">Template:PAGENAMEBASE</a> (<a href="/w/index.php?title=Template:PAGENAMEBASE&amp;action=edit" title="Template:PAGENAMEBASE">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:SDcat" title="Template:SDcat">Template:SDcat</a> (<a href="/w/index.php?title=Template:SDcat&amp;action=edit" title="Template:SDcat">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Short_description" title="Template:Short description">Template:Short description</a> (<a href="/w/index.php?title=Template:Short_description&amp;action=edit" title="Template:Short description">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Side_box" title="Template:Side box">Template:Side box</a> (<a href="/w/index.php?title=Template:Side_box&amp;action=edit" title="Template:Side box">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Sister_project" title="Template:Sister project">Template:Sister project</a> (<a href="/w/index.php?title=Template:Sister_project&amp;action=edit" title="Template:Sister project">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Str_rep" title="Template:Str rep">Template:Str rep</a> (<a href="/w/index.php?title=Template:Str_rep&amp;action=edit" title="Template:Str rep">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Title_disambig_text" title="Template:Title disambig text">Template:Title disambig text</a> (<a href="/w/index.php?title=Template:Title_disambig_text&amp;action=edit" title="Template:Title disambig text">view source</a>) (template editor protected)</li><li><a href="/wiki/Template:Trim" title="Template:Trim">Template:Trim</a> (<a href="/w/index.php?title=Template:Trim&amp;action=edit" title="Template:Trim">view source</a>) (protected)</li><li><a href="/wiki/Template:Wiktionary" title="Template:Wiktionary">Template:Wiktionary</a> (<a href="/w/index.php?title=Template:Wiktionary&amp;action=edit" title="Template:Wiktionary">view source</a>) (template editor protected)</li><li><a href="/wiki/Module:Arguments" title="Module:Arguments">Module:Arguments</a> (<a href="/w/index.php?title=Module:Arguments&amp;action=edit" title="Module:Arguments">view source</a>) (protected)</li><li><a href="/wiki/Module:Category_handler" title="Module:Category handler">Module:Category handler</a> (<a href="/w/index.php?title=Module:Category_handler&amp;action=edit" title="Module:Category handler">view source</a>) (protected)</li><li><a href="/wiki/Module:Category_handler/blacklist" title="Module:Category handler/blacklist">Module:Category handler/blacklist</a> (<a href="/w/index.php?title=Module:Category_handler/blacklist&amp;action=edit" title="Module:Category handler/blacklist">view source</a>) (protected)</li><li><a href="/wiki/Module:Category_handler/config" title="Module:Category handler/config">Module:Category handler/config</a> (<a href="/w/index.php?title=Module:Category_handler/config&amp;action=edit" title="Module:Category handler/config">view source</a>) (protected)</li><li><a href="/wiki/Module:Category_handler/data" title="Module:Category handler/data">Module:Category handler/data</a> (<a href="/w/index.php?title=Module:Category_handler/data&amp;action=edit" title="Module:Category handler/data">view source</a>) (protected)</li><li><a href="/wiki/Module:Category_handler/shared" title="Module:Category handler/shared">Module:Category handler/shared</a> (<a href="/w/index.php?title=Module:Category_handler/shared&amp;action=edit" title="Module:Category handler/shared">view source</a>) (protected)</li><li><a href="/wiki/Module:Check_for_unknown_parameters" title="Module:Check for unknown parameters">Module:Check for unknown parameters</a> (<a href="/w/index.php?title=Module:Check_for_unknown_parameters&amp;action=edit" title="Module:Check for unknown parameters">view source</a>) (template editor protected)</li><li><a href="/wiki/Module:Namespace_detect" title="Module:Namespace detect">Module:Namespace detect</a> (<a href="/w/index.php?title=Module:Namespace_detect&amp;action=edit" title="Module:Namespace detect">view source</a>) (protected)</li><li><a href="/wiki/Module:Namespace_detect/config" title="Module:Namespace detect/config">Module:Namespace detect/config</a> (<a href="/w/index.php?title=Module:Namespace_detect/config&amp;action=edit" title="Module:Namespace detect/config">view source</a>) (protected)</li><li><a href="/wiki/Module:Namespace_detect/data" title="Module:Namespace detect/data">Module:Namespace detect/data</a> (<a href="/w/index.php?title=Module:Namespace_detect/data&amp;action=edit" title="Module:Namespace detect/data">view source</a>) (protected)</li><li><a href="/wiki/Module:Redirect" title="Module:Redirect">Module:Redirect</a> (<a href="/w/index.php?title=Module:Redirect&amp;action=edit" title="Module:Redirect">view source</a>) (protected)</li><li><a href="/wiki/Module:SDcat" title="Module:SDcat">Module:SDcat</a> (<a href="/w/index.php?title=Module:SDcat&amp;action=edit" title="Module:SDcat">view source</a>) (template editor protected)</li><li><a href="/wiki/Module:Side_box" title="Module:Side box">Module:Side box</a> (<a href="/w/index.php?title=Module:Side_box&amp;action=edit" title="Module:Side box">view source</a>) (template editor protected)</li><li><a href="/wiki/Module:String" title="Module:String">Module:String</a> (<a href="/w/index.php?title=Module:String&amp;action=edit" title="Module:String">view source</a>) (protected)</li><li><a href="/wiki/Module:Yesno" title="Module:Yesno">Module:Yesno</a> (<a href="/w/index.php?title=Module:Yesno&amp;action=edit" title="Module:Yesno">view source</a>) (protected)</li></ul></td></tr>
+<tr><td style="vertical-align: top;">Wikidata entities used in this page</td><td><ul><li><a class="extiw wb-entity-link external" href="https://www.wikidata.org/wiki/Special:EntityPage/Q406629">Get</a></li><ul><li>Sitelink</li><li>Title</li><li>Description: en</li></ul></ul></td></tr>
+</table>
+<h2><span class="mw-headline" id="External_tools">External tools</span></h2>
+<ul><li><a rel="nofollow" class="external text" href="http://wikipedia.ramselehof.de/wikiblame.php?lang=en&amp;article=Get">Revision history search</a></li>
+<li><a rel="nofollow" class="external text" href="https://xtools.wmflabs.org/articleinfo/?article=Get&amp;project=en.wikipedia.org">Revision history statistics</a></li>
+<li><a rel="nofollow" class="external text" href="https://xtools.wmflabs.org/topedits/en.wikipedia.org?page=Get&amp;namespace=0">Edits by user</a></li>
+<li><a class="external text" href="https://pageviews.toolforge.org?pages=Get&amp;project=en.wikipedia.org">Page view statistics</a></li>
+<li><a rel="nofollow" class="external text" href="http://en.wikichecker.com/article/?a=Get">WikiChecker</a></li></ul><noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/wiki/Get">https://en.wikipedia.org/wiki/Get</a>"</div></div>
+		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>
+	</div>
+</div>
+<div id='mw-data-after-content'>
+	<div class="read-more-container"></div>
+</div>
+
+<div id="mw-navigation">
+	<h2>Navigation menu</h2>
+	<div id="mw-head">
+		<nav id="p-personal" class="mw-portlet mw-portlet-personal vector-user-menu-legacy vector-menu" aria-labelledby="p-personal-label" role="navigation" 
+	 >
+	<h3 id="p-personal-label" aria-label="" class="vector-menu-heading">
+		
+		<span>Personal tools</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="pt-anonuserpage" class="mw-list-item"><span>Not logged in</span></li><li id="pt-anontalk" class="mw-list-item"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n"><span>Talk</span></a></li><li id="pt-anoncontribs" class="mw-list-item"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y"><span>Contributions</span></a></li><li id="pt-createaccount" class="mw-list-item"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=Get&amp;returntoquery=action%3Dinfo" title="You are encouraged to create an account and log in; however, it is not mandatory"><span>Create account</span></a></li><li id="pt-login" class="mw-list-item"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Get&amp;returntoquery=action%3Dinfo" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o"><span>Log in</span></a></li></ul>
+		
+	</div>
+</nav>
+
+		<div id="left-navigation">
+			<nav id="p-namespaces" class="mw-portlet mw-portlet-namespaces vector-menu vector-menu-tabs" aria-labelledby="p-namespaces-label" role="navigation" 
+	 >
+	<h3 id="p-namespaces-label" aria-label="" class="vector-menu-heading">
+		
+		<span>Namespaces</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-nstab-main" class="selected mw-list-item"><a href="/wiki/Get" title="View the content page [c]" accesskey="c"><span>Article</span></a></li><li id="ca-talk" class="mw-list-item"><a href="/wiki/Talk:Get" rel="discussion" title="Discuss improvements to the content page [t]" accesskey="t"><span>Talk</span></a></li></ul>
+		
+	</div>
+</nav>
+
+			<nav id="p-variants" class="mw-portlet mw-portlet-variants emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-variants-label" role="navigation" 
+	 >
+	<input type="checkbox"
+		id="p-variants-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-variants"
+		class="vector-menu-checkbox" aria-labelledby="p-variants-label" />
+	<h3 id="p-variants-label" aria-label="Change language variant" class="vector-menu-heading">
+		
+		<span>Variants</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+		</div>
+		<div id="right-navigation">
+			<nav id="p-views" class="mw-portlet mw-portlet-views vector-menu vector-menu-tabs" aria-labelledby="p-views-label" role="navigation" 
+	 >
+	<h3 id="p-views-label" aria-label="" class="vector-menu-heading">
+		
+		<span>Views</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-view" class="mw-list-item"><a href="/wiki/Get"><span>Read</span></a></li><li id="ca-edit" class="mw-list-item"><a href="/w/index.php?title=Get&amp;action=edit" title="Edit this page [e]" accesskey="e"><span>Edit</span></a></li><li id="ca-history" class="mw-list-item"><a href="/w/index.php?title=Get&amp;action=history" title="Past revisions of this page [h]" accesskey="h"><span>View history</span></a></li></ul>
+		
+	</div>
+</nav>
+
+			<nav id="p-cactions" class="mw-portlet mw-portlet-cactions emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-cactions-label" role="navigation"  title="More options"
+	 >
+	<input type="checkbox"
+		id="p-cactions-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-cactions"
+		class="vector-menu-checkbox" aria-labelledby="p-cactions-label" />
+	<h3 id="p-cactions-label" aria-label="" class="vector-menu-heading">
+		
+		<span>More</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+			<div id="p-search" role="search" class=" vector-search-box">
+	<div>
+			<h3 >
+				<label for="searchInput">Search</label>
+			</h3>
+		<form action="/w/index.php" id="searchform"
+			class="vector-search-box-form">
+			<div id="simpleSearch"
+				class="vector-search-box-inner"
+				 data-search-loc="header-navigation">
+				<input class="vector-search-box-input"
+					 type="search" name="search" placeholder="Search Wikipedia" aria-label="Search Wikipedia" autocapitalize="sentences" title="Search Wikipedia [f]" accesskey="f" id="searchInput"
+				/>
+				<input type="hidden" name="title" value="Special:Search"/>
+				<input id="mw-searchButton"
+					 class="searchButton mw-fallbackSearchButton" type="submit" name="fulltext" title="Search Wikipedia for this text" value="Search" />
+				<input id="searchButton"
+					 class="searchButton" type="submit" name="go" title="Go to a page with this exact name if it exists" value="Go" />
+			</div>
+		</form>
+	</div>
+</div>
+
+		</div>
+	</div>
+	
+<div id="mw-panel">
+	<div id="p-logo" role="banner">
+		<a class="mw-wiki-logo" href="/wiki/Main_Page"
+			title="Visit the main page"></a>
+	</div>
+	<nav id="p-navigation" class="mw-portlet mw-portlet-navigation vector-menu vector-menu-portal portal" aria-labelledby="p-navigation-label" role="navigation" 
+	 >
+	<h3 id="p-navigation-label" aria-label="" class="vector-menu-heading">
+		
+		<span>Navigation</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="n-mainpage-description" class="mw-list-item"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z"><span>Main page</span></a></li><li id="n-contents" class="mw-list-item"><a href="/wiki/Wikipedia:Contents" title="Guides to browsing Wikipedia"><span>Contents</span></a></li><li id="n-currentevents" class="mw-list-item"><a href="/wiki/Portal:Current_events" title="Articles related to current events"><span>Current events</span></a></li><li id="n-randompage" class="mw-list-item"><a href="/wiki/Special:Random" title="Visit a randomly selected article [x]" accesskey="x"><span>Random article</span></a></li><li id="n-aboutsite" class="mw-list-item"><a href="/wiki/Wikipedia:About" title="Learn about Wikipedia and how it works"><span>About Wikipedia</span></a></li><li id="n-contactpage" class="mw-list-item"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia"><span>Contact us</span></a></li><li id="n-sitesupport" class="mw-list-item"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us by donating to the Wikimedia Foundation"><span>Donate</span></a></li></ul>
+		
+	</div>
+</nav>
+
+	<nav id="p-interaction" class="mw-portlet mw-portlet-interaction vector-menu vector-menu-portal portal" aria-labelledby="p-interaction-label" role="navigation" 
+	 >
+	<h3 id="p-interaction-label" aria-label="" class="vector-menu-heading">
+		
+		<span>Contribute</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="n-help" class="mw-list-item"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia"><span>Help</span></a></li><li id="n-introduction" class="mw-list-item"><a href="/wiki/Help:Introduction" title="Learn how to edit Wikipedia"><span>Learn to edit</span></a></li><li id="n-portal" class="mw-list-item"><a href="/wiki/Wikipedia:Community_portal" title="The hub for editors"><span>Community portal</span></a></li><li id="n-recentchanges" class="mw-list-item"><a href="/wiki/Special:RecentChanges" title="A list of recent changes to Wikipedia [r]" accesskey="r"><span>Recent changes</span></a></li><li id="n-upload" class="mw-list-item"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Add images or other media for use on Wikipedia"><span>Upload file</span></a></li></ul>
+		
+	</div>
+</nav>
+<nav id="p-tb" class="mw-portlet mw-portlet-tb vector-menu vector-menu-portal portal" aria-labelledby="p-tb-label" role="navigation" 
+	 >
+	<h3 id="p-tb-label" aria-label="" class="vector-menu-heading">
+		
+		<span>Tools</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="t-whatlinkshere" class="mw-list-item"><a href="/wiki/Special:WhatLinksHere/Get" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j"><span>What links here</span></a></li><li id="t-recentchangeslinked" class="mw-list-item"><a href="/wiki/Special:RecentChangesLinked/Get" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k"><span>Related changes</span></a></li><li id="t-upload" class="mw-list-item"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u"><span>Upload file</span></a></li><li id="t-specialpages" class="mw-list-item"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q"><span>Special pages</span></a></li><li id="t-info" class="mw-list-item"><a href="/w/index.php?title=Get&amp;action=info" title="More information about this page"><span>Page information</span></a></li><li id="t-wikibase" class="mw-list-item"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q406629" title="Structured data on this page hosted by Wikidata [g]" accesskey="g"><span>Wikidata item</span></a></li></ul>
+		
+	</div>
+</nav>
+
+	<nav id="p-lang" class="mw-portlet mw-portlet-lang vector-menu vector-menu-portal portal" aria-labelledby="p-lang-label" role="navigation" 
+	 >
+	<h3 id="p-lang-label" aria-label="" class="vector-menu-heading">
+		
+		<span>Languages</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		<div class="after-portlet after-portlet-lang"><span class="uls-after-portlet-link"></span></div>
+	</div>
+</nav>
+
+</div>
+
+</div>
+<footer id="footer" class="mw-footer" role="contentinfo" >
+	<ul id="footer-info">
+</ul>
+
+	<ul id="footer-places">
+	<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+	<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+	<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+	<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=Get&amp;action=info&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+	<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+	<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/en.wikipedia.org">Statistics</a></li>
+	<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Cookie statement</a></li>
+</ul>
+
+	<ul id="footer-icons" class="noprint">
+	<li id="footer-copyrightico"><a href="https://wikimediafoundation.org/"><img src="/static/images/footer/wikimedia-button.png" srcset="/static/images/footer/wikimedia-button-1.5x.png 1.5x, /static/images/footer/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation" loading="lazy" /></a></li>
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/"><img src="/static/images/footer/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/footer/poweredby_mediawiki_132x47.png 1.5x, /static/images/footer/poweredby_mediawiki_176x62.png 2x" width="88" height="31" loading="lazy"/></a></li>
+</ul>
+
+</footer>
+
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":291,"wgHostname":"mw1329"});});</script>
+</body></html>
