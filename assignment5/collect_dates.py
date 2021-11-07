@@ -1,4 +1,5 @@
 import re
+from requesting_urls import get_html
 
 
 def get_months_str():
@@ -82,7 +83,7 @@ def get_month_hash():
 
 def convert_DMY(dates_DMY):
     """Converts the entries in a list containing dates in the DMY format to our desired format, an ISO-like
-    format delimited by / rather than -.
+    format delimited by / rather than -
 
     Returns:
         List of dates in YYYY/MM/DD format
@@ -180,10 +181,11 @@ def find_dates(html_string, output=None):
     # Finish Docstrng Here
 
     NOTE: Explanation of regex pattern used to catch days: (?:[1-9]|[1-2]?[0-9]|3?[01])
-        [1-9] : Numbers from 1-9, self explanatory
-        [1-2]?[0-9] : numbers 1 or 2 followed by 0-9 -> 10-29
-        3?[01] : the number 3 followd by 0 or 1 -> 30-31
-    -> only complete numbers in the range 1-31 are caught.
+    - [1-9] : Numbers from 1-9, self explanatory
+    - [1-2]?[0-9] : numbers 1 or 2 followed by 0-9 -> 10-29
+    - 3?[01] : the number 3 followd by 0 or 1 -> 30-31
+    => only complete numbers in the range 1-31 are caught.
+
 
     patterns used in ISO format follows from the same logic.
 
@@ -206,6 +208,7 @@ def find_dates(html_string, output=None):
     )
 
     # Expected format i.e 2020 Oct(ober) 13
+    # NOTE: Extra (?:[^0-9]) needed at end to avoid returning only a single digit instead of the full number
     dates_YMD = re.findall(
         pattern="([0-9]{4} (?:%s) (?:[1-9]|[1-2]?[1-9]|3?[01]))(?:[^0-9])" % months,
         string=html_string,
@@ -224,4 +227,21 @@ def find_dates(html_string, output=None):
     result += convert_YMD(dates_YMD)
     result += convert_ISO(dates_ISO)
 
+    if output:
+        outfile = open(output, "w")
+        outfile.write("\n".join(result))
+        outfile.close
+
     return result
+
+
+if __name__ == "__main__":
+    dir = "collect_dates_regex/"
+    urls = [
+        "https://en.wikipedia.org/wiki/J._K._Rowling",
+        "https://en.wikipedia.org/wiki/Richard_Feynman",
+        "https://en.wikipedia.org/wiki/Hans_Rosling",
+    ]
+    for url in urls:
+        html = get_html(url)
+        find_dates(html, output="%soutput_%s.txt" % (dir, url.split("/wiki/")[-1]))

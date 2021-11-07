@@ -23,16 +23,16 @@ if __name__ == "__main__":
 
     get_html(
         url="https://en.wikipedia.org/wiki/Studio_Ghibli",
-        output="requesting_urls/output_1.txt",
+        output="requesting_urls/output_Studio_Ghibli.txt",
     )
 
     get_html(
         url="https://en.wikipedia.org/wiki/Star_Wars",
-        output="requesting_urls/output_2.txt",
+        output="requesting_urls/output_Star_Wars.txt",
     )
 
     get_html(
         url="https://en.wikipedia.org/w/index.php",
         params={"title": "Main_Page", "action": "info"},
-        output="requesting_urls/output_3.txt",
+        output="requesting_urls/output_index.txt",
     )

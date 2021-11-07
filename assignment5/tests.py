@@ -39,7 +39,7 @@ def test_find_dates():
     test_results = find_dates(test_dates)
     target = "2020/10/13"
 
-    for (i, test) in enumerate(test_results):
+    for test in test_results:
         assert test == target
 
     # Test a case with a single-digit day as well
@@ -55,7 +55,7 @@ def test_find_dates():
     test_results = find_dates(test_dates)
     target = "2020/11/02"
 
-    for (i, test) in enumerate(test_results):
+    for test in test_results:
         assert test == target
 
 
