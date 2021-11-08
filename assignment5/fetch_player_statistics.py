@@ -106,9 +106,7 @@ def get_player_statistics(url, year="2020–21"):
         url (str) : URL to the wikipedia article of a player
 
     Returns:
-        ppg (float) : Points per game
-        bpg (float) : Blocks per game
-        rpg (float) : Rebounds per game
+        statistics (dict) : Dictionary containing PPG, BPG and RPG
     """
     statistics = {"PPG": 0.0, "BPG": 0.0, "RPG": 0.0}
     statcolumn = {
