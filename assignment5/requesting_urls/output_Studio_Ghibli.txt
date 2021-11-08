@@ -1,10 +1,9 @@
-URL: https://en.wikipedia.org/wiki/Studio_Ghibli
 <!DOCTYPE html>
 <html class="client-nojs" lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8"/>
 <title>Studio Ghibli - Wikipedia</title>
-<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"b62097e8-5e0a-4289-b887-c01c666b1399","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Studio_Ghibli","wgTitle":"Studio Ghibli","wgCurRevisionId":1054098112,"wgRevisionId":1054098112,"wgArticleId":148415,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Pages with non-numeric formatnum arguments","CS1 maint: bot: original URL status unknown","CS1 uses Japanese-language script (ja)","CS1 Japanese-language sources (ja)","CS1: long volume value","Articles with short description","Short description matches Wikidata",
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"8701e9db-18fd-4cf8-ab57-e955ace8c679","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Studio_Ghibli","wgTitle":"Studio Ghibli","wgCurRevisionId":1054098112,"wgRevisionId":1054098112,"wgArticleId":148415,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Pages with non-numeric formatnum arguments","CS1 maint: bot: original URL status unknown","CS1 uses Japanese-language script (ja)","CS1 Japanese-language sources (ja)","CS1: long volume value","Articles with short description","Short description matches Wikidata",
 "Use American English from September 2021","All Wikipedia articles written in American English","Use mdy dates from September 2020","Articles containing Japanese-language text","Articles containing Italian-language text","Articles containing Libyan Arabic-language text","Articles with hAudio microformats","Articles to be expanded from November 2021","All articles to be expanded","Articles with empty sections from November 2021","All articles with empty sections","Articles using small message boxes","Commons category link from Wikidata","Articles with Japanese-language sources (ja)","Articles with GND identifiers","Articles with ISNI identifiers","Articles with VIAF identifiers","Articles with BNF identifiers","Articles with LCCN identifiers","Articles with NDL identifiers","Articles with SUDOC identifiers","Articles with WORLDCATID identifiers","Studio Ghibli","Japanese companies established in 1985","Animation studios in Tokyo","Film production companies of Japan",
 "Japanese animation studios","Koganei, Tokyo","Mass media companies established in 1985","Topcraft","Western Tokyo"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Studio_Ghibli","wgRelevantArticleId":148415,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgFlaggedRevsParams":{"tags":{"status":{"levels":-1}}},"wgMediaViewerOnClick":!0,"wgMediaViewerEnabledByDefault":!0,"wgPopupsFlags":10,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFDisplayWikibaseDescriptions":{"search":!0,"nearby":!0,"watchlist":!0,"tagline":!1},"wgWMESchemaEditAttemptStepOversample":!1,"wgULSCurrentAutonym":"English","wgNoticeProject":"wikipedia","wgEditSubmitButtonLabelPublish":!0,"wgULSPosition":"interlanguage","wgULSisCompactLinksEnabled":!0,"wgCentralAuthMobileDomain":!1,"wgWikibaseItemId":"Q182950","wgGENewcomerTasksGuidanceEnabled":
 !0,"wgGEAskQuestionEnabled":!1,"wgGELinkRecommendationsFrontendEnabled":!1};RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.cite.styles":"ready","skins.vector.styles.legacy":"ready","jquery.tablesorter.styles":"ready","jquery.makeCollapsible.styles":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","ext.wikimediaBadges":"ready","wikibase.client.init":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","site","mediawiki.page.ready","jquery.tablesorter","jquery.makeCollapsible","mediawiki.toc","skins.vector.legacy.js","ext.gadget.ReferenceTooltips","ext.gadget.charinsert","ext.gadget.extra-toolbar-buttons","ext.gadget.refToolbar","ext.gadget.switcher","mmv.head","mmv.bootstrap.autostart","ext.popups","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging","ext.wikimediaEvents",
@@ -1309,13 +1308,13 @@ URL: https://en.wikipedia.org/wiki/Studio_Ghibli
 </div></td></tr></tbody></table></div>
 <!-- 
 NewPP limit report
-Parsed by mw1350
-Cached time: 20211108105923
+Parsed by mw1419
+Cached time: 20211108214702
 Cache expiry: 1814400
 Reduced expiry: false
 Complications: [vary‐revision‐sha1]
-CPU time usage: 1.892 seconds
-Real time usage: 2.235 seconds
+CPU time usage: 1.755 seconds
+Real time usage: 2.040 seconds
 Preprocessor visited node count: 9182/1000000
 Post‐expand include size: 328089/2097152 bytes
 Template argument size: 11396/2097152 bytes
@@ -1323,37 +1322,25 @@ Highest expansion depth: 20/40
 Expensive parser function count: 19/500
 Unstrip recursion depth: 1/20
 Unstrip post‐expand size: 323324/5000000 bytes
-Lua time usage: 1.058/10.000 seconds
-Lua memory usage: 25033519/52428800 bytes
-Lua Profile:
-    ?                                                                220 ms       20.4%
-    Scribunto_LuaSandboxCallback::match                              180 ms       16.7%
-    recursiveClone <mwInit.lua:41>                                   140 ms       13.0%
-    Scribunto_LuaSandboxCallback::callParserFunction                 120 ms       11.1%
-    validateData <mw.lua:724>                                         60 ms        5.6%
-    Scribunto_LuaSandboxCallback::unstripNoWiki                       40 ms        3.7%
-    Scribunto_LuaSandboxCallback::getExpandedArgument                 40 ms        3.7%
-    Scribunto_LuaSandboxCallback::getEntityStatements                 40 ms        3.7%
-    <mw.lua:690>                                                      40 ms        3.7%
-    dataWrapper <mw.lua:668>                                          40 ms        3.7%
-    [others]                                                         160 ms       14.8%
+Lua time usage: 0.963/10.000 seconds
+Lua memory usage: 25033528/52428800 bytes
 Number of Wikibase entities loaded: 1/400
 -->
 <!--
 Transclusion expansion time report (%,ms,calls,template)
-100.00% 1894.787      1 -total
- 36.71%  695.576      2 Template:Reflist
- 22.17%  419.996     63 Template:Cite_web
- 22.16%  419.866      1 Template:Infobox_company
- 20.93%  396.609      1 Template:Infobox
- 12.94%  245.095     28 Template:Lang
-  6.35%  120.409      9 Template:Navbox
-  4.53%   85.745     14 Template:Cite_news
-  4.10%   77.746      7 Template:ISBN
-  3.66%   69.433      1 Template:Short_description
+100.00% 1685.691      1 -total
+ 40.00%  674.205      2 Template:Reflist
+ 24.20%  407.865     63 Template:Cite_web
+ 20.95%  353.072      1 Template:Infobox_company
+ 19.78%  333.407      1 Template:Infobox
+ 11.86%  199.862     28 Template:Lang
+  5.32%   89.634      9 Template:Navbox
+  4.87%   82.070      7 Template:ISBN
+  4.76%   80.267     14 Template:Cite_news
+  3.06%   51.506      1 Template:Studio_Ghibli
 -->
 
-<!-- Saved in parser cache with key enwiki:pcache:idhash:148415-0!canonical and timestamp 20211108105921 and revision id 1054098112. Serialized with JSON.
+<!-- Saved in parser cache with key enwiki:pcache:idhash:148415-0!canonical and timestamp 20211108214700 and revision id 1054098112. Serialized with JSON.
  -->
 </div><noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript>
 <div class="printfooter">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Studio_Ghibli&amp;oldid=1054098112">https://en.wikipedia.org/w/index.php?title=Studio_Ghibli&amp;oldid=1054098112</a>"</div></div>
@@ -1586,7 +1573,7 @@ additional terms may apply.  By using this site, you agree to the <a href="//fou
 </footer>
 
 
-<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"1.892","walltime":"2.235","ppvisitednodes":{"value":9182,"limit":1000000},"postexpandincludesize":{"value":328089,"limit":2097152},"templateargumentsize":{"value":11396,"limit":2097152},"expansiondepth":{"value":20,"limit":40},"expensivefunctioncount":{"value":19,"limit":500},"unstrip-depth":{"value":1,"limit":20},"unstrip-size":{"value":323324,"limit":5000000},"entityaccesscount":{"value":1,"limit":400},"timingprofile":["100.00% 1894.787      1 -total"," 36.71%  695.576      2 Template:Reflist"," 22.17%  419.996     63 Template:Cite_web"," 22.16%  419.866      1 Template:Infobox_company"," 20.93%  396.609      1 Template:Infobox"," 12.94%  245.095     28 Template:Lang","  6.35%  120.409      9 Template:Navbox","  4.53%   85.745     14 Template:Cite_news","  4.10%   77.746      7 Template:ISBN","  3.66%   69.433      1 Template:Short_description"]},"scribunto":{"limitreport-timeusage":{"value":"1.058","limit":"10.000"},"limitreport-memusage":{"value":25033519,"limit":52428800},"limitreport-profile":[["?","220","20.4"],["Scribunto_LuaSandboxCallback::match","180","16.7"],["recursiveClone \u003CmwInit.lua:41\u003E","140","13.0"],["Scribunto_LuaSandboxCallback::callParserFunction","120","11.1"],["validateData \u003Cmw.lua:724\u003E","60","5.6"],["Scribunto_LuaSandboxCallback::unstripNoWiki","40","3.7"],["Scribunto_LuaSandboxCallback::getExpandedArgument","40","3.7"],["Scribunto_LuaSandboxCallback::getEntityStatements","40","3.7"],["\u003Cmw.lua:690\u003E","40","3.7"],["dataWrapper \u003Cmw.lua:668\u003E","40","3.7"],["[others]","160","14.8"]]},"cachereport":{"origin":"mw1350","timestamp":"20211108105923","ttl":1814400,"transientcontent":false}}});});</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"1.755","walltime":"2.040","ppvisitednodes":{"value":9182,"limit":1000000},"postexpandincludesize":{"value":328089,"limit":2097152},"templateargumentsize":{"value":11396,"limit":2097152},"expansiondepth":{"value":20,"limit":40},"expensivefunctioncount":{"value":19,"limit":500},"unstrip-depth":{"value":1,"limit":20},"unstrip-size":{"value":323324,"limit":5000000},"entityaccesscount":{"value":1,"limit":400},"timingprofile":["100.00% 1685.691      1 -total"," 40.00%  674.205      2 Template:Reflist"," 24.20%  407.865     63 Template:Cite_web"," 20.95%  353.072      1 Template:Infobox_company"," 19.78%  333.407      1 Template:Infobox"," 11.86%  199.862     28 Template:Lang","  5.32%   89.634      9 Template:Navbox","  4.87%   82.070      7 Template:ISBN","  4.76%   80.267     14 Template:Cite_news","  3.06%   51.506      1 Template:Studio_Ghibli"]},"scribunto":{"limitreport-timeusage":{"value":"0.963","limit":"10.000"},"limitreport-memusage":{"value":25033528,"limit":52428800}},"cachereport":{"origin":"mw1419","timestamp":"20211108214702","ttl":1814400,"transientcontent":false}}});});</script>
 <script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"Studio Ghibli","url":"https:\/\/en.wikipedia.org\/wiki\/Studio_Ghibli","sameAs":"http:\/\/www.wikidata.org\/entity\/Q182950","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q182950","author":{"@type":"Organization","name":"Contributors to Wikimedia projects"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2002-11-18T01:57:29Z","dateModified":"2021-11-08T01:47:46Z","image":"https:\/\/upload.wikimedia.org\/wikipedia\/en\/c\/ca\/Studio_Ghibli_logo.svg","headline":"Japanese animation studio"}</script>
-<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":179,"wgHostname":"mw1355"});});</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":206,"wgHostname":"mw1326"});});</script>
 </body></html>

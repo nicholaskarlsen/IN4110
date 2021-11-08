@@ -32,13 +32,22 @@ def get_teams(url):
     )
     rows = soup_table.find_all("tr")
 
+    # Note that this table is formatted in an irregular way, and parsing it is a bit tricky.
+    # Thus i have hade some observations by inspecting the HTML directly
+
     for (i, row) in enumerate(rows[4:]):
         columns = row.findAll("td")
+
+        # Rows associated with the semi-finals contain at least 5 cols
+        # This excludes all "First round entries" but NOT Conference Finals and Finals! But since all
+        # teams that made it to these rounds must also have been in the semifinals, this is not an issue.
         if len(columns) >= 5:
+            # The hyperlinks pointing to the team is always in the third column
             hyperlink = columns[3].find("a")
             if hyperlink != None:
                 title = hyperlink.get("title")
                 title = " ".join(title.split()[1:-1])
+                # Avoid duplicate entries (since i may match conference finals and NBA finals as well)
                 if title not in teams:
                     teams.append(title)
                     teams_url.append("https://en.wikipedia.org" + hyperlink.get("href"))
@@ -48,7 +57,7 @@ def get_teams(url):
 
 def get_players(url):
     """Extract players that played for a specific team in the NBA playoffs
-    
+
     Args:
         url (str): URL to the wikipedia article of the season for a given team
 
@@ -76,8 +85,9 @@ def get_players(url):
     rows = soup_table.findAll("tr")
     for row in rows[1:]:
         columns = row.findAll("td")
-        player_col = columns[2]
+        player_col = columns[2]  # column containing player names
         player_hyperlink = player_col.find("a")
+        # Player name may have a trailing "(basketball)". Remove it and strip away whitespace.
         players.append(
             player_hyperlink.get("title").replace("(basketball)", "").strip()
         )
@@ -89,6 +99,9 @@ def get_players(url):
 def get_player_statistics(url, year="2020–21"):
     """Extract player statistics for NBA player.
 
+    Some of the players havent got the NBA table yet (i.e Charles Bassey, who joined the NBA recently)
+    In this case, simply return 0 under the assumption that they wont be a top-scorer yet anyway.
+
     Args:
         url (str) : URL to the wikipedia article of a player
 
@@ -97,21 +110,14 @@ def get_player_statistics(url, year="2020–21"):
         bpg (float) : Blocks per game
         rpg (float) : Rebounds per game
     """
-    # Some of the players havent got the NBA table yet (i.e Charles Bassey, who joined the NBA recently)
-    # In this case, simply return 0 under the assumption that they wont be a top-scorer yet anyway.
-    # ppg = 0.0
-    # bpg = 0.0
-    # rpg = 0.0
-
     statistics = {"PPG": 0.0, "BPG": 0.0, "RPG": 0.0}
-    statcolumn = {"PPG": None, "BPG": None, "RPG": None}
+    statcolumn = {"PPG": None, "BPG": None, "RPG": None}  # Column index containing the desired statistics
 
     html = get_html(url)
-
     soup = BeautifulSoup(html, "html.parser")
     nba_header = soup.find(id="NBA_career_statistics")
 
-    # if no headers are found, try another possible id
+    # if no header is found, try another possible id
     if nba_header == None:
         nba_header = soup.find(id="NBA")
     # if a header is still not found assume the entry isn't there and return the default statistics
@@ -119,12 +125,11 @@ def get_player_statistics(url, year="2020–21"):
         return statistics
 
     regular_season_header = nba_header.find_next(id="Regular_season")
-
+    # if no header is found, return default statistics
     if regular_season_header == None:
         return statistics
 
     nba_table = regular_season_header.find_next("table")
-
     # if no table is found, return default statistics
     if nba_table == None:
         return statistics
@@ -140,7 +145,7 @@ def get_player_statistics(url, year="2020–21"):
     for row in nba_table.findAll("tr")[1:]:
         cols = row.findAll("td")
 
-        # Check if the 0th column containing the date matches the desired year
+        # Check if the 0th column containing the date matches the desired season 
         datelink = cols[0].find("a")
         if datelink != None:
             season = datelink.get("title")
@@ -192,7 +197,7 @@ def get_best_players(url, metric="PPG"):
 def plot_best_players(data, metric):
     """Creates a barchart with the metrics of the 3 best players of each team based on a dict produced
     by the function "get_best_players"
-    
+
     Args:
         data (Dict): Dict produced by "get_best_players"
         metric (str): The metric extracted in the "get_best_players" function i.e: "PPG", "BPG" or "RPG"

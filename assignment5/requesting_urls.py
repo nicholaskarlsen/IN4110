@@ -21,7 +21,7 @@ def get_html(url, params=None, output=None):
     # if output is specified, the response txt and url get printed to a txt file with the name in 'output'
     if output != None:
         outfile = open(output, "w")
-        outfile.write("URL: %s\n" % response.url)
+        #outfile.write("URL: %s\n" % response.url)
         outfile.write(response.text)
 
     return response.text

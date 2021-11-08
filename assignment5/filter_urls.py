@@ -49,6 +49,7 @@ def find_urls(html_str, base_url=None, output=None):
 
         # Remove any urls containing a colon AFTER https:// 
         urls[i] = re.sub(pattern="^https://.*:.*", repl="DELETE", string=urls[i])
+        
         # If URL contains a get query, delete it.
         # urls[i] = re.sub(pattern=".*\?.*", repl="DELETE", string=urls[i])
 

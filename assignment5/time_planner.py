@@ -40,7 +40,7 @@ def extract_events(url):
     # Number of columns in a regular row
     num_cols = len(headers)
 
-    for (i, row) in enumerate(rows[1:]):
+    for (i, row) in enumerate(rows[1:]): # Skip the first row (containing the headers)
         columns = row.findAll("td")
 
         # Regular rows
@@ -61,7 +61,7 @@ def extract_events(url):
             # Venue is repeated from the previous row
             table["Venue"].append(table["Venue"][-1])
 
-            # The type/discipline is the "num_cols-len(columns)" column this time for these type of rows.
+            # The type/discipline is the "num_cols-len(columns)" column for these type of rows.
             type_content = (
                 columns[table_col["Type"] - (num_cols - len(columns))]
                 .text.strip()
@@ -70,7 +70,7 @@ def extract_events(url):
             type_content = disciplines[type_content]
             table["Type"].append(type_content)
 
-        # If there is only a single column, skip to the next row
+        # If there is only a single column, skip to the next row (as is done by not matching the above ifs)
         # i.e the rows containing "2022 Winter Olympics" and "World Cup Season Final "
     return table
 
@@ -88,10 +88,11 @@ def create_betting_slip(events, save_as):
     with open(f"./datetime_filter/{save_as}.md", "w") as out_file:
         out_file.write(f"# BETTING SLIP ({ save_as })\n\nName:\n\n")
 
-        out_file.write(" --- | --- | --- | --- \n")
+        out_file.write("| Date | Venue | Discipline | Who Wins? |\n")
+        out_file.write("|---|---|---|---|\n")
         for e in zip(events["Date"], events["Venue"], events["Type"]):
             date, venue, type = e
-            out_file.write(f"{date} | {venue} | {type} | \n")
+            out_file.write(f"| {date} | {venue} | {type} | |\n")
 
 
 if __name__ == "__main__":
