@@ -1,4 +1,4 @@
-# BETTING SLIP (betting_slip_empty.md)
+# BETTING SLIP (betting_slip_empty)
 
 Name:
 

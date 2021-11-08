@@ -111,7 +111,11 @@ def get_player_statistics(url, year="2020–21"):
         rpg (float) : Rebounds per game
     """
     statistics = {"PPG": 0.0, "BPG": 0.0, "RPG": 0.0}
-    statcolumn = {"PPG": None, "BPG": None, "RPG": None}  # Column index containing the desired statistics
+    statcolumn = {
+        "PPG": None,
+        "BPG": None,
+        "RPG": None,
+    }  # Column index containing the desired statistics
 
     html = get_html(url)
     soup = BeautifulSoup(html, "html.parser")
@@ -145,7 +149,7 @@ def get_player_statistics(url, year="2020–21"):
     for row in nba_table.findAll("tr")[1:]:
         cols = row.findAll("td")
 
-        # Check if the 0th column containing the date matches the desired season 
+        # Check if the 0th column containing the date matches the desired season
         datelink = cols[0].find("a")
         if datelink != None:
             season = datelink.get("title")

@@ -47,9 +47,9 @@ def find_urls(html_str, base_url=None, output=None):
                     pattern="^(/(?!/))", repl=base_url + "/", string=urls[i]
                 )
 
-        # Remove any urls containing a colon AFTER https:// 
+        # Remove any urls containing a colon AFTER https://
         urls[i] = re.sub(pattern="^https://.*:.*", repl="DELETE", string=urls[i])
-        
+
         # If URL contains a get query, delete it.
         # urls[i] = re.sub(pattern=".*\?.*", repl="DELETE", string=urls[i])
 
@@ -65,7 +65,7 @@ def find_urls(html_str, base_url=None, output=None):
 
 
 def find_articles(url, output=None):
-    """ Parses a wikipedia site for links to other wikipedia articles and returns a list containing all the 
+    """Parses a wikipedia site for links to other wikipedia articles and returns a list containing all the
     urls. You can also optionally write the list to a text file.
 
     Args:
@@ -73,7 +73,7 @@ def find_articles(url, output=None):
         output (str): Path to (optional) outfile
 
     Returns:
-        articles (list<str>): 
+        articles (list<str>):
     """
     html_str = get_html(url)
     base_url = re.findall(pattern="(.*wikipedia.org)(?:/.*)", string=url)[0]

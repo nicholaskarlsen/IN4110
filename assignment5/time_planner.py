@@ -40,7 +40,7 @@ def extract_events(url):
     # Number of columns in a regular row
     num_cols = len(headers)
 
-    for (i, row) in enumerate(rows[1:]): # Skip the first row (containing the headers)
+    for (i, row) in enumerate(rows[1:]):  # Skip the first row (containing the headers)
         columns = row.findAll("td")
 
         # Regular rows
@@ -98,4 +98,4 @@ def create_betting_slip(events, save_as):
 if __name__ == "__main__":
     url = "https://en.wikipedia.org/wiki/2021%E2%80%9322_FIS_Alpine_Ski_World_Cup"
     events = extract_events(url)
-    create_betting_slip(events, "betting_slip_empty.md")
+    create_betting_slip(events, "betting_slip_empty")

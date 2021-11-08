@@ -2,13 +2,13 @@ import requests as req
 
 
 def get_html(url, params=None, output=None):
-    """ Fetch the HTML code from a given URL using requests. May also optionally write the HTML to file.
+    """Fetch the HTML code from a given URL using requests. May also optionally write the HTML to file.
 
     Args:
         url (str): URL of the website from which you want the HTML
         params (dict): Dict containing any get requests
         output (str): Filename of the optional outfile
-    
+
     Returns:
         A string containing the HTML code from the requested URL
     """
@@ -21,7 +21,7 @@ def get_html(url, params=None, output=None):
     # if output is specified, the response txt and url get printed to a txt file with the name in 'output'
     if output != None:
         outfile = open(output, "w")
-        #outfile.write("URL: %s\n" % response.url)
+        # outfile.write("URL: %s\n" % response.url)
         outfile.write(response.text)
 
     return response.text
