@@ -2,7 +2,16 @@ import requests as req
 
 
 def get_html(url, params=None, output=None):
-    """Docstring"""
+    """ Fetch the HTML code from a given URL using requests. May also optionally write the HTML to file.
+
+    Args:
+        url (str): URL of the website from which you want the HTML
+        params (dict): Dict containing any get requests
+        output (str): Filename of the optional outfile
+    
+    Returns:
+        A string containing the HTML code from the requested URL
+    """
     # passing the optional parameters argument to the get function
     if params != None:
         url += "/get"
