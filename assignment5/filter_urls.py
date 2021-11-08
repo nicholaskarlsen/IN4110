@@ -2,7 +2,7 @@ from requesting_urls import get_html
 import re
 
 
-def find_urls(html_str, base_url=None):
+def find_urls(html_str, base_url=None, output=None):
     """Parses a string containing HTML and returns any urls that are enclosed in <a> tag.
     We then further filter and modify the resultant matches to fit the following criteria:
 
@@ -47,23 +47,44 @@ def find_urls(html_str, base_url=None):
                     pattern="^(/(?!/))", repl=base_url + "/", string=urls[i]
                 )
 
-        # Remove any urls with a colon https://en.wikipedia.org/wiki/Avengers:_Endgame
-        # urls[i] = re.sub(pattern="^https://.*:.*", repl="DELETE", string=urls[i])
+        # Remove any urls containing a colon AFTER https:// 
+        urls[i] = re.sub(pattern="^https://.*:.*", repl="DELETE", string=urls[i])
         # If URL contains a get query, delete it.
         # urls[i] = re.sub(pattern=".*\?.*", repl="DELETE", string=urls[i])
 
     # Remove all entries that are marked for deletion
     urls = [url for url in urls if url != "DELETE"]
 
+    if output:
+        outfile = open(output, "w")
+        outfile.write("\n".join(urls))
+        outfile.close
+
     return urls
 
 
-def find_articles(url):
+def find_articles(url, output=None):
+    """ Parses a wikipedia site for links to other wikipedia articles and returns a list containing all the 
+    urls. You can also optionally write the list to a text file.
+
+    Args:
+        url (str): Link to wikipedia page you want to parse
+        output (str): Path to (optional) outfile
+
+    Returns:
+        articles (list<str>): 
+    """
     html_str = get_html(url)
     base_url = re.findall(pattern="(.*wikipedia.org)(?:/.*)", string=url)[0]
     urls = find_urls(html_str=html_str, base_url=base_url)
     urls = "\n".join(urls)
     articles = re.findall(pattern="https://[a-z]*.wikipedia.org/wiki/.*", string=urls)
+
+    if output:
+        outfile = open(output, "w")
+        outfile.write("\n".join(articles))
+        outfile.close
+
     return articles
 
 
@@ -74,5 +95,12 @@ if __name__ == "__main__":
         "https://en.wikipedia.org/wiki/2019%E2%80%9320_FIS_Alpine_Ski_World_Cup",
     ]
 
-    for u in find_articles(urls[1]):
-        print("-",u)
+    filenames = ["nobel.txt", "bundesliga.txt", "alpine.txt"]
+
+    for (fn, url) in zip(filenames, urls):
+        find_urls(
+            html_str=get_html(url),
+            base_url="https://en.wikipedia.org",
+            output="filter_urls/urls_" + fn,
+        )
+        find_articles(url, output="filter_urls/articles_" + fn)

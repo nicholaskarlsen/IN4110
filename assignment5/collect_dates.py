@@ -178,16 +178,17 @@ def find_dates(html_string, output=None):
     YMD: 2020 Oct(ober) 13
     ISO: 2020-10-13
 
-    # Finish Docstrng Here
-
     NOTE: Explanation of regex pattern used to catch days: (?:[1-9]|[1-2]?[0-9]|3?[01])
     - [1-9] : Numbers from 1-9, self explanatory
     - [1-2]?[0-9] : numbers 1 or 2 followed by 0-9 -> 10-29
     - 3?[01] : the number 3 followd by 0 or 1 -> 30-31
     => only complete numbers in the range 1-31 are caught.
 
-
     patterns used in ISO format follows from the same logic.
+
+    Args:
+        html_string (str): HTML to parse
+        output (str): Filename of outfile that stores the results. If None, no file is written.
 
     Returns:
         results (list): A list with all the dates found in Y/M/D format

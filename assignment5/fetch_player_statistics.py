@@ -7,13 +7,14 @@ from requesting_urls import get_html
 
 
 def get_teams(url):
-    """ Extract team names and urls from the NBA playoff bracket selection table
+    """Extract team names and urls from the NBA playoff bracket selection table
+
     Args:
         url (str): URL of the wiki page containing the table
+
     Returns:
         teams (list<String>): A list of team names that made it to the conference semifinals
         teams_url (list<String>): A list of the absolute wikipedia urls corresponding to the team names
-
     """
     teams = []
     teams_url = []
@@ -46,9 +47,11 @@ def get_teams(url):
 
 
 def get_players(url):
-    """ Extract players that played for a specific team in the NBA playoffs
+    """Extract players that played for a specific team in the NBA playoffs
+    
     Args:
         url (str): URL to the wikipedia article of the season for a given team
+
     Returns:
         players (list<str>): A list of players names corresponding to the team whos URL was passed.
         players_url (list<str>): A list of wikipedia urls corresponding to player_names of the team
@@ -150,6 +153,21 @@ def get_player_statistics(url, year="2020–21"):
 
 
 def get_best_players(url, metric="PPG"):
+    """Fetches the performance metrics of the 3 best performing players according to the given metric
+
+    TODO: construct a dict for each metric at the same time, significantly reducing the runtime of
+        the program when making plots.
+
+    Args:
+        url (str): URL of the wikipedia page for the playoffs
+            i.e "https://en.wikipedia.org/wiki/2021_NBA_playoffs"
+        metric (str): Abbreviation of the desired metric to fetch
+            possible metrics: PPG, BPG, RPG
+
+    Returns:
+        data (dict): Dictionary containing names of the top 3 performing players according to the metric
+            as well as their score.
+    """
     teams, teams_url = get_teams(url)
     data = {}
 
@@ -172,10 +190,12 @@ def get_best_players(url, metric="PPG"):
 
 
 def plot_best_players(data, metric):
-    """ 
+    """Creates a barchart with the metrics of the 3 best players of each team based on a dict produced
+    by the function "get_best_players"
+    
     Args:
-        data (Dict) :
-        metric (str) :
+        data (Dict): Dict produced by "get_best_players"
+        metric (str): The metric extracted in the "get_best_players" function i.e: "PPG", "BPG" or "RPG"
     """
     # Dictionary to translate basketball jargon to plain english
     jargon = {
