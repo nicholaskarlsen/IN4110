@@ -5,3 +5,4 @@ from webvisualization_plots import *
 
 df = get_data_from_csv(filename="data/owid-covid-data.csv")
 print(df)
+

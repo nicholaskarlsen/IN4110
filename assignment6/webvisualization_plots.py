@@ -76,6 +76,12 @@ def get_data_from_csv(filename, columns=[], countries=None, start=None, end=None
     return cases_df
 
 
+def get_countries(filename="data/owid-covid-data.csv"):
+    df = pd.read_csv(filename, sep=",", usecols=["continent", "location"])
+    return df.dropna(subset=["continent"]).location.unique()
+
+
+
 def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countries=None, start=None, end=None):
     """Plots data of reported covid-19 cases per million using altair.
     Calls the function get_data_from_csv to receive a dataframe used for plotting.
@@ -97,7 +103,7 @@ def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countrie
     cases_df = get_data_from_csv(filename, countries, start, end)
 
     # Note: when you want to plot all countries simultaneously while enabling checkboxes, you might need to disable altairs max row limit by commenting in the following line
-    # alt.data_transformers.disable_max_rows()
+    alt.data_transformers.disable_max_rows()
 
     chart = (
         alt.Chart(cases_df, title="Reported Cases of COVID-19")
