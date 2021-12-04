@@ -47,6 +47,8 @@ def plot_reported_cases_per_million_json(countries : Optional[str] = None):
     if countries:
         countries = countries.split(",")
 
+    print("countries:", countries)
+
     figure = plot_reported_cases_per_million(countries=countries)
     return figure.to_dict()
 

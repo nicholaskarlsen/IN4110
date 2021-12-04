@@ -39,7 +39,7 @@ def get_data_from_csv(filename, columns=[], countries=None, start=None, end=None
         date_parser=lambda col: pd.to_datetime(col, format="%Y-%m-%d"),
     )
 
-    if countries is None:
+    if countries is None or countries == "":
         # no countries specified, pick 6 countries with the highest case count at end_date
         if end is None:
             # no end date specified, pick latest date available
@@ -100,7 +100,7 @@ def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countrie
     # choose data column to be extracted
     #columns = ["new_cases"]
     # create dataframe
-    cases_df = get_data_from_csv(filename, countries, start, end)
+    cases_df = get_data_from_csv(filename=filename, countries=countries, start=start, end=end)
 
     # Note: when you want to plot all countries simultaneously while enabling checkboxes, you might need to disable altairs max row limit by commenting in the following line
     alt.data_transformers.disable_max_rows()

@@ -14,10 +14,14 @@
 
 <body>
   <h1>Daily reported cases of COVID-19</h1>
+  <div>
+    Select which countries you want to see using the checkboxes below and hit refresh to update the plot. <br>
+    If no countries are selected, the 6 countries with the most new cases in the last day will be shown <br><br>
+  </div>
   <div id="vis"></div>
   <form action="javascript:refreshPlot()" id="country-form">
     {% for country in countries %}
-    <input type="checkbox" name="{{ country }}" value="{{ country }}" checked />
+    <input type="checkbox" name="{{ country }}" value="{{ country }}" unchecked />
     <label for="{{ country }}">{{ country }}</label>
     <br />
     {% endfor %}
