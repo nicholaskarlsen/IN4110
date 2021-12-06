@@ -1,5 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+"""
+Module used to generate interactive plots displaying statistics pertaining to the COVID-19 pandemic
+"""
 
 from datetime import datetime
 
