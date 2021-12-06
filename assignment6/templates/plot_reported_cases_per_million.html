@@ -61,11 +61,12 @@
           selected.push(checkbox.value);
         }
       }
-      var countryParam = "?countries=" + encodeURIComponent(selected.join(","));
+      var countryParam = "countries=" + encodeURIComponent(selected.join(","));
       //var yaxisParam = "?yaxis=" encodeURIComponent()
+      yaxisParam = "yaxis=" + document.getElementById("yaxis").value
 
       // update the altair plot
-      var response = await fetch("plot_reported_cases_per_million.json" + countryParam);
+      var response = await fetch("plot_reported_cases_per_million.json" + "?" + countryParam + "&" + yaxisParam);
       var spec = await response.json();
 
       var embedOpt = { mode: "vega-lite" };

@@ -7,8 +7,10 @@ import altair as alt
 import pandas as pd
 import numpy as np
 
+# Suppress warning to avoid clutter in terminal
+pd.options.mode.chained_assignment = None  # default='warn'
 
-def get_data_from_csv(filename, columns=[], countries=None, start=None, end=None):
+def get_data_from_csv(filename, countries=None, start=None, end=None, extra_columns=["new_deaths", "new_deaths_per_million", "reproduction_rate", "people_fully_vaccinated_per_hundred"]):
     """Creates pandas dataframe from .csv file.
 
     Data will be filtered based on data column name, list of countries to be plotted and
@@ -35,11 +37,10 @@ def get_data_from_csv(filename, columns=[], countries=None, start=None, end=None
     df = pd.read_csv(
         filename,
         sep=",",
-        usecols=["date", "continent", "location", "new_cases", "new_cases_per_million"],
+        usecols=["date", "continent", "location", "new_cases", "new_cases_per_million"] + extra_columns,
         parse_dates=["date"],
         date_parser=lambda col: pd.to_datetime(col, format="%Y-%m-%d"),
     )
-
     if countries is None or countries == "":
         # no countries specified, pick 6 countries with the highest case count at end_date
         if end is None:
@@ -138,7 +139,7 @@ def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countrie
             y=alt.Y(
                 yaxis,
                 axis=alt.Axis(
-                    title="Number of Reported Cases per Million",
+                    title=yaxis,
                     titleFontSize=14,
                     tickCount=10,
                 ),

@@ -43,14 +43,13 @@ def plot_reported_cases_per_million_html(request: Request):
 
 
 @app.get("/plot_reported_cases_per_million.json")
-def plot_reported_cases_per_million_json(countries : Optional[str] = None, start : Optional[str] = None, end : Optional[str] = None):
+def plot_reported_cases_per_million_json(countries : Optional[str] = None, start : Optional[str] = None, end : Optional[str] = None, yaxis : Optional[str] = None):
     """Return json chart from altair"""
+
     if countries:
         countries = countries.split(",")
 
-    print("countries:", countries)
-
-    figure = plot_reported_cases_per_million(countries=countries)
+    figure = plot_reported_cases_per_million(countries=countries, yaxis=yaxis)
     return figure.to_dict()
 
 
