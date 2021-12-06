@@ -18,14 +18,14 @@ templates = Jinja2Templates(directory="templates")
 # e.g. your auto-generated Sphinx documentation with html files
 app.mount(
     # the URL where these files will be available
-    "/static",
+    "/sphinx_docs",
     StaticFiles(
         # the directory the files are in
-        directory="static/",
+        directory="docs/_build/html/",
         html=True,
     ),
     # an internal name for FastAPI
-    name="static",
+    name="sphinx_docs",
 )
 
 

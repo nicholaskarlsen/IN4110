@@ -22,6 +22,8 @@ def get_data_from_csv(
         "new_deaths_per_million",
         "reproduction_rate",
         "people_fully_vaccinated_per_hundred",
+        "total_cases",
+        "total_cases_per_million",
     ],
 ):
     """Creates pandas dataframe from .csv file.
@@ -33,7 +35,7 @@ def get_data_from_csv(
     are included, as these are required to satisfy the basic functionality of the website. However,
     you may freely add additional columns, as is done by default, that may also be displayed on the webpage.
 
-    This function also computes and  adds an additional column containing the 7-day running average to 
+    This function also computes and  adds an additional column containing the 7-day running average to
     the dataframe.
 
     Args:
@@ -55,7 +57,7 @@ def get_data_from_csv(
             Example format: "2021-10-10"
 
         extra_columns (list(string)): any additional data columns that you wish to include in the dataframe
-        
+
     Returns:
         cases_df (dataframe): returns dataframe for the timeframe, columns, and countries chosen
     """
@@ -122,8 +124,8 @@ def get_data_from_csv(
 
 
 def get_countries(filename="data/owid-covid-data.csv"):
-    """ Generate a list of all the countries present in the .csv file
-    
+    """Generate a list of all the countries present in the .csv file
+
     Args:
         filename (str): Filename of the CSV file
 
@@ -138,7 +140,7 @@ def get_countries(filename="data/owid-covid-data.csv"):
 def get_yaxis_cols(
     filename="data/owid-covid-data.csv", filter_out=["continent", "location", "date"]
 ):
-    """ Get a list of the columns containing data in the dataframe. i.e excluding things like 
+    """Get a list of the columns containing data in the dataframe. i.e excluding things like
     "continent", "location", "date". What columns are excluded may be specified by setting the filter_out
     variable. The returned list is used to populate the drop-down menu on the website.
 
@@ -175,7 +177,7 @@ def plot_reported_cases_per_million(
         end (string, optional): a string of the en date of the table, none of
             the dates will be newer then this one
 
-        yaxis (String): Pick which dataset to display. i.e which column of the dataframe will be plotted on 
+        yaxis (String): Pick which dataset to display. i.e which column of the dataframe will be plotted on
             the y-axis. This parameter is intended to be used to allow the user to select a dataset from
             the drop-down menu on the webpage.
 
@@ -192,7 +194,7 @@ def plot_reported_cases_per_million(
 
     chart = (
         alt.Chart(cases_df, title="Reported Cases of COVID-19")
-        .mark_line(size=2)
+        .mark_line(size=2, point=True)
         .encode(
             x=alt.X(
                 "date:T",
@@ -201,9 +203,15 @@ def plot_reported_cases_per_million(
                 ),
             ),
             y=alt.Y(
-                yaxis, axis=alt.Axis(title=yaxis, titleFontSize=14, tickCount=10,),
+                yaxis,
+                axis=alt.Axis(
+                    title=yaxis,
+                    titleFontSize=14,
+                    tickCount=10,
+                ),
             ),
             color=alt.Color("location:N", legend=alt.Legend(title="Country")),
+            tooltip=["location", yaxis],
         )
     )
 
