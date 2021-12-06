@@ -11,3 +11,6 @@ uvicorn webapp:app
 the app may then be viewed in a browser at the address specified by uvicorn in the terminal, `http://127.0.0.1:8000`by default.
 
 # Example Plot
+
+# Implementations, and where to find them
+## 6.1: 

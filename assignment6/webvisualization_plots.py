@@ -5,6 +5,7 @@ from datetime import datetime
 
 import altair as alt
 import pandas as pd
+import numpy as np
 
 
 def get_data_from_csv(filename, columns=[], countries=None, start=None, end=None):
@@ -46,7 +47,7 @@ def get_data_from_csv(filename, columns=[], countries=None, start=None, end=None
             end_date = df.date.iloc[-1]
         else:
             end_date = datetime.strptime(end, "%Y-%m-%d")
-        df_latest_dates = df[df.date.isin([end_date])]
+        #df_latest_dates = df[df.date.isin([end_date])]
 
         # identify the 6 countries with the highest case count on the last included day by:
         # -> Filter down to rows corresponding to end date 
@@ -73,6 +74,12 @@ def get_data_from_csv(filename, columns=[], countries=None, start=None, end=None
         # exclude records later than end date
         cases_df = cases_df[end >= cases_df.date]
 
+    # Compute the rolling average for each country
+    for c in cases_df.location.unique(): 
+        cases_df.loc[cases_df.location==c, "new_cases_per_million (7 day rolling average)"] = (
+            cases_df.loc[cases_df.location==c,"new_cases_per_million"].rolling(7).mean()
+        )
+
     return cases_df
 
 
@@ -80,20 +87,33 @@ def get_countries(filename="data/owid-covid-data.csv"):
     df = pd.read_csv(filename, sep=",", usecols=["continent", "location"])
     return df.dropna(subset=["continent"]).location.unique()
 
+def get_yaxis_cols(filename="data/owid-covid-data.csv", filter_out=["continent", "location", "date"]):
+    """ Get a list of the available datasets in the dataframe.
+    """
+    cols = get_data_from_csv(filename=filename).columns
+    cols = cols[np.isin(cols, filter_out, invert=True)]
+    return cols
 
 
-def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countries=None, start=None, end=None):
+def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countries=None, start=None, end=None, yaxis="new_cases_per_million"):
     """Plots data of reported covid-19 cases per million using altair.
     Calls the function get_data_from_csv to receive a dataframe used for plotting.
 
     Args:
         countries ((list(string), optional): List of countries you want to filter.
-        If none is passed, dataframe will be filtered for the 6 countries with the highest
-        number of cases per million at the last current date available in the timeframe chosen.
+            If none is passed, dataframe will be filtered for the 6 countries with the highest
+            number of cases per million at the last current date available in the timeframe chosen.
+
         start (string, optional): a string of the start date of the table, none
-        of the dates will be older then this on
+            of the dates will be older then this on
+
         end (string, optional): a string of the en date of the table, none of
-        the dates will be newer then this one
+            the dates will be newer then this one
+
+        yaxis (String): Pick which dataset to display. i.e which column of the dataframe will be plotted on 
+            the y-axis. This parameter is intended to be used to allow the user to select a dataset from
+            the drop-down menu on the webpage.
+
     Returns:
         altair Chart of number of reported covid-19 cases over time.
     """
@@ -107,7 +127,7 @@ def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countrie
 
     chart = (
         alt.Chart(cases_df, title="Reported Cases of COVID-19")
-        .mark_circle(size=20)
+        .mark_line(size=2)
         .encode(
             x=alt.X(
                 "date:T",
@@ -116,7 +136,7 @@ def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countrie
                 ),
             ),
             y=alt.Y(
-                "new_cases_per_million",
+                yaxis,
                 axis=alt.Axis(
                     title="Number of Reported Cases per Million",
                     titleFontSize=14,
@@ -125,13 +145,9 @@ def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countrie
             ),
             color=alt.Color("location:N", legend=alt.Legend(title="Country")),
         )
-        .properties(
-            height = 400,
-            width = 600 
-        )
-        .interactive()
     )
-    return chart
+
+    return (chart).properties(height = 400,width = 600).interactive()
 
 
 def main():
@@ -146,4 +162,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    #main()
+    get_yaxis_names()
