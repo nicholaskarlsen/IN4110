@@ -32,7 +32,7 @@ The 7-day rolling window is computed within ```get_data_from_csv()``` and added 
 ### 6.5
 Sphinx documentation for `webvisualization_plots.py` may be accessed by clicking the link at the top of the page. 
 The docs page is built by running
-````
+```
 make html
 ```
 in `/docs` and may be opened outside of the webapp by `open docs/_build/html/index.html`
