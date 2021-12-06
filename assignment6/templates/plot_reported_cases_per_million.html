@@ -14,23 +14,19 @@
 
 <body>
   <div class="topnav"></div>
-    <a class="active" href="/">Home </a>
-    <a href="/docs">FastAPI Docs </a>
-    <a href="/help">Help </a>
+  <a class="active" href="/">Home </a>
+  <a href="/docs">FastAPI Docs </a>
+  <a href="/help">Help </a>
   <div>
-  <h1>Daily reported cases of COVID-19</h1>
-
-  <label for="yaxis">Choose dataset:</label>
-  <select onchange="javascript:refreshPlot()", name="yaxis" id="yaxis">
-    {% for name in yaxis_names %}
-    <option for="{{ name }}">{{ name }}</option>
-    {% endfor %}
-  </select> 
-  <br> 
-  <div id="vis"></div>
-  <br> 
-    Select which countries you want to see using the checkboxes below and hit refresh to update the plot. <br>
-    If no countries are selected, the 6 countries with the most new cases in the last day will be shown.
+    <h1>COVID-19 Statistics</h1>
+    <label for="yaxis">Choose dataset:</label>
+    <select onchange="javascript:refreshPlot()" , name="yaxis" id="yaxis">
+      {% for name in yaxis_names %}
+      <option for="{{ name }}">{{ name }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <div id="vis"></div>
 
     <h2>Time Selection</h2>
     <div class="slidecontainer">
@@ -40,13 +36,14 @@
       <input type="range" min="1" max="100" value="50" class="slider" id="end_slider">
     </div>
 
-  <h2>Country Selection</h2>
-  </div><form action="javascript:refreshPlot()" id="country-form">
+    <h2>Country Selection</h2>
+  </div>
+  <form action="javascript:refreshPlot()" id="country-form">
     <button type="submit">Update Countries</button><br>
     {% for country in countries %}
     <input type="checkbox" name="{{ country }}" value="{{ country }}" unchecked />
     <label for="{{ country }}">{{ country }}</label>
-    <br/>
+    <br />
     {% endfor %}
   </form>
 
@@ -61,12 +58,16 @@
           selected.push(checkbox.value);
         }
       }
-      var countryParam = "countries=" + encodeURIComponent(selected.join(","));
-      //var yaxisParam = "?yaxis=" encodeURIComponent()
-      yaxisParam = "yaxis=" + document.getElementById("yaxis").value
 
+      // Generate list of countries which' checkbox is checked.
+      var countryParam = "countries=" + encodeURIComponent(selected.join(","));
+      // Check which dataset is selected in the drop-down menu
+      var yaxisParam = "yaxis=" + document.getElementById("yaxis").value
       // update the altair plot
-      var response = await fetch("plot_reported_cases_per_million.json" + "?" + countryParam + "&" + yaxisParam);
+      var response = await fetch(
+          "plot_reported_cases_per_million.json" 
+          + "?" + countryParam 
+          + "&" + yaxisParam);
       var spec = await response.json();
 
       var embedOpt = { mode: "vega-lite" };

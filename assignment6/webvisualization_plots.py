@@ -10,25 +10,50 @@ import numpy as np
 # Suppress warning to avoid clutter in terminal
 pd.options.mode.chained_assignment = None  # default='warn'
 
-def get_data_from_csv(filename, countries=None, start=None, end=None, extra_columns=["new_deaths", "new_deaths_per_million", "reproduction_rate", "people_fully_vaccinated_per_hundred"]):
+
+def get_data_from_csv(
+    filename,
+    countries=None,
+    start=None,
+    end=None,
+    extra_columns=[
+        "new_deaths",
+        "new_deaths_per_million",
+        "reproduction_rate",
+        "people_fully_vaccinated_per_hundred",
+    ],
+):
     """Creates pandas dataframe from .csv file.
 
     Data will be filtered based on data column name, list of countries to be plotted and
     time frame chosen.
 
+    As a bare minimum, the columns: "date", "continent", "location", "new_cases", "new_cases_per_million"
+    are included, as these are required to satisfy the basic functionality of the website. However,
+    you may freely add additional columns, as is done by default, that may also be displayed on the webpage.
+
+    This function also computes and  adds an additional column containing the 7-day running average to 
+    the dataframe.
+
     Args:
         filename (str): Filename of the CSV file
+
         columns (list(string), optional): a list of additional data columns you want to include
+
         countries ((list(string), optional): List of countries you want to include.
         If none is passed, dataframe should be filtered for the 6 countries with the highest
         number of cases per million at the last current date available in the timeframe chosen.
+
         start (string, optional): The first date to include in the returned dataframe.
             If specified, records earlier than this will be excluded.
             Default: include earliest date
             Example format: "2021-10-10"
+
         end (string, optional): The latest date to include in the returned data frame.
             If specified, records later than this will be excluded.
             Example format: "2021-10-10"
+
+        extra_columns (list(string)): any additional data columns that you wish to include in the dataframe
         
     Returns:
         cases_df (dataframe): returns dataframe for the timeframe, columns, and countries chosen
@@ -37,7 +62,8 @@ def get_data_from_csv(filename, countries=None, start=None, end=None, extra_colu
     df = pd.read_csv(
         filename,
         sep=",",
-        usecols=["date", "continent", "location", "new_cases", "new_cases_per_million"] + extra_columns,
+        usecols=["date", "continent", "location", "new_cases", "new_cases_per_million"]
+        + extra_columns,
         parse_dates=["date"],
         date_parser=lambda col: pd.to_datetime(col, format="%Y-%m-%d"),
     )
@@ -48,15 +74,21 @@ def get_data_from_csv(filename, countries=None, start=None, end=None, extra_colu
             end_date = df.date.iloc[-1]
         else:
             end_date = datetime.strptime(end, "%Y-%m-%d")
-        #df_latest_dates = df[df.date.isin([end_date])]
+        # df_latest_dates = df[df.date.isin([end_date])]
 
         # identify the 6 countries with the highest case count on the last included day by:
-        # -> Filter down to rows corresponding to end date 
-        # -> sort by new cases in descending order 
+        # -> Filter down to rows corresponding to end date
+        # -> sort by new cases in descending order
         # -> drop rows with NaN in the continent columns (corresponding to i.e World, Europe etc.)
         # -> keep only the 6 first rows
         # -> convert the location column to a numpy array of strings
-        countries = df[df.date == end_date].sort_values(by="new_cases", ascending=False).dropna(subset=["continent"]).head(6).location.to_numpy()
+        countries = (
+            df[df.date == end_date]
+            .sort_values(by="new_cases", ascending=False)
+            .dropna(subset=["continent"])
+            .head(6)
+            .location.to_numpy()
+        )
 
     # now filter to include only the selected countries
     cases_df = df.loc[df.location.isin(countries)]
@@ -65,7 +97,7 @@ def get_data_from_csv(filename, countries=None, start=None, end=None, extra_colu
     if start is not None:
         start_date = datetime.strptime(start, r"%Y-%m-%d")
         # exclude records earlier than start_date
-        cases_df = cases_df[start <= cases_df.date] 
+        cases_df = cases_df[start <= cases_df.date]
 
     if end is not None:
         end_date = datetime.strptime(end, r"%Y-%m-%d")
@@ -76,27 +108,58 @@ def get_data_from_csv(filename, countries=None, start=None, end=None, extra_colu
         cases_df = cases_df[end >= cases_df.date]
 
     # Compute the rolling average for each country
-    for c in cases_df.location.unique(): 
-        cases_df.loc[cases_df.location==c, "new_cases_per_million (7 day rolling average)"] = (
-            cases_df.loc[cases_df.location==c,"new_cases_per_million"].rolling(7).mean()
+    for c in cases_df.location.unique():
+        cases_df.loc[
+            cases_df.location == c, "new_cases_per_million (7 day rolling average)"
+        ] = (
+            cases_df.loc[cases_df.location == c, "new_cases_per_million"]
+            .rolling(7)
+            .mean()
         )
 
     return cases_df
 
 
 def get_countries(filename="data/owid-covid-data.csv"):
+    """ Generate a list of all the countries present in the .csv file
+    
+    Args:
+        filename (str): Filename of the CSV file
+
+    Returns:
+        (array) List of all the countries present in the dataset
+    """
     df = pd.read_csv(filename, sep=",", usecols=["continent", "location"])
+    # Filter out rows where "continent" is undefined, as these correspond to bulk statistics i.e "World" etc.
     return df.dropna(subset=["continent"]).location.unique()
 
-def get_yaxis_cols(filename="data/owid-covid-data.csv", filter_out=["continent", "location", "date"]):
-    """ Get a list of the available datasets in the dataframe.
+
+def get_yaxis_cols(
+    filename="data/owid-covid-data.csv", filter_out=["continent", "location", "date"]
+):
+    """ Get a list of the columns containing data in the dataframe. i.e excluding things like 
+    "continent", "location", "date". What columns are excluded may be specified by setting the filter_out
+    variable. The returned list is used to populate the drop-down menu on the website.
+
+    Args:
+        filename (str): Filename of the CSV file
+        filter_out (list(str)): Which columns to exclude in the returned list
+
+    Returns:
+        (Array) List of all data columns in the dataset
     """
     cols = get_data_from_csv(filename=filename).columns
     cols = cols[np.isin(cols, filter_out, invert=True)]
     return cols
 
 
-def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countries=None, start=None, end=None, yaxis="new_cases_per_million"):
+def plot_reported_cases_per_million(
+    filename="data/owid-covid-data.csv",
+    countries=None,
+    start=None,
+    end=None,
+    yaxis="new_cases_per_million",
+):
     """Plots data of reported covid-19 cases per million using altair.
     Calls the function get_data_from_csv to receive a dataframe used for plotting.
 
@@ -118,10 +181,10 @@ def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countrie
     Returns:
         altair Chart of number of reported covid-19 cases over time.
     """
-    # choose data column to be extracted
-    #columns = ["new_cases"]
     # create dataframe
-    cases_df = get_data_from_csv(filename=filename, countries=countries, start=start, end=end)
+    cases_df = get_data_from_csv(
+        filename=filename, countries=countries, start=start, end=end
+    )
 
     # Note: when you want to plot all countries simultaneously while enabling checkboxes, you might need to disable altairs max row limit by commenting in the following line
     alt.data_transformers.disable_max_rows()
@@ -137,31 +200,15 @@ def plot_reported_cases_per_million(filename="data/owid-covid-data.csv",countrie
                 ),
             ),
             y=alt.Y(
-                yaxis,
-                axis=alt.Axis(
-                    title=yaxis,
-                    titleFontSize=14,
-                    tickCount=10,
-                ),
+                yaxis, axis=alt.Axis(title=yaxis, titleFontSize=14, tickCount=10,),
             ),
             color=alt.Color("location:N", legend=alt.Legend(title="Country")),
         )
     )
 
-    return (chart).properties(height = 400,width = 600).interactive()
-
-
-def main():
-    """Function called when run as a script
-
-    Creates a chart and display it or save it to a file
-    """
-    chart = plot_reported_cases_per_million("data/owid-covid-data.csv")
-    # chart.show requires altair_viewer
-    # or you could save to a file instead
-    chart.show()
+    return (chart).properties(height=400, width=600).interactive()
 
 
 if __name__ == "__main__":
-    #main()
-    get_yaxis_names()
+    chart = plot_reported_cases_per_million("data/owid-covid-data.csv")
+    chart.show()
